@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="audioCodecs">
+        <item>ISAC</item>
+        <item>opus</item>
+    </string-array>
+    <string-array name="cameraFps">
+        <item>Default</item>
+        <item>15 fps</item>
+        <item>20 fps</item>
+        <item>30 fps</item>
+    </string-array>
+    <string-array name="cameraFpsValues">
+        <item>0</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="cameras">
+        <item>Front</item>
+        <item>Back</item>
+    </string-array>
+    <string-array name="camerasValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <integer-array name="localViewCoordinates">
+        <item>0</item>
+        <item>0</item>
+        <item>100</item>
+        <item>100</item>
+    </integer-array>
+    <integer-array name="localViewCoordinatesOnRemote">
+        <item>70</item>
+        <item>0</item>
+        <item>30</item>
+        <item>30</item>
+    </integer-array>
+    <integer-array name="local_view_coordinates">
+        <item>0</item>
+        <item>0</item>
+        <item>5</item>
+        <item>5</item>
+    </integer-array>
+    <integer-array name="local_view_coordinates_local_preview_peer2peer_screen">
+        <item>4</item>
+        <item>20</item>
+        <item>22</item>
+        <item>27</item>
+    </integer-array>
+    <integer-array name="local_view_coordinates_on_remote">
+        <item>70</item>
+        <item>0</item>
+        <item>30</item>
+        <item>30</item>
+    </integer-array>
+    <integer-array name="local_view_coordinates_preview_multi_screen">
+        <item>4</item><!--marginleft-->
+        <item>20</item><!--margintop-->
+        <item>22</item><!--width-->
+        <item>33</item><!--height-->
+    </integer-array>
+    <string-array name="startBitrate">
+        <item>Default</item>
+        <item>Manual</item>
+    </string-array>
+    <string-array name="videoCodecs">
+        <item>VP8</item>
+        <item>VP9</item>
+        <item>H264</item>
+    </string-array>
+    <string-array name="videoCodecsValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="videoResolutions">
+        <item>Default</item>
+        <item>HD (1280 x 720)</item>
+        <item>VGA (640 x 480)</item>
+        <item>QVGA (320 x 240)</item>
+    </string-array>
+    <string-array name="videoResolutionsValues">
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <color name="background_color_normal_user_item">#ffffff</color>
+    <color name="background_color_selected_user_item">#eeeeee</color>
+    <color name="background_fragment">#212121</color>
+    <color name="background_fragment_conversation">#2b2a2a</color>
+    <color name="black">#000000</color>
+    <color name="black_transparent_30">#30000000</color>
+    <color name="black_transparent_50">#50000000</color>
+    <color name="blue">#1FCECB</color>
+    <color name="button_end_call_normal_color">#ff2744</color>
+    <color name="button_end_call_pressed_color">#FC5876</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary_light">#7e8ce7</color>
+    <color name="color_blue_accent">#0088e7</color>
+    <color name="decline">#Ff5757</color>
+    <color name="disabled_color">#84848C</color>
+    <color name="enabled_color">#E50472</color>
+    <color name="green">#45D100</color>
+    <color name="grey">#606060</color>
+    <color name="grey_transparent_10">#10606060</color>
+    <color name="grey_transparent_20">#20606060</color>
+    <color name="grey_transparent_50">#50606060</color>
+    <color name="icon_background_color_selected_user">#959595</color>
+    <color name="red">#FF0000</color>
+    <color name="text_color_also_on_call">@color/text_color_call_type</color>
+    <color name="text_color_call_type">#6e6e6e</color>
+    <color name="text_color_caller_name">#1f1f1f</color>
+    <color name="text_color_other_inc_users">#1f1f1f</color>
+    <color name="text_color_outgoing_opponents_names_audio_call">#1f1f1f</color>
+    <color name="toggle_button_background_checked">#ccffffff</color>
+    <color name="toggle_button_background_normal">#cc212121</color>
+    <color name="toolbar_dropshadow_end_color">#88333333</color>
+    <color name="toolbar_subtitle_color">#6e6e6e</color>
+    <color name="toolbar_title_color">#1f1f1f</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_green">#A9FF80</color>
+    <color name="white_transparent_50">#50FFFFFF</color>
+    <color name="white_transparent_80">#80FFFFFF</color>
+    <declare-styleable name="RTCGlView"><attr format="boolean" name="mainMirror"/><attr format="boolean" name="secondMirror"/><attr format="reference" name="mainCoords"/><attr format="reference" name="secondCoords"/></declare-styleable>
+    <declare-styleable name="SeekBarPreference"><attr format="integer" name="min"/><attr format="integer" name="stepSize"/></declare-styleable>
+    <dimen name="action_bar_height">80dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="also_in_call_text_left_right_">60dp</dimen>
+    <dimen name="also_in_call_text_left_right_padding">64dp</dimen>
+    <dimen name="also_on_call_text_size">16sp</dimen>
+    <dimen name="call_avatar_diameter">78dp</dimen>
+    <dimen name="call_avatar_top_margin">64dp</dimen>
+    <dimen name="call_avatar_top_margin_plus_height_actionbar">112dp</dimen>
+    <dimen name="call_buttons_diameter">64dp</dimen>
+    <dimen name="call_buttons_margin">32dp</dimen>
+    <dimen name="call_buttons_padding">16dp</dimen>
+    <dimen name="call_caller_name_top_avatar_margin">16dp</dimen>
+    <dimen name="call_end_button_height">50dp</dimen>
+    <dimen name="call_end_button_width">200dp</dimen>
+    <dimen name="call_horizontal_avatar_end_margin">24dp</dimen>
+    <dimen name="call_horizontal_avatar_start_margin">24dp</dimen>
+    <dimen name="call_margin_top">50dp</dimen>
+    <dimen name="call_name_size">25sp</dimen>
+    <dimen name="call_opponent_avatar_diameter">176dp</dimen>
+    <dimen name="caller_name_text_size">22sp</dimen>
+    <dimen name="element_fragment_margin">30dp</dimen>
+    <dimen name="element_fragment_margin_small">8dp</dimen>
+    <dimen name="grid_item_divider">1dp</dimen>
+    <dimen name="income_call_buttons_margin">88dp</dimen>
+    <dimen name="incoming_call_type_text_size">16sp</dimen>
+    <dimen name="incoming_call_type_text_size_18sp">18sp</dimen>
+    <dimen name="item_height">136dp</dimen>
+    <dimen name="item_width">80dp</dimen>
+    <dimen name="list_item_padding_bottom">8dp</dimen>
+    <dimen name="list_item_padding_top">8dp</dimen>
+    <dimen name="list_item_side_margin">@dimen/padding_common_twice</dimen>
+    <dimen name="margin_10dp">10dp</dimen>
+    <dimen name="margin_15dp">15dp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
+    <dimen name="margin_25dp">25dp</dimen>
+    <dimen name="margin_30dp">30dp</dimen>
+    <dimen name="margin_35dp">35dp</dimen>
+    <dimen name="margin_40dp">40dp</dimen>
+    <dimen name="margin_45dp">45dp</dimen>
+    <dimen name="margin_50dp">50dp</dimen>
+    <dimen name="margin_5dp">5dp</dimen>
+    <dimen name="margin_common">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_very_small">3dp</dimen>
+    <dimen name="other_inc_users_text_size">16sp</dimen>
+    <dimen name="padding_10dp">10dp</dimen>
+    <dimen name="padding_15dp">15dp</dimen>
+    <dimen name="padding_20dp">20dp</dimen>
+    <dimen name="padding_25dp">5dp</dimen>
+    <dimen name="padding_5dp">5dp</dimen>
+    <dimen name="padding_actionbar">24dp</dimen>
+    <dimen name="padding_bottom">62dp</dimen>
+    <dimen name="padding_outgoing_screen">48dp</dimen>
+    <dimen name="padding_start">16dp</dimen>
+    <dimen name="padding_top">16dp</dimen>
+    <dimen name="padding_top_large">24dp</dimen>
+    <dimen name="padding_user_icon">16dp</dimen>
+    <dimen name="pager_image_height">500dp</dimen>
+    <dimen name="pager_image_width">400dp</dimen>
+    <dimen name="text_size">20sp</dimen>
+    <dimen name="text_size_call">18sp</dimen>
+    <dimen name="text_size_ringing">16sp</dimen>
+    <dimen name="toggle_button_params">60dp</dimen>
+    <dimen name="toggle_button_params_70">70dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <item name="opponentsListActionBarTitle" type="id">Video &amp; Audio Chat Sample</item>
+    <integer name="pref_answer_time_interval_max_value">90</integer>
+    <integer name="pref_answer_time_interval_min_value">15</integer>
+    <integer name="pref_answer_time_interval_step_size">5</integer>
+    <integer name="pref_default_int_value">0</integer>
+    <integer name="pref_dialing_time_interval_max_value">10</integer>
+    <integer name="pref_dialing_time_interval_min_value">3</integer>
+    <integer name="pref_dialing_time_interval_step_size">1</integer>
+    <integer name="pref_disconnect_time_interval_max_value">90</integer>
+    <integer name="pref_disconnect_time_interval_min_value">10</integer>
+    <integer name="pref_disconnect_time_interval_step_size">5</integer>
+    <integer name="pref_frame_rate_max_value">30</integer>
+    <integer name="pref_frame_rate_min_value">0</integer>
+    <integer name="pref_frame_rate_stepSize">5</integer>
+    <integer name="pref_startbitratevalue_max_value">2000</integer>
+    <integer name="pref_startbitratevalue_min_value">0</integer>
+    <integer name="pref_startbitratevalue_step_size">100</integer>
+    <integer name="users_count">10</integer>
+    <string name="accepted">Accepted</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_screen_share">Screen share</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_start_audio_call">Audio call</string>
+    <string name="action_start_login">Done</string>
+    <string name="action_start_video_call">Video call</string>
+    <string name="action_update_opponens_list">Update opponents list</string>
+    <string name="actionbar_title_settings">Settings</string>
+    <string name="also_on_call">Also on call:</string>
+    <string name="app_name">Video chat sample</string>
+    <string name="btn_screen_capture">screenShot</string>
+    <string name="call_was_stopped_connection_lost">Call was stopped because connection was lost</string>
+    <string name="camera_swicth_failed">\"Failed switch camera\"</string>
+    <string name="chat_confrence_call">Conference Call</string>
+    <string name="chat_confrence_call_cancel">Cancel </string>
+    <string name="chat_confrence_call_ok">Ok</string>
+    <string name="connection_lost">Connection lost</string>
+    <string name="connection_was_lost">Connection was lost</string>
+    <string name="current_version">0.9.1</string>
+    <string name="description">Description</string>
+    <string name="dlg_creating_new_user">Creating new user…</string>
+    <string name="dlg_loading_opponents">Loading opponents…</string>
+    <string name="dlg_login">Login…</string>
+    <string name="dlg_logout">Logout…</string>
+    <string name="dlg_sign_in">Sign In…</string>
+    <string name="dlg_signal_error">Disconnected… Please check your Internet connection!</string>
+    <string name="dlg_updating_user">Updating user…</string>
+    <string name="edit_opponents_list">Edit opponents list</string>
+    <string name="error_empty_chat_room_name">Chat room name can not be empty</string>
+    <string name="error_empty_login">Login can not be empty</string>
+    <string name="error_max_opponents_count">You can select up to %d opponents</string>
+    <string name="error_name_must_not_contain_special_characters_from_app">%1$s must contain 3 — %2$s alphanumeric Latin characters without space, the first char must be a letter</string>
+    <string name="field_name_chat_room_name">Chat room name</string>
+    <string name="field_name_user_name">User name</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_chat_room_name">Chat room name</string>
+    <string name="hint_user_name">User name</string>
+    <string name="incoming_audio_call">Incoming Audio Call</string>
+    <string name="incoming_call">Incoming Call</string>
+    <string name="incoming_video_call">Incoming Video Call</string>
+    <string name="loading_users_error">Loading users error. Error</string>
+    <string name="login_chat_login_error">Login Chat error. Please relogin. Error</string>
+    <string name="logout_user_with_error">Logout user error. Error</string>
+    <string name="opponent">and %s </string>
+    <string name="opponent_closed">Closed</string>
+    <string name="opponent_pending">Pending</string>
+    <string name="opponents">and %s other</string>
+    <string name="outgoing_audio">Outgoing Audio  Call...</string>
+    <string name="outgoing_audio_conference_call">Outgoing Audio Conference Call...</string>
+    <string name="outgoing_audio_confrence">Outgoing Audio Conference Call...</string>
+    <string name="outgoing_audio_video_call_title">%s\n\nRinging</string>
+    <string name="outgoing_video">Outgoing Video  Call...</string>
+    <string name="permission_unavailable">%s is not available now!</string>
+    <string name="pref_answer_time_interval_default_value">60</string>
+    <string name="pref_answer_time_interval_key">answer_time_interval</string>
+    <string name="pref_answer_time_interval_title">Answer Time Interval (15–90s)</string>
+    <string name="pref_audiocodec_def">ISAC</string>
+    <string name="pref_audiocodec_dlg">Select default audio codec</string>
+    <string name="pref_audiocodec_key">pref_audio_codec</string>
+    <string name="pref_audiocodec_title">Default audio codec</string>
+    <string name="pref_built_in_aec_not_available">Built-in AEC is not available</string>
+    <string name="pref_default_camera_default">0</string>
+    <string name="pref_default_camera_dlg">Select default camera</string>
+    <string name="pref_default_camera_key">default_camera_preference</string>
+    <string name="pref_default_camera_title">Default Camera</string>
+    <string name="pref_default_value">Default</string>
+    <string name="pref_dialing_time_interval_default_value">5</string>
+    <string name="pref_dialing_time_interval_key">Dialing_time_interval</string>
+    <string name="pref_dialing_time_interval_title">Dialing Time Interval (3–10s)</string>
+    <string name="pref_disable_built_in_aec_default">false</string>
+    <string name="pref_disable_built_in_aec_dlg">Disable built-in AEC</string>
+    <string name="pref_disable_built_in_aec_key">disable_built_in_aec_preference</string>
+    <string name="pref_disable_built_in_aec_title">Disable built-in AEC</string>
+    <string name="pref_disconnect_time_interval_default_value">10</string>
+    <string name="pref_disconnect_time_interval_key">disconnect_time_interval</string>
+    <string name="pref_disconnect_time_interval_title">Disconnect Time Interval (10–90s)</string>
+    <string name="pref_displayhud_default" translatable="false">false</string>
+    <string name="pref_displayhud_dlg">Display call statistics.</string>
+    <string name="pref_displayhud_key">displayhud_preference</string>
+    <string name="pref_displayhud_title">Display call statistics.</string>
+    <string name="pref_frame_rate_default">0</string>
+    <string name="pref_frame_rate_key">frame_rate</string>
+    <string name="pref_frame_rate_title">Frame Rate (0–30)</string>
+    <string name="pref_hwcodec_default">true</string>
+    <string name="pref_hwcodec_key">hwcodec_preference</string>
+    <string name="pref_hwcodec_title">Video codec hardware acceleration</string>
+    <string name="pref_noaudioprocessing_default">false</string>
+    <string name="pref_noaudioprocessing_dlg">Disable audio processing pipeline</string>
+    <string name="pref_noaudioprocessing_key">audioprocessing_preference</string>
+    <string name="pref_noaudioprocessing_title">Disable audio processing</string>
+    <string name="pref_opensles_default">false</string>
+    <string name="pref_opensles_dlg">Use OpenSL ES for audio playback</string>
+    <string name="pref_opensles_key">opensles_preference</string>
+    <string name="pref_opensles_title">Use OpenSL ES for audio playback</string>
+    <string name="pref_resolution_default">-1</string>
+    <string name="pref_resolution_dlg">Enter RTC local video resolution</string>
+    <string name="pref_resolution_key">resolution_preference</string>
+    <string name="pref_resolution_title">Video Format</string>
+    <string name="pref_room_server_url_default" translatable="false">https://apprtc.appspot.com</string>
+    <string name="pref_room_server_url_dlg">Enter a room server URL.</string>
+    <string name="pref_room_server_url_key">room_server_url_preference</string>
+    <string name="pref_room_server_url_title">Room server URL.</string>
+    <string name="pref_startbitrate_default">Default</string>
+    <string name="pref_startbitrate_dlg">Start bitrate setting</string>
+    <string name="pref_startbitrate_key">startbitrate_preference</string>
+    <string name="pref_startbitrate_title">Start bitrate setting</string>
+    <string name="pref_startbitratevalue_default">0</string>
+    <string name="pref_startbitratevalue_key">startbitratevalue_preference</string>
+    <string name="pref_startbitratevalue_title">Bandwidth (0–2000)</string>
+    <string name="pref_value_disabled">Disabled</string>
+    <string name="pref_value_enabled">Enabled</string>
+    <string name="pref_version">QuickBlox WebRTC\nBuild version 1.12</string>
+    <string name="pref_videocodec_default">0</string>
+    <string name="pref_videocodec_dlg">Select default video codec</string>
+    <string name="pref_videocodec_key">videocodec_preference</string>
+    <string name="pref_videocodec_title">Default video codec</string>
+    <string name="ringing">Ringing</string>
+    <string name="sender_id">1064074598819</string>
+    <string name="sign_in_error_with_error">Sign In error. Error</string>
+    <string name="sign_in_error_without_error">Sign In error</string>
+    <string name="sign_up_error">Error creating new user, please try again</string>
+    <string name="splash_app_title">Video &amp; Audio \nChat Sample</string>
+    <string name="splash_create_session_error">Create session errors:</string>
+    <string name="stop_share">Stop</string>
+    <string name="subtitle_text_logged_in_as">User Name %s</string>
+    <string name="text_audio__call">Incoming Audio  Call...</string>
+    <string name="text_audio_conference_call">Incoming Audio Conference Call</string>
+    <string name="text_incoming_audio_call">Incoming Audio Call</string>
+    <string name="text_incoming_video_call">Incoming Video Call</string>
+    <string name="text_push_notification_message">"%s is calling you"</string>
+    <string name="text_select_user_to_call">Select users you want to call</string>
+    <string name="text_status_checking">Checking…</string>
+    <string name="text_status_closed">Closed</string>
+    <string name="text_status_connect">Connect…</string>
+    <string name="text_status_connected">Connected</string>
+    <string name="text_status_disconnected">Disconnected</string>
+    <string name="text_status_failed">Failed</string>
+    <string name="text_status_hang_up">Hung up</string>
+    <string name="text_status_no_answer">No answer</string>
+    <string name="text_status_rejected">Rejected</string>
+    <string name="text_status_time_out">Time Out</string>
+    <string name="text_video__call">Incoming Video  Call...</string>
+    <string name="text_welcoming_message">Please enter username and chat room name. \nYou can join existed chat room.</string>
+    <string name="tile_many_users_selected">%s users selected</string>
+    <string name="title_call_settings_category">Call Settings</string>
+    <string name="title_login_activity">Enter to chat</string>
+    <string name="title_one_user_selected">%s user selected</string>
+    <string name="title_video_category">Video</string>
+    <string name="update_user_error">Update user error. Error</string>
+    <string name="user_list_on_call">User 1, User 2, User 3, User 4, User 5, User 6</string>
+    <style name="AppTheme.BlueAccent">
+        <item name="colorAccent">@color/color_blue_accent</item>
+    </style>
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--<item name="android:windowActionBar">false</item>-->
+        <!-- Customize your theme here. -->
+
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+
+        <item name="android:windowBackground">@color/background_app_color</item>
+    </style>
+    <style name="CallerAvatar">
+        <item name="android:layout_width">@dimen/call_avatar_diameter</item>
+        <item name="android:layout_height">@dimen/call_avatar_diameter</item>
+        <item name="android:padding">24dp</item>
+        <item name="android:src">@drawable/ic_chat_face</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+    <style name="DialogNameStyle" parent="MatchWidth">
+        <item name="android:textColor">@color/text_color_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="EndCallImageButton" parent="RoundedImageButton">
+        <item name="android:background">@drawable/selector_call_end</item>
+        <item name="android:src">@drawable/ic_phone_hangup</item>
+    </style>
+    <style name="ListItemIconStyle">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">@dimen/list_item_side_margin</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+    <style name="RoundedImageButton">
+        <item name="android:layout_width">@dimen/call_buttons_diameter</item>
+        <item name="android:layout_height">@dimen/call_buttons_diameter</item>
+        <item name="android:padding">@dimen/call_buttons_padding</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+    <style name="SeekBarPreferenceTitle" parent="WrapContent">
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="TakeCallImageButton" parent="RoundedImageButton">
+        <item name="android:background">@drawable/selector_call_take</item>
+    </style>
+    <style name="ToolbarStyleCall" parent="Widget.AppCompat.Toolbar">
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.ActionBar</item>
+    </style>
+    <style name="VideoChatTheme" parent="AppTheme">
+        <item name="colorAccent">@color/color_blue_accent</item>
+        <item name="colorControlActivated">@color/color_blue_accent</item>
+        <item name="colorControlHighlight">@color/color_blue_accent</item>
+        <item name="colorControlNormal">@color/color_blue_accent</item>
+    </style>
+</resources>

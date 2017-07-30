@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\androidTest\\debug\\raw\\beep.wav",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\debug\\res\\raw\\beep.wav"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\androidTest\\debug\\raw\\busytone.wav",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\debug\\res\\raw\\busytone.wav"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\androidTest\\debug\\raw\\tttt.txt",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\debug\\res\\raw\\tttt.txt"
+    }
+]

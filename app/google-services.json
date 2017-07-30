@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1064074598819",
+    "firebase_url": "https://konnek2-ee48c.firebaseio.com",
+    "project_id": "konnek2-ee48c",
+    "storage_bucket": "konnek2-ee48c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064074598819:android:16201843138dec9c",
+        "android_client_info": {
+          "package_name": "com.aviv.konnek2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064074598819-vqotvilfa4f8tpped5t9ttntcenol062.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9I-P0skak8aF__bEYJ5EH2lOUiwjS8TA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

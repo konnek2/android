@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchParent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/contactFragmentLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/contactPrograss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/contactFragmentLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_view_diplay_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            android:text="@string/text_select_user_to_call"
+            android:textColor="@color/colorPrimary"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/audioStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"
+                android:text="Audio Call :"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/audioStatus"
+                android:text="group call "
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/videocallStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/oneTOone"
+                android:textStyle="bold"
+                android:text="Video Call :"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/oneTOone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:background="@color/colorPrimary"
+                android:text="one to one "
+                android:textColor="@color/white"/>
+
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/list_opponents"
+            style="@style/MatchWidth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="8dp"
+            android:divider="@color/colorPrimary"
+            android:dividerHeight="2px"/>
+    </LinearLayout>
+
+</LinearLayout>

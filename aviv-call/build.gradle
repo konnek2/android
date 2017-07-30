@@ -1,0 +1,73 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.20.1'
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+//        applicationId "com.quickblox.sample.groupchatwebrtc"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+
+    buildTypes {
+
+        release {
+
+            resValue "string", "versionName", "QuickBlox WebRTC\nBuild version " + defaultConfig.getVersionName()
+            signingConfig signingConfigs.debug
+        }
+    }
+
+//    signingConfigs {
+//        debug {
+//            storeFile file("../cert/debug.keystore")
+//            storePassword "android"
+//            keyAlias "androiddebugkey"
+//            keyPassword "android"
+//        }
+//    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile "com.quickblox:quickblox-android-sdk-videochat-webrtc:$rootProject.qbSdkVersion"
+    compile "com.android.support:recyclerview-v7:${rootProject.recyclerviewV7Version}"
+    compile "com.android.support:cardview-v7:${rootProject.cardviewVersion}"
+    compile "com.android.support:support-annotations:${rootProject.supportAnnotationsVersion}"
+    compile "com.navercorp.pulltorefresh:library:${rootProject.pullToRefreshVersion}@aar"
+    compile("com.crashlytics.sdk.android:crashlytics:${rootProject.crashlyticsVersion}@aar")
+            {
+                transitive = true;
+            }
+    compile project(':aviv-core')
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    compile 'com.android.support:support-v4:25.1.1'
+    compile 'de.hdodenhof:circleimageview:1.3.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
+    compile 'com.facebook.network.connectionclass:connectionclass:1.0.1'
+}
+
+//apply from: "../artifacts.gradle"

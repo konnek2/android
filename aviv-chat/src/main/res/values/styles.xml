@@ -1,0 +1,29 @@
+<resources>
+
+    <style name="ChatActivityTheme" parent="AppTheme">
+        <item name="android:windowBackground">@color/background_chat_color</item>
+    </style>
+
+    <style name="AppTheme.BlueAccent">
+        <item name="colorAccent">@color/color_blue_qb</item>
+    </style>
+
+
+    <style name="AppTheme.Base1" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+
+        <!--<item name="colorPrimary">@color/color_primary</item>-->
+        <!--<item name="colorPrimaryDark">@color/color_primary_dark</item>-->
+        <!--<item name="colorAccent">@color/color_accent</item>-->
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowBackground">@color/background_app_color</item>
+
+    </style>
+
+</resources>

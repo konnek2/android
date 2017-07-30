@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\menu\\activity_select_users.xml",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\menu\\activity_select_users.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\menu\\activity_selected_opponents.xml",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\menu\\activity_selected_opponents.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\menu\\activity_chat.xml",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\menu\\activity_chat.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\menu\\activity_opponents.xml",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\menu\\activity_opponents.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\menu\\activity_chat_info.xml",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\menu\\activity_chat_info.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\menu\\activity_login.xml",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\menu\\activity_login.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\menu\\activity_dialogs.xml",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\menu\\activity_dialogs.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\menu\\conversation_fragment.xml",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\menu\\conversation_fragment.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\menu\\screen_share_fragment.xml",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\menu\\screen_share_fragment.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\menu\\action_mode_dialogs.xml",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\menu\\action_mode_dialogs.xml"
+    }
+]

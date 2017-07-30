@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_chat_color">#f5f6f5</color>
+    <color name="color_grey">#d3d3d3</color>
+    <color name="divider_color">#e0e0e0</color>
+    <color name="random_color_1">#ff9500</color>
+    <color name="random_color_10">#bdbdbd</color>
+    <color name="random_color_2">#007aff</color>
+    <color name="random_color_3">#ff0091</color>
+    <color name="random_color_4">#4cd964</color>
+    <color name="random_color_5">#c3c1f2</color>
+    <color name="random_color_6">#a727a5</color>
+    <color name="random_color_7">#77a6d0</color>
+    <color name="random_color_8">#d0021b</color>
+    <color name="random_color_9">#166642</color>
+    <color name="selected_list_item_color">#e0e0e0</color>
+    <declare-styleable name="MaskedImageView"><attr format="integer" name="mask"/></declare-styleable>
+    <dimen name="chat_attachment_preview_size">80dp</dimen>
+    <dimen name="chat_author_text_size">16sp</dimen>
+    <dimen name="chat_date_header_top_margin">30dp</dimen>
+    <dimen name="chat_date_text_size">13sp</dimen>
+    <dimen name="chat_message_attachment_size">160dp</dimen>
+    <dimen name="chat_message_attachment_username_margin">12dp</dimen>
+    <dimen name="chat_message_body_text_size">16sp</dimen>
+    <dimen name="chat_message_content_margin">4dp</dimen>
+    <dimen name="chat_message_info_text_size">13sp</dimen>
+    <dimen name="chat_message_username_margin">@dimen/chat_message_content_margin</dimen>
+    <dimen name="list_item_side_margin">@dimen/padding_common_twice</dimen>
+    <dimen name="unread_counter_text_size">13sp</dimen>
+    <string name="app_name">Chat</string>
+    <string name="chat_attachment">Attachment</string>
+    <string name="chat_attachment_error">Can\'t load chosen file</string>
+    <string name="chat_edit_text_hint">Message</string>
+    <string name="chat_empty_start_new_chat">Start new chat.</string>
+    <string name="chat_empty_you_are_alone_here">You\'re all alone out here.</string>
+    <string name="chat_friend">Friend</string>
+    <string name="chat_info">Chat info</string>
+    <string name="chat_info_add_people_error">Add people errors</string>
+    <string name="chat_join_error">Error join group chat</string>
+    <string name="chat_load_history_error">Load chat history errors</string>
+    <string name="chat_load_users_error">Load chat users errors</string>
+    <string name="chat_me">Me</string>
+    <string name="chat_sample">Chat Sample</string>
+    <string name="chat_send">Send</string>
+    <string name="chat_send_message_error">Failed to send a message</string>
+    <string name="chat_sticker">Sticker</string>
+    <string name="chat_unsupported_type">Unsupported dialog type</string>
+    <string name="chat_wait_for_attachments_to_upload">Wait for all attachments to upload</string>
+    <string name="connection_error">Chat connection has been dropped</string>
+    <string name="create_chat">Creating chat…</string>
+    <string name="dialogs_creation_error">Dialog creation errors</string>
+    <string name="dialogs_deletion_error">Dialog deletion errors</string>
+    <string name="dialogs_get_error">Get dialogs errors</string>
+    <string name="dialogs_list_hint">Select a Dialog to Chat</string>
+    <string name="dialogs_logged_in_as">Logged in as %s</string>
+    <string name="dlg_loading">Loading</string>
+    <string name="dlg_login">Login…</string>
+    <string name="dlg_restoring_chat_session">Restoring chat session…</string>
+    <string name="dlg_restoring_chat_session_logout">Restoring session and logout</string>
+    <string name="error_leave_chat">Error leaving room</string>
+    <string name="error_recreate_session">Login Chat error</string>
+    <string name="group_chat_join_error">Could not join chat, errors:</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_cant_obtain_users">Can\'t obtain users errors</string>
+    <string name="login_chat_login_error">Login Chat error. Please relogin. Error</string>
+    <string name="login_select_user_for_login">Select User for Login to Chat</string>
+    <string name="login_title">@string/chat_sample</string>
+    <string name="menu_add_users_to_chat">Add Users to Chat</string>
+    <string name="menu_chat_info">Chat info</string>
+    <string name="menu_delete_chat">Group call</string>
+    <string name="menu_dialogs_delete">Delete</string>
+    <string name="menu_dialogs_logout">Logout</string>
+    <string name="menu_leave_chat">Leave Chat</string>
+    <string name="menu_new_chat">New Chat</string>
+    <string name="menu_refresh"> Refresh</string>
+    <string name="menu_select_people_done">Done</string>
+    <string name="notification_title">Quickblox Chat Notification</string>
+    <string name="placeholder_username_you">%s (you)</string>
+    <string name="public_group_chat_cannot_be_deleted">Public Group chat can be deleted only by owner</string>
+    <string name="reconnect_alert">Reconnecting in %s seconds</string>
+    <string name="select_users_choose_users">Please, choose at least one participant</string>
+    <string name="select_users_create_chat">Create new chat</string>
+    <string name="select_users_edit_chat">Add Users to chat</string>
+    <string name="select_users_get_users_error">Get users errors</string>
+    <string name="select_users_list_hint">Select Users you want to chat</string>
+    <string name="sender_id">1064074598819</string>
+    <string name="splash_app_title">@string/chat_sample</string>
+    <string name="splash_create_session_error">Create session errors:</string>
+    <style name="AppTheme.Base1" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+
+        <!--<item name="colorPrimary">@color/color_primary</item>-->
+        <!--<item name="colorPrimaryDark">@color/color_primary_dark</item>-->
+        <!--<item name="colorAccent">@color/color_accent</item>-->
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowBackground">@color/background_app_color</item>
+
+    </style>
+    <style name="AppTheme.BlueAccent">
+        <item name="colorAccent">@color/color_blue_qb</item>
+    </style>
+    <style name="ChatActivityTheme" parent="AppTheme">
+        <item name="android:windowBackground">@color/background_chat_color</item>
+    </style>
+    <style name="DialogLastMessageStyle" parent="MatchWidth">
+        <item name="android:textColor">@color/text_color_dark_grey</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+    <style name="DialogNameStyle" parent="MatchWidth">
+        <item name="android:textColor">@color/text_color_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="DialogUnreadCounterStyle">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">@dimen/list_item_side_margin</item>
+        <item name="android:background">@drawable/shape_rectangle</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/text_color_white</item>
+    </style>
+    <style name="HorizontalDividerStyle" parent="MatchWidth">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/divider_color</item>
+    </style>
+    <style name="ListDateHeaderStyle" parent="MatchWidth">
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/text_color_dark_grey</item>
+        <item name="typeface">roboto_medium</item>
+    </style>
+    <style name="ListHeaderStyle" parent="ListItem">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/list_item_side_margin</item>
+        <item name="android:textColor">@color/text_color_dark_grey</item>
+        <item name="android:textSize">14sp</item>
+        <item name="typeface">roboto_medium</item>
+    </style>
+    <style name="ListItemIconStyle">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">@dimen/list_item_side_margin</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+    <style name="MessageAuthorStyle" parent="WrapContent">
+        <item name="android:layout_marginLeft">@dimen/chat_message_username_margin</item>
+        <item name="android:layout_marginRight">@dimen/chat_message_username_margin</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textColor">@color/text_color_dark_grey</item>
+        <item name="android:textSize">@dimen/chat_author_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="typeface">roboto_bold</item>
+    </style>
+    <style name="MessageContainerStyle" parent="MatchWidth">
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/padding_common</item>
+    </style>
+    <style name="MessageContentContainerStyle" parent="WrapContent">
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="MessageInfoStyle" parent="WrapContent">
+        <item name="android:paddingLeft">@dimen/padding_common</item>
+        <item name="android:paddingRight">@dimen/padding_common</item>
+        <item name="android:textColor">@color/text_color_dark_grey</item>
+        <item name="android:textSize">@dimen/chat_message_info_text_size</item>
+        <item name="android:visibility">gone</item>
+    </style>
+    <style name="MessageInfoStyle1" parent="WrapContent">
+        <item name="android:paddingLeft">@dimen/padding_common</item>
+        <item name="android:paddingRight">@dimen/padding_common1</item>
+        <item name="android:textColor">@color/text_color_dark_grey</item>
+        <item name="android:textSize">@dimen/chat_message_info_text_size</item>
+        <item name="android:visibility">gone</item>
+    </style>
+    <style name="MessageTextStyle" parent="WrapContent">
+        <item name="android:layout_marginLeft">@dimen/chat_message_content_margin</item>
+        <item name="android:layout_marginRight">@dimen/chat_message_content_margin</item>
+        <item name="android:maxWidth">250dp</item>
+        <item name="android:textColor">@color/text_color_white</item>
+        <item name="android:textSize">@dimen/chat_message_body_text_size</item>
+    </style>
+    <style name="UserCheckboxStyle" parent="WrapContent">
+        <item name="android:layout_marginRight">@dimen/list_item_side_margin</item>
+        <item name="android:clickable">false</item>
+        <item name="android:gravity">right</item>
+    </style>
+    <style name="UserIconStyle" parent="ListItemIconStyle">
+        <item name="android:layout_marginLeft">@dimen/list_item_side_margin</item>
+        <item name="android:padding">@dimen/padding_common</item>
+    </style>
+    <style name="UserTitleStyle" parent="WeightWidth">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+</resources>

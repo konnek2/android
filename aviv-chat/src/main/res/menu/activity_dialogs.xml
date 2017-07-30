@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_dialogs_action_logout"
+        android:icon="@drawable/ic_action_logout"
+        android:visible="false"
+        android:title="@string/menu_dialogs_logout"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/menu_refresh_dialogs"
+        android:icon="@drawable/ic_chat_refresh"
+        android:title="@string/menu_refresh"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/menu_group_chat1"
+        android:icon="@drawable/ic_chat_group_chat"
+        android:title="@string/menu_refresh"
+        app:showAsAction="ifRoom" />
+</menu>

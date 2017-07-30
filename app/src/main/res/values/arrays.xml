@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="setingsActivity">
+
+        <item>Notifications</item>
+        <item>Chat Settings</item>
+        <item>Invite Friend</item>
+        <item>Change Password</item>
+        <item>Help and About Us</item>
+    </string-array>
+</resources>

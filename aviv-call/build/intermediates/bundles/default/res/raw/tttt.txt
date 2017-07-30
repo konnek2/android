@@ -1,0 +1,26 @@
+
+
+SmartChapp    QB  API Keys 
+
+
+Application ID  :  54855
+
+Authorization key  :   b-e9WtFZXjgDhKr
+
+Authorization secret   :  JOfOnV-C3fj94Bu 
+
+Account key  :   ZxrU4LyJvhMowzdFMxSt
+
+
+
+
+
+Account ID  :   61849
+
+API endpoint   :  https://api.quickblox.com
+
+Chat endpoint   : chat.quickblox.com
+
+TURN-server   : turnserver.quickblox.com
+
+S3 bucket     :  qbprod

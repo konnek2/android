@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ListItem"
+    tools:ignore="RtlHardcoded">
+    <RelativeLayout
+        android:id="@+id/Linear_userList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+        <FrameLayout
+            android:id="@+id/chat_frame_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_user"
+                style="@style/ListItemIconStyle"
+                android:layout_marginLeft="10dp"/>
+
+            <ImageView
+                android:id="@+id/image_userStatus"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_gravity="right|bottom"
+                android:src="@drawable/signal_green"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/text_user_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/chat_frame_user"
+            />
+
+        <CheckBox
+            android:id="@+id/checkbox_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
