@@ -61,4 +61,36 @@ public class Constant {
     public static String PROFILE_FOLDER = "KONNEK2_PROFILE";
 
 
+
+
+    // Tab
+
+    public static String HOME = "Home";
+    public static String CONNECT = "Connect";
+    public static String GREATER_THAN = " > ";
+    public static String TAB_POSITION = "100";
+    //Tab Header
+    public static String TAB_ONE = "Tab 1";
+    public static String TAB_TWO = "Tab 2";
+    public static String TAB_THREE = "Tab 3";
+    public static String TAB_CALL_HISTORY = "CALL HISTORY";
+    public static String TAB_CHAT = "CHAT";
+    public static String TAB_CONTACTS = "CONTACTS";
+    public static String Call_CONFRENCE_LIMIT = "4 Users only allowed in Conference call";
+
+    // db
+    public static String CALL_DB_CURRENT_PATH = "//data//" + "com.aviv.konnek2" + "//databases//" + "konnek2";
+    public static String CALL_DB_BACKUP_PATH = "konnek2call" + ".backup";
+    public static String DB_FULL_PATH = "/data/data/com.aviv.konnek2/databases/";
+    public static String DB_NAME = "groupchatwebrtcDB";
+    public static String DATABASE_CALL_NAME = "calllog";
+    public static String PING_ALARM_ACTION = "com.quickblox.chat.ping.ACTION";
+    public static String ANDROID_NS = "http://schemas.android.com/apk/res/android";
+    public static String SEEKBAR_NS = "http://schemas.android.com/apk/res-auto";
+
+
+    // Exaption
+
+    public static String ACTIVITY_EXCEPTION ="This Activity needs to be launched using the static startActivityForResult() method .";
+
 }

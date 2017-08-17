@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/profile_background"
+    android:background="@color/white"
     tools:context="com.aviv.konnek2.ui.activity.ProfileActivity">
 
 
@@ -56,280 +56,248 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_5dp">
 
-
             <RelativeLayout
                 android:id="@+id/profile_base"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent">>
 
-
-                <android.support.v7.widget.CardView
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_card1"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    card_view:cardCornerRadius="5dp">
+                    android:layout_marginTop="5dp">
 
-                    <RelativeLayout
+                    <com.aviv.konnek2.customview.MediumFont
+                        android:id="@+id/txt_profile_firstname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name "
+                        android:textColor="@color/colorPrimary"/>
+
+                    <EditText
+                        android:id="@+id/et_profile_name1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp">
+                        android:layout_below="@+id/txt_profile_firstname"
+                        android:background="@drawable/edittext_profile_bottom_line"
+                        android:drawableRight="@drawable/ic_app_profile_user"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="@dimen/text_size16sp"/>
 
-                        <com.aviv.konnek2.customview.MediumFont
-                            android:id="@+id/txt_profile_firstname"
+
+                    <com.aviv.konnek2.customview.MediumFont
+                        android:id="@+id/txt_profile_mobile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/et_profile_name1"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:text="Mobile Number "
+                        android:textColor="@color/colorPrimary"/>
+
+
+                    <EditText
+                        android:id="@+id/et_profile_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_profile_mobile"
+                        android:background="@drawable/edittext_profile_bottom_line"
+                        android:drawableRight="@drawable/ic_app_profile_phone"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="@dimen/text_size16sp"/>
+
+
+                    <com.aviv.konnek2.customview.MediumFont
+                        android:id="@+id/txt_profile_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/et_profile_mobile"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:text="Email "
+                        android:textColor="@color/colorPrimary"/>
+
+
+                    <EditText
+                        android:id="@+id/et_profile_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_profile_email"
+                        android:background="@drawable/edittext_profile_bottom_line"
+                        android:drawableRight="@drawable/ic_app_profile_email"
+                        android:imeOptions="actionDone"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/hintColor"/>
+
+
+                    <com.aviv.konnek2.customview.MediumFont
+                        android:id="@+id/txt_profile_birthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/et_profile_email"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:text="Date of Birth "
+                        android:textColor="@color/colorPrimary"/>
+
+
+                    <EditText
+                        android:id="@+id/et_profile_dataOfbirth"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_profile_birthday"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:background="@drawable/edit_text_border"
+                        android:gravity="center"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="@dimen/text_size16sp"/>
+
+                    <ImageView
+                        android:id="@+id/img_profile_calander"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_profile_birthday"
+                        android:layout_marginLeft="@dimen/margin_10dp"
+                        android:layout_toRightOf="@+id/et_profile_dataOfbirth"
+                        android:onClick="dateOfBirth"
+                        android:src="@drawable/ic_app_profile_birthday"/>
+
+                    <com.aviv.konnek2.customview.MediumFont
+                        android:id="@+id/profile_gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/et_profile_email"
+                        android:layout_marginRight="70dp"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:text="Gender "
+                        android:textColor="@color/colorPrimary"/>
+
+
+                    <RadioGroup
+                        android:id="@+id/radio_profile_gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/profile_gender"
+                        android:layout_marginLeft="@dimen/margin_5dp"
+                        android:layout_marginRight="50dp"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:orientation="horizontal"
+                        android:textColorHint="@color/hintColor">
+
+                        <RadioButton
+                            android:id="@+id/btnmal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Name "
-                            android:textColor="@color/colorPrimary"/>
-
-                        <EditText
-                            android:id="@+id/et_profile_name1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/txt_profile_firstname"
-                            android:background="@drawable/edittext_profile_bottom_line"
-                            android:drawableRight="@drawable/ic_app_profile_user"
-                            android:imeOptions="actionNext"
-                            android:inputType="text"
-                            android:textSize="@dimen/text_size16sp"
-                            android:textColor="@color/colorPrimary"
-                            android:textColorHint="@color/hintColor"/>
-
-
-                        <com.aviv.konnek2.customview.MediumFont
-                            android:id="@+id/txt_profile_mobile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/et_profile_name1"
-                            android:layout_marginTop="@dimen/margin_5dp"
-                            android:text="Mobile Number "
-                            android:textColor="@color/colorPrimary"/>
-
-
-                        <EditText
-                            android:id="@+id/et_profile_mobile"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/txt_profile_mobile"
-                            android:background="@drawable/edittext_profile_bottom_line"
-                            android:drawableRight="@drawable/ic_app_profile_phone"
-                            android:imeOptions="actionDone"
-                            android:inputType="number"
-                            android:maxLength="10"
-                            android:textSize="@dimen/text_size16sp"
-                            android:textColor="@color/colorPrimary"
-                            android:textColorHint="@color/hintColor"/>
-
-
-                        <com.aviv.konnek2.customview.MediumFont
-                            android:id="@+id/txt_profile_email"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/et_profile_mobile"
-                            android:layout_marginTop="@dimen/margin_5dp"
-                            android:text="Email "
-                            android:textColor="@color/colorPrimary"/>
-
-
-                        <EditText
-                            android:id="@+id/et_profile_email"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/txt_profile_email"
-                            android:background="@drawable/edittext_profile_bottom_line"
-                            android:drawableRight="@drawable/ic_app_profile_email"
-                            android:imeOptions="actionDone"
-                            android:inputType="textEmailAddress"
-                            android:textColor="@color/colorPrimary"
-                            android:textColorHint="@color/hintColor"/>
-
-
-                        <com.aviv.konnek2.customview.MediumFont
-                            android:id="@+id/txt_profile_birthday"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/et_profile_email"
-                            android:layout_marginTop="@dimen/margin_5dp"
-                            android:text="Date of Birth "
-                            android:textColor="@color/colorPrimary"/>
-
-
-                        <EditText
-                            android:id="@+id/et_profile_dataOfbirth"
-                            android:layout_width="110dp"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/txt_profile_birthday"
-                            android:layout_marginTop="@dimen/margin_5dp"
-                            android:background="@drawable/edit_text_border"
+                            android:layout_toLeftOf="@+id/btnValkin"
+                            android:background="@drawable/button_radio_backround"
+                            android:button="@null"
+                            android:checked="true"
                             android:gravity="center"
-                            android:imeOptions="actionDone"
-                            android:inputType="text"
-                            android:textColorHint="@color/hintColor"
-                            android:textSize="@dimen/text_size16sp"/>
+                            android:padding="@dimen/padding_5dp"
+                            android:text="MALE"
+                            android:textColor="@drawable/button_text_color"/>
 
-                        <ImageView
-                            android:id="@+id/img_profile_calander"
+                        <RadioButton
+                            android:id="@+id/btnfemale"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/txt_profile_birthday"
-                            android:layout_marginLeft="@dimen/margin_10dp"
-                            android:layout_toRightOf="@+id/et_profile_dataOfbirth"
-                            android:onClick="dateOfBirth"
-                            android:src="@drawable/ic_app_profile_birthday"/>
+                            android:layout_marginRight="@dimen/margin_5dp"
+                            android:background="@drawable/button_radio_backround"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:padding="@dimen/padding_5dp"
+                            android:text="FEMALE"
+                            android:textColor="@drawable/button_text_color"/>
+                        />
+                    </RadioGroup>
 
-                        <com.aviv.konnek2.customview.MediumFont
-                            android:id="@+id/profile_gender"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_below="@+id/et_profile_email"
-                            android:layout_marginRight="70dp"
-                            android:layout_marginTop="@dimen/margin_5dp"
-                            android:text="Gender "
-                            android:textColor="@color/colorPrimary"/>
+                    <ImageView
+                        android:id="@+id/txt_profile_gender_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/profile_gender"
+                        android:layout_toRightOf="@+id/radio_profile_gender"
+                        android:src="@drawable/ic_app_profile_gender"/>
 
 
-                        <RadioGroup
-                            android:id="@+id/radio_profile_gender"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_below="@+id/profile_gender"
-                            android:layout_marginLeft="@dimen/margin_5dp"
-                            android:layout_marginRight="50dp"
-                            android:layout_marginTop="@dimen/margin_5dp"
-                            android:orientation="horizontal"
-                            android:textColorHint="@color/hintColor">
+                    <com.aviv.konnek2.customview.MediumFont
+                        android:id="@+id/txt_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/et_profile_dataOfbirth"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:text="City "
+                        android:textColor="@color/colorPrimary"/>
 
-                            <RadioButton
-                                android:id="@+id/btnmal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toLeftOf="@+id/btnValkin"
-                                android:background="@drawable/button_radio_backround"
-                                android:button="@null"
-                                android:checked="true"
-                                android:gravity="center"
-                                android:padding="@dimen/padding_5dp"
-                                android:text="MALE"
-                                android:textColor="@drawable/button_text_color"/>
 
-                            <RadioButton
-                                android:id="@+id/btnfemale"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/margin_5dp"
-                                android:background="@drawable/button_radio_backround"
-                                android:button="@null"
-                                android:gravity="center"
-                                android:padding="@dimen/padding_5dp"
-                                android:text="FEMALE"
-                                android:textColor="@drawable/button_text_color"/>
-                            />
-                        </RadioGroup>
-
-                        <ImageView
-                            android:id="@+id/txt_profile_gender_img"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/profile_gender"
-                            android:layout_toRightOf="@+id/radio_profile_gender"
-                            android:src="@drawable/ic_app_profile_gender"/>
-                    </RelativeLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_card2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/profile_card1"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp"
-                    card_view:cardCornerRadius="5dp">
-
-                    <RelativeLayout
+                    <EditText
+                        android:id="@+id/et_profile_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp">
+                        android:layout_below="@+id/txt_city"
+                        android:background="@drawable/edittext_profile_bottom_line"
+                        android:drawableRight="@drawable/ic_app_location_city"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/hintColor"/>
 
-                        <com.aviv.konnek2.customview.MediumFont
-                            android:id="@+id/txt_city"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_5dp"
-                            android:text="City "
-                            android:textColor="@color/colorPrimary"/>
-
-
-                        <EditText
-                            android:id="@+id/et_profile_city"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/txt_city"
-                            android:background="@drawable/edittext_profile_bottom_line"
-                            android:drawableRight="@drawable/ic_app_location_city"
-                            android:imeOptions="actionNext"
-                            android:inputType="text"
-                            android:textColor="@color/colorPrimary"
-                            android:textColorHint="@color/hintColor"/>
-
-                        <com.aviv.konnek2.customview.MediumFont
-                            android:id="@+id/txt_profile_country"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/et_profile_city"
-                            android:layout_marginTop="@dimen/margin_5dp"
-                            android:text="Country"
-                            android:textColor="@color/colorPrimary"/>
+                    <com.aviv.konnek2.customview.MediumFont
+                        android:id="@+id/txt_profile_country"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/et_profile_city"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:text="Country"
+                        android:textColor="@color/colorPrimary"/>
 
 
-                        <EditText
-                            android:id="@+id/et_profile_country"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/txt_profile_country"
-                            android:background="@drawable/edittext_profile_bottom_line"
-                            android:drawableRight="@drawable/ic_app_profile_country"
-                            android:imeOptions="actionNext"
-                            android:inputType="text"
-                            android:textColor="@color/colorPrimary"
-                            android:textColorHint="@color/hintColor"/>
+                    <EditText
+                        android:id="@+id/et_profile_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_profile_country"
+                        android:background="@drawable/edittext_profile_bottom_line"
+                        android:drawableRight="@drawable/ic_app_profile_country"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/hintColor"/>
 
-                        <com.aviv.konnek2.customview.MediumFont
-                            android:id="@+id/txt_profile_zipcode"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/et_profile_country"
-                            android:layout_marginTop="@dimen/margin_5dp"
-                            android:text="Zipcode "
-                            android:textColor="@color/colorPrimary"/>
+                    <com.aviv.konnek2.customview.MediumFont
+                        android:id="@+id/txt_profile_zipcode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/et_profile_country"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:text="Zipcode "
+                        android:textColor="@color/colorPrimary"/>
 
 
-                        <EditText
-                            android:id="@+id/et_profile_zipcode"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/txt_profile_zipcode"
-                            android:background="@drawable/edittext_profile_bottom_line"
-                            android:drawableRight="@drawable/ic_app_profile_zipcode"
-                            android:imeOptions="actionDone"
-                            android:inputType="number"
-                            android:textColor="@color/colorPrimary"
-                            android:textColorHint="@color/hintColor"/>
-                    </RelativeLayout>
-                </android.support.v7.widget.CardView>
+                    <EditText
+                        android:id="@+id/et_profile_zipcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_profile_zipcode"
+                        android:background="@drawable/edittext_profile_bottom_line"
+                        android:drawableRight="@drawable/ic_app_profile_zipcode"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/hintColor"/>
+                </RelativeLayout>
+
 
                 <ProgressBar
                     android:id="@+id/progress"
@@ -342,7 +310,6 @@
                     android:visibility="invisible"/>
 
             </RelativeLayout>
-
 
         </RelativeLayout>
 

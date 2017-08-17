@@ -90,8 +90,6 @@ public class IncomeCallFragment extends Fragment implements Serializable, View.O
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setRetainInstance(true);
-
-        Log.d(TAG, "onCreate() from IncomeCallFragment");
         super.onCreate(savedInstanceState);
     }
 
@@ -185,7 +183,7 @@ public class IncomeCallFragment extends Fragment implements Serializable, View.O
         takeButton = (ImageButton) view.findViewById(R.id.image_button_accept_call);
 
 
-        Log.d("INCOMINGCALL", " getCallerID " + currentSession.getCallerID());
+
         Uri imageUri = Uri.fromFile(FolderCreator.getImageFileFromSdCard(String.valueOf(currentSession.getCallerID())));
         Glide.with(getActivity())
                 .load(imageUri)
@@ -204,7 +202,6 @@ public class IncomeCallFragment extends Fragment implements Serializable, View.O
     }
 
     public void startCallNotification() {
-        Log.d("RINGTONEPLAY", " IncomingCall Fragment  startCallNotification  ringtonePlayer.play");
 
         ringtonePlayer.play(false);
 
@@ -218,7 +215,6 @@ public class IncomeCallFragment extends Fragment implements Serializable, View.O
     }
 
     private void stopCallNotification() {
-        Log.d("RINGTONEPLAY", " IncomingCall Fragment  stopCallNotification  ringtonePlayer.stop");
 
         if (ringtonePlayer != null) {
             ringtonePlayer.stop();
@@ -253,7 +249,7 @@ public class IncomeCallFragment extends Fragment implements Serializable, View.O
     public void onStop() {
         stopCallNotification();
         super.onStop();
-        Log.d(TAG, "onStop() from IncomeCallFragment");
+
     }
 
     @Override
@@ -294,14 +290,14 @@ public class IncomeCallFragment extends Fragment implements Serializable, View.O
             e.getMessage();
         }
 
-        Log.d(TAG, "Call is started");
+
     }
 
     private void reject() {
 
         try {
 
-            Log.d("RINGTONEPLAY", " IncomingCall Fragment  reject()  ringtonePlayer.STOP");
+
             ringtonePlayer.stop();
             enableButtons(false);
             stopCallNotification();
@@ -320,8 +316,6 @@ public class IncomeCallFragment extends Fragment implements Serializable, View.O
             e.getMessage();
         }
 
-
-        Log.d(TAG, "Call is rejected");
     }
 
     private void enableButtons(boolean enable) {

@@ -63,7 +63,7 @@ public class OpponentsAdapter extends BaseSelectableListAdapter<QBUser> {
         final QBUser user = getItem(position);
 
         if (user != null) {
-            Log.d("CONTAST_FRAGMENT", " Opponents adapterr Suser != null  " + user);
+
             Uri imageUri = Uri.fromFile(FolderCreator.getImageFileFromSdCard(String.valueOf(user.getId())));
             Glide.with(context)
                     .load(imageUri)
@@ -87,7 +87,7 @@ public class OpponentsAdapter extends BaseSelectableListAdapter<QBUser> {
 
                     if (selectedItems.size() < Consts.MAX_OPPONENTS_COUNT) {
 
-                        Log.d("CONTAST_FRAGMENT", " Opponents adapterr SelectedItems user  " + user);
+
                         selectedItems.add(user);
 
                         name = holder.opponentName.getTag().toString();
@@ -105,7 +105,7 @@ public class OpponentsAdapter extends BaseSelectableListAdapter<QBUser> {
                         selectedItemsCountChangedListener.onCountSelectedItemsChanged(selectedItems.size());
                     } else {
                         holder.checkBox.setChecked(false);
-                        Toaster.shortToast("  4 Users only allowed in Conference call ");
+                        Toaster.shortToast(Constant.Call_CONFRENCE_LIMIT);
 
                     }
                 } else {

@@ -32,12 +32,12 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\c55252533fbbc4883e04175d113e2edad278d5d8\\output\\res\\drawable-mdpi-v4\\progressbar_indeterminate_holo6.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\googleg_disabled_color_18.png",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\405180c34d875aee2d751d4ddeef63c46de3c830\\output\\res\\drawable-mdpi-v4\\googleg_disabled_color_18.png"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\design_ic_visibility_off.png",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\e4675d66fdb1531f6e64bdad9070fe37c3346c04\\output\\res\\drawable-mdpi-v4\\design_ic_visibility_off.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\googleg_disabled_color_18.png",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\405180c34d875aee2d751d4ddeef63c46de3c830\\output\\res\\drawable-mdpi-v4\\googleg_disabled_color_18.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_call_videocall.png",
@@ -76,12 +76,12 @@
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-mdpi\\ic_call_missedcall.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\qb_logo.png",
-        "source": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\bundles\\default\\res\\drawable-mdpi-v4\\qb_logo.png"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_btn_check_to_on_mtrl_015.png",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-mdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\qb_logo.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\bundles\\default\\res\\drawable-mdpi-v4\\qb_logo.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_phonelink_ring.png",
@@ -338,6 +338,10 @@
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_call_grey.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-mdpi\\ic_call_grey.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_call_back.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-mdpi\\ic_call_back.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",

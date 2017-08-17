@@ -1,6 +1,7 @@
 package com.aviv.konnek2.ui.activity;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +14,7 @@ import android.widget.GridView;
 
 import com.aviv.konnek2.R;
 import com.aviv.konnek2.adapters.TravelAdapter;
+import com.aviv.konnek2.utils.Constant;
 import com.quickblox.sample.core.utils.Toaster;
 
 public class TravelActivity extends AppCompatActivity {
@@ -21,20 +23,8 @@ public class TravelActivity extends AppCompatActivity {
     TravelAdapter travelAdapter;
     Toolbar toolbar;
 
-    String[] travelName = {
-            "Flight",
-            "Cab",
-            "Hotel",
-            "Holliday"
-
-    };
-    int[] travelImage = {
-            R.drawable.ic_app_grid_flight,
-            R.drawable.ic_app_grid_cab,
-            R.drawable.ic_app_grid_hotel,
-            R.drawable.ic_app_grid_holiday
-
-    };
+    String[] travelName;
+    TypedArray travelImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +32,12 @@ public class TravelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_travel);
         toolbar = (Toolbar) findViewById(R.id.toolbar_travel);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setSubtitle("Home > m-Store > Travel");
+        getSupportActionBar().setSubtitle(Constant.HOME + Constant.GREATER_THAN + Constant.M_STORE + Constant.TRAVEL);
         toolbar.setNavigationIcon(R.drawable.ic_app_back);
         toolbar.setSubtitleTextColor(getResources().getColor(R.color.white));
         gridView = (GridView) findViewById(R.id.home_travelgrid);
+        travelImage = getResources().obtainTypedArray(R.array.mstore_image); // String  Values  from resource  files
+        travelName = getResources().getStringArray(R.array.mstore);
         travelAdapter = new TravelAdapter(TravelActivity.this, travelName, travelImage);
         gridView.setAdapter(travelAdapter);
 
@@ -55,16 +47,16 @@ public class TravelActivity extends AppCompatActivity {
 
                 switch (position) {
                     case 0:
-                        Toaster.longToast("In progress");
+                        Toaster.longToast(Constant.TOAST_MESSAGE);
                         break;
                     case 1:
-                        Toaster.longToast("In progress");
+                        Toaster.longToast(Constant.TOAST_MESSAGE);
                         break;
                     case 2:
-                        Toaster.longToast("In progress");
+                        Toaster.longToast(Constant.TOAST_MESSAGE);
                         break;
                     case 3:
-                        Toaster.longToast("In progress");
+                        Toaster.longToast(Constant.TOAST_MESSAGE);
                         break;
                     default:
                         break;
@@ -91,7 +83,7 @@ public class TravelActivity extends AppCompatActivity {
                 return true;
 
             case R.id.menu_homebutton1:
-                Intent goToHome= new Intent(getApplicationContext(),HomeActivity.class);
+                Intent goToHome = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(goToHome);
                 return true;
             default:

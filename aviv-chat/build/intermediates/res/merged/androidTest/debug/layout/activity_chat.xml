@@ -1,15 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/layout_chat_container"
                 style="@style/MatchParent"
                 android:background="@drawable/ic_chat_background"
                 tools:ignore="RtlHardcoded">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_chat_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:titleTextColor="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_call"/>
+
+            <TextView
+                android:id="@+id/text_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_ringing"/>
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
     <se.emilsjolander.stickylistheaders.StickyListHeadersListView
         android:id="@+id/list_chat_messages"
         style="@style/ListViewWithoutDividerStyle"
         android:layout_above="@+id/layout_attachment_preview_container"
+        android:layout_below="@+id/toolbar_chat_dialog"
         android:listSelector="@android:color/transparent"
         android:stackFromBottom="true"/>
 
@@ -68,8 +101,22 @@
             android:id="@+id/button_chat_send"
             style="@style/BorderlessImageButtonStyle"
             android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/margin_10dp"
             android:onClick="onSendChatClick"
             android:src="@drawable/ic_chat_messgae_send"
             android:text="@string/chat_send"/>
+
+        <ImageButton
+            android:id="@+id/button_voice_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/margin_10dp"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_chat_voice_record"
+            android:text="@string/chat_send"/>
+
     </LinearLayout>
+
 </RelativeLayout>

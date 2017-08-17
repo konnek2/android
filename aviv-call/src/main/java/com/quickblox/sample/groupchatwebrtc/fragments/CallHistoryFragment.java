@@ -15,6 +15,7 @@ import com.quickblox.sample.groupchatwebrtc.App;
 import com.quickblox.sample.groupchatwebrtc.R;
 import com.quickblox.sample.groupchatwebrtc.adapters.CallHistoryAdapter;
 import com.quickblox.sample.groupchatwebrtc.model.CallLogModel;
+import com.quickblox.sample.groupchatwebrtc.utils.Common;
 import com.quickblox.users.model.QBUser;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class CallHistoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d("CONTACT ", "  CallsFragment  onCreateView ");
+
         View view = inflater.inflate(R.layout.fragment_call_history, container, false);
 
         initViews(view);
@@ -42,12 +43,11 @@ public class CallHistoryFragment extends Fragment {
     }
 
     public void initViews(View view) {
-        Log.d("CONTACT ", "  CallsFragment  initViews ");
+
         sharedPrefsHelper = SharedPrefsHelper.getInstance();
         try {
             currentUser = sharedPrefsHelper.getQbUser();
             currentUserName = currentUser.getFullName();
-            Log.d("CONTACT ", "  CallsFragment  currentUserName "+currentUserName);
 
             callListivew = (ListView) view.findViewById(R.id.call_logList);
             callLogModels = new ArrayList<CallLogModel>();
@@ -61,10 +61,14 @@ public class CallHistoryFragment extends Fragment {
 //            callListivew.setAdapter(null);
             }
 
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getMessage();
         }
+
+    }
+
+    public static void callHistoryTrigger() {
+        CallHistoryFragment callHistoryFragment = new CallHistoryFragment();
 
     }
 

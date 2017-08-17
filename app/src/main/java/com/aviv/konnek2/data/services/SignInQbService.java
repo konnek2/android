@@ -70,7 +70,7 @@ public class SignInQbService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d("ALARAMTEST", "  SignInQbService onStartCommand   Service Started");
+
         try {
             initQbConfigs();
             initCredentials();
@@ -78,19 +78,19 @@ public class SignInQbService extends Service {
             if (chatService == null) {
                 QBChatService.setDebugEnabled(true);
                 chatService = QBChatService.getInstance();
-                Log.d("ALARAMTEST", "   SignInQbService  QBChatService.getInstance  " + chatService);
+
             }
             createSession();
             QBUser user = getQBUser();
-            Log.d("ALARAMTEST", "   SignInQbService   SharedPreferencesUtil.getQbUser() " + user);
+
             if (user == null) {
-                Log.d("ALARAMTEST", "    user ==null ");
+
                 loginToChat(user);
                 reloginToChat(user);
             } else {
                 loginToChat(user);
                 reloginToChat(user);
-                Log.d("ALARAMTEST", "  SignInQbService  user !=null ");
+
             }
         } catch (Exception ex) {
             ex.getMessage();
@@ -100,21 +100,18 @@ public class SignInQbService extends Service {
 
     // Chat Config Creation
     private void initQbConfigs() {
-        Log.d("ALARAMTEST", "  SignInQbService QB CONFIG FILE NAME: " + getQbConfigFileName());
+
         qbConfigs = CoreConfigUtils.getCoreConfigsOrNull(getQbConfigFileName());
     }
 
     protected String getQbConfigFileName() {
-        Log.d("ALARAMTEST", "   SignInQbService getQbConfigFileName ");
+
         return QB_CONFIG_DEFAULT_FILE_NAME;
     }
 
     public void initCredentials() {
         if (qbConfigs != null) {
-            Log.d("ALARAMTEST", "  getAppId      " + qbConfigs.getAppId());
-            Log.d("ALARAMTEST", " getAuthKey      " + qbConfigs.getAuthKey());
-            Log.d("ALARAMTEST", "  getAuthSecret  " + qbConfigs.getAuthSecret());
-            Log.d("ALARAMTEST", "  getAccountKey    " + qbConfigs.getAccountKey());
+
             QBSettings.getInstance().init(getApplicationContext(), qbConfigs.getAppId(), qbConfigs.getAuthKey(), qbConfigs.getAuthSecret());
             QBSettings.getInstance().setAccountKey(qbConfigs.getAccountKey());
 
@@ -129,24 +126,23 @@ public class SignInQbService extends Service {
     private void createSession() {
 //        QBUser qbUser = CoreConfigUtils.getUserFromConfig();
         QBUser qbUser = getQBUser();
-        Log.d("ALARAMTEST", "createSession");
+
         QBAuth.createSession(qbUser).performAsync(new QBEntityCallback<QBSession>() {
             @Override
             public void onSuccess(QBSession qbSession, Bundle bundle) {
-                Log.d("ALARAMTEST ", "  SignInQbService  createSession onSuccess getToken  " + qbSession.getToken());
-                Log.d("ALARAMTEST ", "  SignInQbService createSession  onSuccess   getUserId " + qbSession.getUserId());
+
             }
 
             @Override
             public void onError(QBResponseException e) {
                 createSession();
-                Log.d("ALARAMTEST ", "SignInQbService  onError ");
+
             }
         });
     }
 
     public QBUser getQBUser() {
-        Log.d("ALARAMTEST", " SignInQbService getQBUser");
+
         QBUser user = null;
         try {
 
@@ -179,18 +175,17 @@ public class SignInQbService extends Service {
 
     private void loginToChat(QBUser qbUser) {
         try {
-            Log.d("ALARAMTEST ", "  SignInQbService  LoginService loginToChat ");
+
             chatService.login(qbUser, new QBEntityCallback<QBUser>() {
                 @Override
                 public void onSuccess(QBUser qbUser, Bundle bundle) {
-                    Log.d("ALARAMTEST ", "   LoginService loginToChat  onSuccess  ");
+
                     startActionsOnSuccessLogin();
                 }
 
                 @Override
                 public void onError(QBResponseException e) {
-//                    Log.d(TAG, "login onError " + e.getMessage());
-                    Log.d("ALARAMTEST ", "  SignInQbService  LoginService loginToChat  onError  ");
+//
                 }
             });
         } catch (Exception e) {
@@ -200,16 +195,16 @@ public class SignInQbService extends Service {
 
     private void reloginToChat(final QBUser user) {
         try {
-            Log.d("ALARAMTEST", " SignInQbService LoginService reloginToChat  ");
+
             ChatHelper.getInstance().login(user, new QBEntityCallback<Void>() {
                 @Override
                 public void onSuccess(Void result, Bundle bundle) {
-                    Log.d("ALARAMTEST", "  LoginService reloginToChat   onSuccess ");
+
                 }
 
                 @Override
                 public void onError(QBResponseException e) {
-                    Log.d("ALARAMTEST", " SignInQbService  LoginService  reloginToChat   onError ");
+
                     reloginToChat(user);
                 }
             });
@@ -220,26 +215,26 @@ public class SignInQbService extends Service {
     }
 
     private void startActionsOnSuccessLogin() {
-        Log.d("ALARAMTEST ", " SignInQbService   LoginService startActionsOnSuccessLogin ");
+
         initPingListener();
         initQBRTCClient();
 
     }
 
     private void initPingListener() {
-        Log.d("ALARAMTEST ", "  SignInQbService  LoginService initPingListener ");
+
         ChatPingAlarmManager.onCreate(this);
         ChatPingAlarmManager.getInstanceFor().addPingListener(new PingFailedListener() {
             @Override
             public void pingFailed() {
-                Log.d("ALARAMTEST ", "  SignInQbService  LoginService initPingListener  pingFailed ");
+
             }
         });
     }
 
     private void initQBRTCClient() {
         try {
-            Log.d("ALARAMTEST ", "  SignInQbService LoginService initQBRTCClient ");
+
             rtcClient = QBRTCClient.getInstance(getApplicationContext());
             // Add signalling manager
             chatService.getVideoChatWebRTCSignalingManager().addSignalingManagerListener(new QBVideoChatSignalingManagerListener() {
@@ -252,7 +247,7 @@ public class SignInQbService extends Service {
             });
             // Configure
             QBRTCConfig.setDebugEnabled(true);
-            Log.d("ALARAMTEST", " SignInQbServiceLoginService  initQBRTCClient getAppContext  " + Konnnek2.getAppContext());
+
             SettingsUtil.configRTCTimers(Konnnek2.getAppContext());
             // Add service as callback to RTCClient
             rtcClient.addSessionCallbacksListener(WebRtcSessionManager.getInstance(this));

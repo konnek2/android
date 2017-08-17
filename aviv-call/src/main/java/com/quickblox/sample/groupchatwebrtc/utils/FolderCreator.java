@@ -11,9 +11,6 @@ import java.io.File;
 public class FolderCreator {
 
 
-
-
-
     private static File KONNEK2_PROFILE = null;
     private static File KONNEK2_IMAGE = null;
     private static File KONNEK2_AUDIO = null;
@@ -66,9 +63,18 @@ public class FolderCreator {
                 + Constant.FOLDER_SEPARATOR;
     }
 
+
+    public static String getAudioFilePath(String name) {
+
+
+        return Constant.EXT_STORAGE_DIRECTORY
+                + Constant.FOLDER_SEPARATOR + Constant.APP_NAME
+                + Constant.FOLDER_SEPARATOR + Constant.AUDIO_FOLDER
+                + Constant.FOLDER_SEPARATOR + name + ".3gpp";
+    }
+
     public static File getImageFileFromSdCard(String fileName) {
 
-        Log.d("IMAGE_URI ", "getImageFileFromSdCard   fileName::::  " + fileName);
         return new File(Constant.EXT_STORAGE_DIRECTORY
                 + Constant.FOLDER_SEPARATOR + Constant.APP_NAME
                 + Constant.FOLDER_SEPARATOR + Constant.PROFILE_FOLDER

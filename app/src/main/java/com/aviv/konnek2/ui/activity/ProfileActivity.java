@@ -104,7 +104,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
         setContentView(R.layout.activity_profile);
         toolbar = (Toolbar) findViewById(R.id.toolbar_profile);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setSubtitle("Home > User Profile");
+        getSupportActionBar().setSubtitle(Constant.HOME + Constant.GREATER_THAN + Constant.USER_PROFILE);
         toolbar.setNavigationIcon(R.drawable.ic_app_back);
         toolbar.setSubtitleTextColor(getResources().getColor(R.color.white));
         initViews();
@@ -113,9 +113,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
 
     private void setProfileImage() {
         String profileImagePath = AppPreference.getProfileImagePath();
-
-        Log.d("", "setProfileImage" + profileImagePath);
-
         if (getCheckFile(profileImagePath) && profileImagePath != null) {
             Uri userImage = Uri.parse(AppPreference.getProfileImagePath());
             profileImage.setImageURI(userImage);
@@ -152,7 +149,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
         imgCalander = (ImageView) findViewById(R.id.img_profile_calander);
         profileImage = (ImageView) findViewById(R.id.settings_profileImage);
         baseLayout = (RelativeLayout) findViewById(R.id.profile_base);
-//        parent = (RelativeLayout) findViewById(R.id.profileParent);
         setProfileValues();
         imgCalander.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,16 +175,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
         });
 
         try {
-//            userModel = JoyChatApplication.usersTableDAO.getUserDetails(AppPreference.getUserUniqueId());
             if (userModel != null) {
-                Log.d(TAG, "profileEdit IF ");
                 profileDataUpload();
                 for (int i = 0; i < baseLayout.getChildCount(); i++) {
                     View child = baseLayout.getChildAt(i);
                     child.setEnabled(true);
                 }
             } else {
-                Log.d(TAG, "profileEdit ELSE  ");
 //                ValidateServer();
             }
         } catch (Exception e) {
@@ -198,8 +191,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                selectImage();
-
                 ImagePickerAlertBox();
 
             }
@@ -254,7 +245,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
         takePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Common.displayToast("In Progress");
+                Common.displayToast(Constant.TOAST_MESSAGE);
 
 //                    cameraIntent();
             }
@@ -279,8 +270,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
 
 
     public void profileUpload(final String filePath) throws IOException {
-        Log.d("PROFILE_PICTURE", " Upload ===>");
-//        File avatar = new File("/storage/emulated/0/konnek22/one.jpg");
+
         File avatar = new File(filePath);
         Boolean fileIsPublic = true;
 
@@ -290,8 +280,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
                 progress.setVisibility(View.GONE);
 
                 QBUser currentUser = ChatHelper.getCurrentUser();
-                Log.d("PROFILE_PICTURE", " profileUpload currentUser getId ====>>" + currentUser.getId());
-                Log.d("PROFILE_PICTURE", " qbFile.getId ==>" + qbFile.getId());
                 int uploadedFileID = qbFile.getId();
                 QBUser user = new QBUser();
                 user.setId(currentUser.getId());
@@ -309,9 +297,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
 
             @Override
             public void onError(QBResponseException e) {
-                Log.d("PROFILE_PICTURE", " Upload onError");
-                Common.displayToast("File Uploaded onError ");
-                // error
             }
         });
     }
@@ -320,7 +305,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
     private void galleryIntent() {
         progress.setVisibility(View.VISIBLE);
         Intent intent = new Intent();
-        intent.setType("image/png");
+        intent.setType(Constant.IMAGE_INTENT_TYPE);
         intent.setAction(Intent.ACTION_GET_CONTENT);//
         startActivityForResult(Intent.createChooser(intent, "Select File"), SELECT_FILE);
     }
@@ -339,19 +324,16 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
 //                onSelectFromGalleryResult(data);
 
                 String fileExtension = getSelectedGalleryImagePath(data);
-                if (fileExtension.contains("png") || fileExtension.contains("jpg"))
-//                    Log.d("FILEPATH", " getSelectedGalleryImagePath supported : " + getSelectedGalleryImagePath(data));
+                if (fileExtension.contains(Constant.IMAGE_FORMAT_PNG) || fileExtension.contains(Constant.IMAGE_FORMAT_JPG))
 //
                     try {
                         profileUpload(fileExtension);
-//                        com.quickblox.sample.chat.ui.adapter.DialogsAdapter.upload(fileExtension);
-//                        newUpload(fileExtension);
+//
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-//                profieImageUpload(fileExtension);
                 else
-                    Common.displayToast("File Format not Supported ");
+                    Common.displayToast(Constant.TOAST_FILE_FORMAT_NOT_SUPPORT);
 
             } else if (requestCode == REQUEST_CAMERA)
                 onCaptureImageResult(data);
@@ -364,7 +346,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
         thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
 
         File destination = new File(Environment.getExternalStorageDirectory(),
-                System.currentTimeMillis() + ".jpg");
+                System.currentTimeMillis() + Constant.IMAGE_FORMAT_JPG);
 
         FileOutputStream fo;
         try {
@@ -382,21 +364,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
     }
 
     @SuppressWarnings("deprecation")
-    private void onSelectFromGalleryResult(Intent data) {
-//        Log.d("PROFILE", "onSelectFromGalleryResult  data  "+data);
-//        Bitmap bm = null;
-//        if (data != null) {
-//            try {
-//                bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
-//                Log.d("PROFILE", "onSelectFromGalleryResult   MediaStore.Images.Media.getBitmap   ===> "+bm);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        profileImage.setImageBitmap(bm);
-
-    }
 
     public String getSelectedGalleryImagePath(Intent dataIntent) {
         String filePath = "";
@@ -406,10 +373,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
             } else {
                 Uri selectedImage = null;
                 try {
-                    if (dataIntent.getData().toString().contains(".png") || dataIntent.getData().toString().contains(".jpg")) {
+                    if (dataIntent.getData().toString().contains(Constant.IMAGE_FORMAT_PNG) || dataIntent.getData().toString().contains(Constant.IMAGE_FORMAT_JPG)) {
                         filePath = dataIntent.getData().toString();
                         filePath = filePath.replace("file:///", "");
-                        Log.d("PROFILE_PICTURE ", "IF " + filePath);
                         return filePath;
                     } else {
                         selectedImage = Uri.parse(dataIntent.getDataString());
@@ -420,17 +386,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
                 }
 
                 if (selectedImage == null) {
-                    Log.e("PROFILE_PICTURE", " null");
                 } else {
-
-                    Log.d("PROFILE_PICTURE ", "dataIntent.getDataString()" + dataIntent.getDataString());
 
                     String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
                     Cursor cursor = getContentResolver().query(
                             selectedImage, filePathColumn, null, null, null);
                     if (cursor == null) {
-                        Log.e("PROFILE_PICTURE", "is null");
 
                         filePath = dataIntent.getDataString();
                         filePath = filePath.replace("file:///", "");
@@ -441,15 +403,12 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
                         cursor.close();
 
                     }
-//                    profileImage.setImageURI(selectedImage);
-                    Log.d("PROFILE_PICTURE", "not null  setImageURI===> filePath :" + filePath);
                     return filePath;
                 }
             }
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            Toast.makeText(this, "Something went wrong.Please check again", Toast.LENGTH_LONG).show();
         }
         return filePath;
     }
@@ -461,7 +420,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
         mMonth = c.get(Calendar.MONTH);
         mDay = c.get(Calendar.DAY_OF_MONTH);
         final Date date1 = new Date();
-        SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dFormat = new SimpleDateFormat(Constant.DATE_FORMAT);
         final String dateFormat1 = dFormat.format(date1);
         DatePickerDialog dpd = new DatePickerDialog(ProfileActivity.this, new DatePickerDialog.OnDateSetListener() {
 
@@ -469,20 +428,19 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
             public void onDateSet(DatePicker view, int year,
                                   int monthOfYear, int dayOfMonth) {
                 Date date = new Date(year - 1900, monthOfYear, dayOfMonth);
-                SimpleDateFormat dFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat dFormat1 = new SimpleDateFormat(Constant.DATE_FORMAT);
                 String dateFormat = dFormat1.format(date);
                 int compare = date.compareTo(date1);
                 if (compare != 1) {
                     profileDataOfBirth.setText(dateFormat);
                 } else {
                     profileDataOfBirth.setText("");
-                    Common.displayToast("Enter the valid Data of Birth");
+                    Common.displayToast(Constant.TOAST_DATE_OF_BIRTH);
                 }
             }
         }, mYear, mMonth, mDay);
         dpd.show();
     }
-
 
     public void ValidateServer() {
         try {
@@ -506,7 +464,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
             e.printStackTrace();
         }
 
-
     }
 
     public void profileDataUpload() {
@@ -515,7 +472,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
             profileName1.setText(userModel.getName());
             profileEmail.setText(userModel.getEmail());
             ProfileMobile.setText(userModel.getMobileNumber());
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -524,15 +480,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
 
     public void setProfileValues() {
         try {
-            Log.d("PROFILE", "USERDETAILS  setProfileValues ");
             String userId = AppPreference.getUserId();
             String mobileNumber = AppPreference.getMobileNumber();
-            Log.d("PROFILE123", "USERDETAILS  userId    " + userId);
-            Log.d("PROFILE123", "USERDETAILS  mobileNumber " + mobileNumber);
             getUserModel = Konnnek2.usersTableDAO.getUserDetails(mobileNumber, userId);
-            Log.d("PROFILE", "USERDETAILS  mobileNumber " + getUserModel.getName());
-            Log.d("PROFILE", "USERDETAILS  mobileNumber " + getUserModel.getEmail());
-            Log.d("PROFILE", "USERDETAILS  mobileNumber " + getUserModel.getMobileNumber());
 
             if (getUserModel != null) {
 
@@ -570,7 +520,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
                     profileZipCode.setText("");
                 }
             } else {
-                Toaster.shortToast(" Profile set failure");
+                Toaster.shortToast(Constant.TOAST_PROFILE_IMAGE_FAILURER);
             }
 
         } catch (Exception e) {
@@ -704,38 +654,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView, I
 
     }
 
-
-    public void UpUser(QBUser users) {
-
-        Log.d("PROFILE_PICTURE ", "UpUser ====> 1");
-        QBUsers.updateUser(users).performAsync(new QBEntityCallback<QBUser>() {
-            @Override
-            public void onSuccess(QBUser user, Bundle args) {
-
-                Log.d("PROFILE_PICTURE ", "UpUser onSuccess  getFileId====> 1" + user.getFileId());
-                Log.d("PROFILE_PICTURE ", "UpUser onSuccess ====>   getId  2" + user.getId());
-
-//                String MobileNumber = AppPreference.getMobileNumber();
-//                String qbUserId = String.valueOf(user.getId());
-//                String imageId = String.valueOf(user.getFileId());
-//
-//                if (MobileNumber != null && qbUserId != null && imageId != null) {
-//
-//                    Log.d("PROFILE_PICTURE ", "UpUser goto Presenter " + user.getFileId());
-//                    appImageIdPresenter.validateImageIdUpload(MobileNumber, qbUserId, imageId);
-//                }
-
-
-            }
-
-            @Override
-            public void onError(QBResponseException errors) {
-
-                Log.d("PROFILE_PICTURE ", "UpUser onError getMessage ====> 3 " + errors.getMessage());
-
-            }
-        });
-    }
 
     @Override
     public void setQBUserError() {

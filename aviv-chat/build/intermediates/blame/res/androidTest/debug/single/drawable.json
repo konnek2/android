@@ -4,20 +4,20 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\group_call.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable\\group_call.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_cab_background_top_material.xml",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable\\abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\opponents.png",
@@ -334,6 +334,10 @@
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\design_bottom_navigation_item_background.xml",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\e4675d66fdb1531f6e64bdad9070fe37c3346c04\\output\\res\\drawable\\design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\voice_record_backround.xml",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\bundles\\debug\\res\\drawable\\voice_record_backround.xml"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\notification_icon_background.xml",

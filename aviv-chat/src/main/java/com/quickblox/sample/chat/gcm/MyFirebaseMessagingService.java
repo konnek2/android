@@ -14,6 +14,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.quickblox.sample.chat.R;
 import com.quickblox.sample.chat.ui.activity.ChatActivity;
+import com.quickblox.sample.chat.utils.Constant;
 
 /**
  * Created by Lenovo on 30-06-2017.
@@ -29,7 +30,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
-        Log.d("CHATTOEKN", "  CHAT MyFirebaseMessagingService  ");
         if ((remoteMessage.getData().get("message")) != null) {
             msg = remoteMessage.getData().get("message");
         } else {
@@ -44,7 +44,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationCompat.Builder notificationBuilder = new
                 NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_chat_notification)
-                .setContentTitle("Konnek2")
+                .setContentTitle(Constant.APP_NAME)
                 .setColor(Color.parseColor("#182681"))
                 .setTicker(Name.toString())
                 .setSound(alarmSound)

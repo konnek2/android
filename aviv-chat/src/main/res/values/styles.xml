@@ -8,6 +8,9 @@
         <item name="colorAccent">@color/color_blue_qb</item>
     </style>
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <!-- for Call & chat TabBar-->
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="AppTheme.Base1" parent="Theme.AppCompat.Light">
         <item name="colorControlActivated">@color/colorAccent</item>

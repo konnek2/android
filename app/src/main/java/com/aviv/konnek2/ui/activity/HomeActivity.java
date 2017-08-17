@@ -1,6 +1,7 @@
 package com.aviv.konnek2.ui.activity;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -10,7 +11,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -42,21 +42,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     HomeAdapter homeAdapter;
     private DrawerLayout drawerLayout;
     ImageView profileImage;
-
-    int[] imageId = {
-            R.drawable.ic_app_grid_contact,
-            R.drawable.ic_app_grid_history,
-            R.drawable.ic_app_grid_chat,
-            R.drawable.ic_app_grid_support,
-            R.drawable.ic_app_grid_add_friend,
-            R.drawable.ic_app_grid_settings,
-            R.drawable.ic_app_grid_sarai,
-            R.drawable.ic_app_grid_affilates,
-            R.drawable.ic_app_grid_mstore,
-            R.drawable.ic_app_grid_friend,
-            R.drawable.ic_app_grid_profile
-
-    };
+    TypedArray imageId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +51,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toolbar = (Toolbar) findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
         initViews();
-        title = getResources().getStringArray(R.array.title_grid);
-        subtitle[6] = "(chat bot)";
-        subtitle[2] = "(chat & call)";
+        imageId = getResources().obtainTypedArray(R.array.home_image); // String  Values  from resource  files
+        title = getResources().getStringArray(R.array.home_title);          //  Image  Values  from resource  files
+        subtitle[6] = Constant.SUB_TITLE_ONE;
+        subtitle[2] = Constant.SUB_TITLE_TWO;
         gridView = (GridView) findViewById(R.id.home_rid);
+
         homeAdapter = new HomeAdapter(HomeActivity.this, title, subtitle, imageId);
         gridView.setAdapter(homeAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -93,10 +81,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         Intent goTochat = new Intent(getApplicationContext(), CallingTabActivity.class);
                         goTochat.putExtra(Constant.TAB_POSITION, 1);
                         startActivity(goTochat);
-//                        overridePendingTransition(R.animator.push_left_in, R.animator.push_left_out);
                         break;
                     case 3:
-                        Toaster.shortToast("In progress");
+                        Toaster.shortToast(Constant.TOAST_MESSAGE);
                         break;
                     case 4:
                         Intent goToRefer = new Intent(getApplicationContext(), ReferFriendActivity.class);
@@ -136,7 +123,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void initViews() {
-        getSupportActionBar().setSubtitle("Home ");
+        getSupportActionBar().setSubtitle(Constant.HOME);
         toolbar.setSubtitleTextColor(getResources().getColor(R.color.white));
         toolbar.setNavigationIcon(R.drawable.ic_app_navigation_drawer_icon);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
@@ -196,9 +183,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void setProfileImage() {
         String profileImagePath = AppPreference.getProfileImagePath();
 
-        Log.d("HOME", "setProfileImage profileImagePath1111 " + profileImagePath);
         if (getCheckFile(profileImagePath) && profileImagePath != null && AppPreference.getProfileImagePath() != null) {
-            Log.d("HOME", "setProfileImage profileImagePath 22222 " + profileImagePath);
             Uri userImage = Uri.parse(profileImagePath);
             profileImage.setImageURI(userImage);
         } else {
@@ -245,9 +230,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nave_settings:
-//                Intent goToSettingsActivity = new Intent(getApplicationContext(), SettingsActivity.class);
-//                startActivity(goToSettingsActivity);
-                Common.displayToast("In Progress ");
+                Common.displayToast(Constant.TOAST_MESSAGE);
                 drawerLayout.closeDrawers();
                 break;
 

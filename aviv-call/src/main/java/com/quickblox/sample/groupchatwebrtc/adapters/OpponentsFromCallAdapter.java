@@ -163,7 +163,7 @@ public class OpponentsFromCallAdapter extends RecyclerView.Adapter<OpponentsFrom
         }
 
         public void showOpponentView(boolean show) {
-            Log.d("OpponentsAdapter", "show? " + show);
+
             opponentView.setVisibility(show ? View.VISIBLE : View.GONE);
         }
 

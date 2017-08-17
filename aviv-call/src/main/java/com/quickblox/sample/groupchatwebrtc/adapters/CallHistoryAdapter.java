@@ -90,7 +90,7 @@ public class CallHistoryAdapter extends BaseAdapter {
             if (callLogModelArrayList.size() > 0 && callLogModelArrayList != null) {
 
                 if (!(callLogModelArrayList.get(position).getUserId() == Constant.GROUP_CALL)) {
-                    Log.d("IMAGE_URI", "Call History  IF  " + Constant.GROUP_CALL);
+
 
                     Uri imageUri =
                             Uri.fromFile(FolderCreator.getImageFileFromSdCard(String.valueOf(callLogModelArrayList.get(position).getUserId())));
@@ -101,17 +101,11 @@ public class CallHistoryAdapter extends BaseAdapter {
 
                 } else {
 
-                    Log.d("SELETED_USER", "Constant.GROUP_CALL  ELSE  " + Constant.GROUP_CALL);
+
                     holder.call_UserImage.setImageResource(R.drawable.ic_chat_face);
                 }
 
 
-                Log.d("CALLLISTADEPTER", "getCallUsername  " + callLogModelArrayList.get(position).getCallOpponentName());
-                Log.d("CALLLISTADEPTER", "getCallDate " + callLogModelArrayList.get(position).getCallDate());
-                Log.d("CALLLISTADEPTER", "getCallTime  " + callLogModelArrayList.get(position).getCallTime());
-                Log.d("CALLLISTADEPTER", "getCallStatus  " + callLogModelArrayList.get(position).getCallStatus());
-                Log.d("CALLLISTADEPTER", "getCallPriority   " + callLogModelArrayList.get(position).getCallPriority());
-                Log.d("CALLLISTADEPTER", "getCallType   " + callLogModelArrayList.get(position).getCallType());
 
 
                 holder.call_userName.setText(callLogModelArrayList.get(position).getCallOpponentName());
@@ -148,11 +142,11 @@ public class CallHistoryAdapter extends BaseAdapter {
 
                     if (callLogModelArrayList.get(position).getCallStatus().equalsIgnoreCase(Constant.CALL_STATUS_RECEIVED)) {
 
-                        Log.d("CALLLISTADEPTER", "getCallType   " + callLogModelArrayList.get(position).getCallStatus());
+
                         holder.call_status.setImageResource(R.drawable.ic_call_downarrow);
 
                     } else {
-                        Log.d("CALLLISTADEPTER", "getCallType   " + callLogModelArrayList.get(position).getCallStatus());
+
                         holder.call_status.setImageResource(R.drawable.ic_call_missedcall);
                     }
 

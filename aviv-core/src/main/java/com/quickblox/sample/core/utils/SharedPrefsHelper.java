@@ -84,7 +84,7 @@ public class SharedPrefsHelper {
 
 
     public void saveQbUser(QBUser qbUser) {
-        Log.d("APPLOIGN ", " SharedPrefsHelperCLASSS saveQbUser qbUser " + qbUser);
+
         save(QB_USER_ID, qbUser.getId());
         save(QB_USER_LOGIN, qbUser.getLogin());
         save(QB_USER_PASSWORD, qbUser.getPassword());

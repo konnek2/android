@@ -1,6 +1,7 @@
 package com.quickblox.sample.core.ui.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.BaseAdapter;
 
@@ -51,6 +52,8 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
     }
 
     public void add(T item) {
+
+        Log.d("CHATCLICK", "   BaseListAdapter    BaseListAdapter  " + item);
         objectsList.add(item);
         notifyDataSetChanged();
     }

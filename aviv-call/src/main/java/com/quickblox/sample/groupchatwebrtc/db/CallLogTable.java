@@ -62,16 +62,6 @@ public class CallLogTable {
         boolean isUpdated = false;
         long flag = 0;
         try {
-//
-//Log.d("CONTACT", "   " + ContactName);
-            Log.d("CONTACT ", "    " + callLogModel.get(0).getCallUserName());
-            Log.d("CONTACT ", "    " + callLogModel.get(0).getCallOpponentName());
-            Log.d("CONTACT ", "   " + callLogModel.get(0).getCallDate());
-            Log.d("CONTACT ", "    " + callLogModel.get(0).getCallTime());
-            Log.d("CONTACT ", "    " + callLogModel.get(0).getCallStatus());
-            Log.d("CONTACT ", "    " + callLogModel.get(0).getCallPriority());
-            Log.d("CONTACT ", "    " + callLogModel.get(0).getCallType());
-            Log.d("CONTACT ", "  getUserId  " + callLogModel.get(0).getUserId());
 
             ContentValues initialValues = gerContentValues(callLogModel);
             Cursor mCursor = db.query(TABLE_CALL_LOG, new String[]
@@ -117,11 +107,8 @@ public class CallLogTable {
                 flag = db.insert(TABLE_CALL_LOG, null, initialValues);
                 isUpdated = true;
 
-                Log.d("CallLogTable", "insert " + flag);
-                Log.d("CONTACT ", " insert  " + flag);
-
             } else {
-                Log.d("CallLogTable", "ELSE " + flag);
+
                 flag = db.update(TABLE_CALL_LOG, initialValues, DB_COLUMN_USER + "=?" + " AND " +
                         DB_COLUMN_USER_ID + "=?" + " AND " +
                         DB_COLUMN_OPPONENT + "=?" + " AND " +
@@ -138,7 +125,7 @@ public class CallLogTable {
                         callLogModel.get(0).getCallPriority(),
                         callLogModel.get(0).getCallType()
                 });
-                Log.d("CallLogTable", "update " + flag);
+
             }
 
         } catch (Exception e) {
@@ -151,7 +138,7 @@ public class CallLogTable {
     public ContentValues gerContentValues(ArrayList<CallLogModel> callLogModels) {
         ContentValues initialValues = new ContentValues();
         try {
-            Log.d("CONTACT ", " gerContentValues  ");
+
             initialValues.put(DB_COLUMN_USER, callLogModels.get(0).getCallUserName());
             initialValues.put(DB_COLUMN_USER_ID, callLogModels.get(0).getUserId());
             initialValues.put(DB_COLUMN_OPPONENT, callLogModels.get(0).getCallOpponentName());
@@ -168,8 +155,7 @@ public class CallLogTable {
 
 
     public ArrayList<CallLogModel> getCallHistory(String UserName) {
-        Log.d("CONTACT ", "getCallHistory" + UserName);
-        Log.d(TAG, "getCallHistory ");
+
         ArrayList<CallLogModel> callLogModelArrayList = null;
         try {
             callLogModelArrayList = new ArrayList<CallLogModel>();
@@ -198,7 +184,7 @@ public class CallLogTable {
                 for (int counter = 0; counter < mCursor.getCount(); counter++) {
                     CallLogModel callLogModel = new CallLogModel();
 
-                    Log.d("CONTACT ", "getCallHistory  getCount " + mCursor.getCount());
+
                     callLogModel.setCallUserName(mCursor.getString(mCursor.getColumnIndex(DB_COLUMN_USER)));
                     callLogModel.setUserId(mCursor.getString(mCursor.getColumnIndex(DB_COLUMN_USER_ID)));
                     callLogModel.setCallOpponentName(mCursor.getString(mCursor.getColumnIndex(DB_COLUMN_OPPONENT)));
@@ -209,7 +195,7 @@ public class CallLogTable {
                     callLogModel.setCallType(mCursor.getString(mCursor.getColumnIndex(DB_COLUMN_CALL_TYPE)));
                     callLogModelArrayList.add(callLogModel);
                     mCursor.moveToNext();
-                    Log.d("CONTACT ", "getCallHistory  size  " + callLogModelArrayList.size());
+
                 }
             }
             mCursor.close();

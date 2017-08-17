@@ -14,6 +14,9 @@ import android.view.View;
 import com.aviv.konnek2.R;
 import com.aviv.konnek2.adapters.SwipeViewAdapter;
 import com.aviv.konnek2.utils.Constant;
+import com.quickblox.sample.chat.ui.fragment.ChatFragment;
+import com.quickblox.sample.groupchatwebrtc.fragments.CallHistoryFragment;
+import com.quickblox.sample.groupchatwebrtc.fragments.ContactFragment;
 
 public class CallingTabActivity extends AppCompatActivity {
 
@@ -28,11 +31,11 @@ public class CallingTabActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calling_tab);
         toolbar = (Toolbar) findViewById(R.id.toolbar_tab);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setSubtitle("Home > Connect");
+        getSupportActionBar().setSubtitle(Constant.HOME + Constant.GREATER_THAN + Constant.CONNECT);
         toolbar.setNavigationIcon(R.drawable.ic_app_navigation_back);
         toolbar.setSubtitleTextColor(getResources().getColor(R.color.white));
-
         initViews();
+
     }
 
     private void initViews() {
@@ -40,12 +43,8 @@ public class CallingTabActivity extends AppCompatActivity {
         TabViewPager = (ViewPager) findViewById(R.id.viewPager_tab);
         tabLayout = (TabLayout) findViewById(R.id.tabLayout_tab);
         swipeViewer();
-        Log.d("NAVIGATION", "TAB Position Navigation  IF OUT : ");
-        if (getIntent() != null && getIntent().getIntExtra(Constant.TAB_POSITION, 0) != 4) {
-            Log.d("NAVIGATION", "TAB Position Navigation  IF : ");
 
-            Log.d("NAVIGATION", "TAB Position Navigation  : " + getIntent().getIntExtra(Constant.TAB_POSITION, 0));
-//                int pos = Integer.parseInt(getIntent().getStringExtra(Constant.TAB_POSITION));
+        if (getIntent() != null && getIntent().getIntExtra(Constant.TAB_POSITION, 0) != 4) {
             int pos = getIntent().getIntExtra(Constant.TAB_POSITION, 0);
             TabViewPager.setCurrentItem(pos);
         }
@@ -54,9 +53,9 @@ public class CallingTabActivity extends AppCompatActivity {
     public void swipeViewer() {
 
         try {
-            tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
-            tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
-            tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
+            tabLayout.addTab(tabLayout.newTab().setText(Constant.TAB_ONE));
+            tabLayout.addTab(tabLayout.newTab().setText(Constant.TAB_TWO));
+            tabLayout.addTab(tabLayout.newTab().setText(Constant.TAB_THREE));
             tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
             swipeViewAdapter = new SwipeViewAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
             TabViewPager.setAdapter(swipeViewAdapter);
@@ -68,6 +67,12 @@ public class CallingTabActivity extends AppCompatActivity {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
                     TabViewPager.setCurrentItem(tab.getPosition());
+                    if (tab.getPosition() == 0)
+                        CallHistoryFragment.callHistoryTrigger();
+                    else if (tab.getPosition() == 1)
+                        ChatFragment.chatTrigger();
+                    else
+                        ContactFragment.contactsTrigger();
                 }
 
                 @Override
@@ -78,6 +83,8 @@ public class CallingTabActivity extends AppCompatActivity {
                 public void onTabReselected(TabLayout.Tab tab) {
                 }
             });
+
+
         } catch (Exception e) {
             e.getMessage();
         }
@@ -92,6 +99,7 @@ public class CallingTabActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();

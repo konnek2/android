@@ -12,6 +12,10 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\c55252533fbbc4883e04175d113e2edad278d5d8\\output\\res\\drawable-xhdpi-v4\\progressbar_indeterminate_holo6.png"
     },
     {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\ic_call_back.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-xhdpi\\ic_call_back.png"
+    },
+    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\ic_microphone_white_24dp.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-xhdpi\\ic_microphone_white_24dp.png"
     },
@@ -68,24 +72,24 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\405180c34d875aee2d751d4ddeef63c46de3c830\\output\\res\\drawable-xhdpi-v4\\googleg_disabled_color_18.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\ic_volume_medium_white_24dp.png",
-        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-xhdpi\\ic_volume_medium_white_24dp.png"
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\ic_call_video_camera_off.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-xhdpi\\ic_call_video_camera_off.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\ic_chat_face.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-xhdpi\\ic_chat_face.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\ic_call_video_camera_off.png",
-        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-xhdpi\\ic_call_video_camera_off.png"
-    },
-    {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\progressbar_indeterminate_holo8.png",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\c55252533fbbc4883e04175d113e2edad278d5d8\\output\\res\\drawable-xhdpi-v4\\progressbar_indeterminate_holo8.png"
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\ic_volume_medium_white_24dp.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-xhdpi\\ic_volume_medium_white_24dp.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\abc_ic_star_black_48dp.png",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-xhdpi-v4\\abc_ic_star_black_48dp.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\progressbar_indeterminate_holo8.png",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\c55252533fbbc4883e04175d113e2edad278d5d8\\output\\res\\drawable-xhdpi-v4\\progressbar_indeterminate_holo8.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\progressbar_indeterminate_holo5.png",

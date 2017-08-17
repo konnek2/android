@@ -13,18 +13,10 @@ import java.io.File;
 public class Constant {
 
 
-    // TMR URL
-//    public static final String BASE_URL = "http://182.75.161.194/chat/smartchapp/index.php/";
-    public static final String BASE_URL = "http://182.75.161.194/chat/tmrkonnek/index.php/";
+    //  it is a dummy URL  replace these by your  Server URl
+    public static final String BASE_URL = "http://example/chat/index.php/";
 
-    //Local System URL
-//    public static final String BASE_URL = "http://192.168.1.5/konnek/index.php/";
-
-    // Bamgalore Office Ip address
-//    public static final String BASE_URL = "http://192.168.0.8/konnek/index.php/";
-//
-    //Konnek2 URL
-//    public static final String BASE_URL = "http://smartchapp.azurewebsites.net/";
+     
     public static final String CHAT_BOT_URL = "http://avivglobaltech.azurewebsites.net/";
 
     public static String NOTIFY_ONE_TO_ONE = "notify_one_to_one";
@@ -48,5 +40,20 @@ public class Constant {
     public static String AUDIO_FOLDER = "KONNEK2_AUDIO";
     public static String VIDEO_FOLDER = "KONNEK2_VIDEO";
     public static String PROFILE_FOLDER = "KONNEK2_PROFILE";
+    public static String TOST_PROGRESS = "In Progress";
+
+
+    // SQLite
+    public static String CHAT_DB_CURRENT_PATH ="//data//" + "com.aviv.konnek2" + "//databases//" + "konnek2";
+    public static String CHAT_DB_BACKUP_PATH = "konnek2Chat" + ".backup";
+    public static String DATABASE_NAME = "messageStatus";
+    public static String DB_FULL_PATH = "/data/data/com.aviv.konnek2/databases/";
+
+
+    // Exception
+    public static String CHAT_EXCEPTION= "User from dialog is not in memory. This should never happen, or we are screwed";
+
+
+
 
 }

@@ -1,6 +1,7 @@
 package com.aviv.konnek2.adapters;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +19,9 @@ public class TravelAdapter extends BaseAdapter {
 
     private Context mContext;
     private final String[] travelName;
-    private final int[] travelImage;
+    private final TypedArray travelImage;
 
-    public TravelAdapter(Context c, String[] travelName, int[] travelImage) {
+    public TravelAdapter(Context c, String[] travelName, TypedArray travelImage) {
         mContext = c;
         this.travelName = travelName;
         this.travelImage = travelImage;
@@ -54,7 +55,7 @@ public class TravelAdapter extends BaseAdapter {
             TextView textView = (TextView) grid.findViewById(R.id.grid_trveltext);
             ImageView imageView = (ImageView) grid.findViewById(R.id.grid_trvelimage);
             textView.setText(travelName[position]);
-            imageView.setImageResource(travelImage[position]);
+            imageView.setImageResource(travelImage.getResourceId(position, 0));
         } else {
             grid = (View) convertView;
         }

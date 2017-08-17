@@ -25,7 +25,7 @@ public class CoreApp extends Application {
     }
 
     private void initQbConfigs() {
-        Log.e(TAG, "QB CONFIG FILE NAME: " + getQbConfigFileName());
+
         qbConfigs = CoreConfigUtils.getCoreConfigsOrNull(getQbConfigFileName());
     }
 

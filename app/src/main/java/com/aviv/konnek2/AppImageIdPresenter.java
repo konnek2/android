@@ -32,20 +32,15 @@ public class AppImageIdPresenter implements ImageIdPresenter {
     @Override
     public void validateImageIdUpload(String mobileNumber, String qbUserId, String imageId) {
 
-        Log.d("AppImageId ", "validateImageIdUpload  mobileNumber " + mobileNumber);
-        Log.d("AppImageId ", "validateImageIdUpload  qbUserId " + qbUserId);
-        Log.d("AppImageId ", "validateImageIdUpload imageId" + imageId);
-
 
         SignInApiInterface service = ApiClient.getClient().create(SignInApiInterface.class);
         Call<SignInResponse> call = service.imageIdUpload(Constant.TAG_IMAGE_ID, mobileNumber, qbUserId, imageId);
         call.enqueue(new Callback<SignInResponse>() {
             @Override
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
-                Log.d(" AppImageId ", " AppImageId  ====> onResponse" + response.body().getResponseCode());
+
                 if (response.body().getResponseCode() != null) {
-                    Log.d(" AppImageId ", " AppImageId  ====> onResponse ====> " + response.body().getResponseCode());
-                    Log.d(" AppImageId ", " AppImageId  ====> onResponse ====> " + response.body().getResponseCode());
+
 //                    signInView.verifyOtp(response.body().getResponseCode());
                 }
 
@@ -53,7 +48,6 @@ public class AppImageIdPresenter implements ImageIdPresenter {
 
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
-                Log.d(" AppImageId ", "  AppImageId Failure  " + t.getMessage());
 
             }
         });

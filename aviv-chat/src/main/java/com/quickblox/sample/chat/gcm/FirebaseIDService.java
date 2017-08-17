@@ -17,19 +17,14 @@ public class FirebaseIDService extends FirebaseInstanceIdService {
     public void onTokenRefresh() {
         super.onTokenRefresh();
 
-        Log.d("CHATTOEKN", "  FirebaseIDService  onTokenRefresh");
-
-
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
         SubscribeService.subscribeToPushes(this, true);
-        Log.d("CHATTOEKN", "Refreshed token: " + refreshedToken);
 
         // TODO: Implement this method to send any registration to your app's servers.
         sendRegistrationToServer(refreshedToken);
     }
     private void sendRegistrationToServer(String token) {
-        // Add custom implementation, as needed.
 
-        Log.d("CHATTOEKN", "   FirebaseIDService  sendRegistrationToServer  ");
+
     }
 }

@@ -43,12 +43,6 @@ public class AppProfilePresenter implements profilePresenter {
                 public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                     try {
 
-                        Log.d("APPLogin", " onResponse validateProfile getName "+response.body().getName());
-                        Log.d("APPLogin", " onResponse validateProfile getCity "+response.body().getCity());
-                        Log.d("APPLogin", " onResponse validateProfile getMobileNumber "+response.body().getMobileNumber());
-                        Log.d("APPLogin", " onResponse validateProfile getDateOfBirth "+response.body().getDateOfBirth());
-                        Log.d("APPLogin", " onResponse validateProfile getZipCode "+response.body().getZipCode());
-                        Log.d("APPLogin", " onResponse validateProfile getGender "+response.body().getGender());
                         UserModel userModel = new UserModel();
                         if (response.body().getUserId() != null) {
                             userModel.setUserId(response.body().getUserId());
@@ -105,7 +99,6 @@ public class AppProfilePresenter implements profilePresenter {
 
                 @Override
                 public void onFailure(Call<SignInResponse> call, Throwable t) {
-                    Log.d("APPLogin", " onResponse validateProfile onFailure");
                 }
 
             });

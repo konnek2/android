@@ -16,12 +16,12 @@
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-xxxhdpi-v4\\ic_camera_rear.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\ic_checkmark.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-xxxhdpi-v4\\ic_checkmark.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\ic_chat_face.png",
@@ -48,12 +48,12 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-xxxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-xxxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\ic_video_white_24dp.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-xxxhdpi-v4\\ic_video_white_24dp.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-xxxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",

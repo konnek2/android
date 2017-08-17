@@ -8,10 +8,11 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.aviv.konnek2.R;
+import com.aviv.konnek2.utils.Constant;
 
 public class AppSplashActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 3000;
+    private static int SPLASH_TIME_OUT = Constant.SPLASH_TIME;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +21,10 @@ public class AppSplashActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_app_splash);
+        displaySplash();
+    }
 
+    public void displaySplash() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

@@ -12,20 +12,20 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\e4675d66fdb1531f6e64bdad9070fe37c3346c04\\output\\res\\layout\\design_navigation_item_header.xml"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\layout\\notification_action_tombstone.xml"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\layout\\activity_splash.xml",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\bundles\\default\\res\\layout\\activity_splash.xml"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\layout\\notification_template_part_time.xml"
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\layout\\notification_action_tombstone.xml"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\layout\\notification_template_part_time.xml"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\layout\\seekbar_preference.xml",
@@ -274,6 +274,10 @@
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_custom_big.xml",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\layout\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\layout\\activity_tab.xml",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\layout\\activity_tab.xml"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\layout\\toolbar_call.xml",

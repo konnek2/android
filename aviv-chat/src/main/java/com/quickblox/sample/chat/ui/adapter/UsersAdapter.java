@@ -2,6 +2,7 @@ package com.quickblox.sample.chat.ui.adapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -25,6 +26,7 @@ public class UsersAdapter extends BaseListAdapter<QBUser> {
     public UsersAdapter(Context context, List<QBUser> users) {
         super(context, users);
         currentUser = QBChatService.getInstance().getUser();
+
     }
 
     @Override
@@ -46,10 +48,11 @@ public class UsersAdapter extends BaseListAdapter<QBUser> {
         }
 
         if (isUserMe(user)) {
-            holder.loginTextView.setText(context.getString(R.string.placeholder_username_you, user.getFullName()));
 
-
+//            holder.loginTextView.setText(context.getString(R.string.placeholder_username_you, user.getFullName()));
         } else {
+
+
             holder.loginTextView.setText(user.getFullName());
         }
 
@@ -72,6 +75,7 @@ public class UsersAdapter extends BaseListAdapter<QBUser> {
     }
 
     protected boolean isUserMe(QBUser user) {
+
         return currentUser != null && currentUser.getId().equals(user.getId());
     }
 

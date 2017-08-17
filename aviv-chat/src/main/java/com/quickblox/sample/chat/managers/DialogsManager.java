@@ -63,23 +63,22 @@ public class DialogsManager {
         QBChatMessage systemMessageCreatingDialog = buildSystemMessageAboutCreatingGroupDialog(dialog);
 
         try {
-            Log.d("MULTIUPDATE","DialogsManager   sendSystemMessageAboutCreatingDialog   ");
+
             sharedPrefsHelper = SharedPrefsHelper.getInstance();
             QBUser userID = sharedPrefsHelper.getQbUser();
-            Log.d("MULTIUPDATE","DialogsManager   sharedPrefsHelper   "+userID);
+
             for (Integer recipientId : dialog.getOccupants()) {
-                Log.d("MULTIUPDATE","DialogsManager   sendSystemMessageAboutCreatingDialog  FOR  "+dialog.getOccupants());
+
                 if (!recipientId.equals(userID)) {
-                    Log.d("MULTIUPDATE","DialogsManager   sendSystemMessageAboutCreatingDialog recipientId IFIF  "+ recipientId);
-                    Log.d("MANAGER", " recipientId  " + recipientId);
+
                     systemMessageCreatingDialog.setRecipientId(recipientId);
                     systemMessagesManager.sendSystemMessage(systemMessageCreatingDialog);
-                    Log.d("MULTIUPDATE","DialogsManager   sendSystemMessageAboutCreatingDialog  IF  ");
+
                 }
             }
         } catch (Exception e) {
             e.getMessage();
-            Log.d("MANAGER", " DialogsManager  " + e.getMessage());
+
         }
     }
 

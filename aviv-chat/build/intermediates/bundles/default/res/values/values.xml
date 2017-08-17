@@ -67,9 +67,10 @@
     <string name="login_title">@string/chat_sample</string>
     <string name="menu_add_users_to_chat">Add Users to Chat</string>
     <string name="menu_chat_info">Chat info</string>
-    <string name="menu_delete_chat">Group call</string>
+    <string name="menu_delete_chat">Delete Chat</string>
     <string name="menu_dialogs_delete">Delete</string>
     <string name="menu_dialogs_logout">Logout</string>
+    <string name="menu_group_call">Group call</string>
     <string name="menu_leave_chat">Leave Chat</string>
     <string name="menu_new_chat">New Chat</string>
     <string name="menu_refresh"> Refresh</string>
@@ -86,6 +87,7 @@
     <string name="sender_id">1064074598819</string>
     <string name="splash_app_title">@string/chat_sample</string>
     <string name="splash_create_session_error">Create session errors:</string>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.Base1" parent="Theme.AppCompat.Light">
         <item name="colorControlActivated">@color/colorAccent</item>
         <item name="colorControlHighlight">@color/colorAccent</item>
@@ -105,6 +107,7 @@
     <style name="AppTheme.BlueAccent">
         <item name="colorAccent">@color/color_blue_qb</item>
     </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
     <style name="ChatActivityTheme" parent="AppTheme">
         <item name="android:windowBackground">@color/background_chat_color</item>
     </style>

@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.util.Log;
 
+import com.aviv.konnek2.utils.Constant;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -24,17 +26,14 @@ public class TableBackUpManager {
         this.sqLiteDatabase = sqLiteDatabase;
     }
 
-
     public void databaseDB(Context context) {
         try {
-
-            Log.d("TableManager", "databaseDB inside");
             File sd = Environment.getExternalStorageDirectory();
             File data = Environment.getDataDirectory();
 
             if (sd.canWrite()) {
-                String currentDBPath = "//data//" + "com.aviv.konnek2" + "//databases//" + "konnek2";
-                String backupDBPath = "konnek2" + ".backup";
+                String currentDBPath = Constant.SQLITE_CURRENT_PATH;
+                String backupDBPath = Constant.SQLITE_BACKUP_PATH;
                 File currentDB = new File(data, currentDBPath);
                 File backupDB = new File(sd, backupDBPath);
                 FileChannel src = new FileInputStream(currentDB).getChannel();
@@ -42,11 +41,10 @@ public class TableBackUpManager {
                 dst.transferFrom(src, 0, src.size());
                 src.close();
                 dst.close();
-                Log.d("TableManager", "databaseDB inside if");
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            Log.d("TableManager", "databaseDB inside Exception" + e);
+            e.getMessage();
+
         }
     }
 }

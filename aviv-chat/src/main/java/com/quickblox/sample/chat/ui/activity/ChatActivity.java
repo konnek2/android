@@ -2,11 +2,15 @@ package com.quickblox.sample.chat.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.PersistableBundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextUtils;
@@ -15,9 +19,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,14 +33,19 @@ import com.quickblox.auth.session.QBSessionManager;
 import com.quickblox.chat.QBChatService;
 import com.quickblox.chat.QBMessageStatusesManager;
 import com.quickblox.chat.listeners.QBChatDialogMessageSentListener;
+import com.quickblox.chat.listeners.QBChatDialogParticipantListener;
 import com.quickblox.chat.listeners.QBChatDialogTypingListener;
 import com.quickblox.chat.listeners.QBMessageStatusListener;
 import com.quickblox.chat.model.QBAttachment;
 import com.quickblox.chat.model.QBChatMessage;
 import com.quickblox.chat.model.QBChatDialog;
 import com.quickblox.chat.model.QBDialogType;
+import com.quickblox.chat.model.QBPresence;
+import com.quickblox.content.QBContent;
+import com.quickblox.content.model.QBFile;
 import com.quickblox.core.QBEntityCallback;
 import com.quickblox.core.exception.QBResponseException;
+import com.quickblox.core.helper.FileHelper;
 import com.quickblox.core.helper.StringifyArrayList;
 import com.quickblox.messages.QBPushNotifications;
 import com.quickblox.messages.model.QBEnvironment;
@@ -66,12 +77,16 @@ import com.quickblox.users.model.QBUser;
 import org.jivesoftware.smack.ConnectionListener;
 import org.jivesoftware.smack.SmackException;
 import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smackx.muc.ParticipantStatusListener;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
@@ -80,6 +95,7 @@ import static com.quickblox.sample.chat.R.id.menu_chat_action_delete;
 import static com.quickblox.sample.chat.R.id.menu_chat_action_info;
 import static com.quickblox.sample.chat.R.id.menu_chat_action_leave;
 import static com.quickblox.sample.groupchatwebrtc.fragments.ContactFragment.groupChatCall;
+import static com.quickblox.sample.groupchatwebrtc.utils.FolderCreator.getAudioFilePath;
 
 
 public class ChatActivity extends BaseActivity implements OnImagePickedListener, QBChatDialogTypingListener {
@@ -115,30 +131,38 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     List<Integer> oppOnentList;
     private android.app.AlertDialog alertDialog;
     private String userId;
+    private Toolbar toolbar;
+    TextView mTittle, mSubTitle;
+
+    // reoced Voice
+    private MediaRecorder mediaRecorder;
+    ImageView recordImage;
 
     public static void startForResult(Activity activity, int code, QBChatDialog dialogId) {
         Intent intent = new Intent(activity, ChatActivity.class);
         intent.putExtra(ChatActivity.EXTRA_DIALOG_ID, dialogId);
         activity.startActivityForResult(intent, code);
-        Log.d("WATCHER123", "    ChatActivity startForResult : " + dialogId);
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_chat_dialog);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_chat_back);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         Log.v(TAG, "onCreate ChatActivity on Thread ID = " + Thread.currentThread().getId());
         qbChatDialog = (QBChatDialog) getIntent().getSerializableExtra(EXTRA_DIALOG_ID);
-        Log.d("WATCHER123", " QBChatDialog    ChatActivity startForResult : " + qbChatDialog);
 
         qbChatDialog.initForChat(QBChatService.getInstance());
         messageStatusesManager = QBChatService.getInstance().getMessageStatusesManager();
         chatMessageListener = new ChatMessageListener();
         qbChatDialog.addIsTypingListener(typingListener);
         qbChatDialog.addMessageSentListener(messageSentListener);
+        qbChatDialog.addParticipantListener(participantListener);
         messageStatusesManager.addMessageStatusListener(messageStatusListener);
         qbChatDialog.addMessageListener(chatMessageListener);
         messageStatusesManager.addMessageStatusListener(messageStatusListener);
@@ -187,6 +211,7 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_chat, menu);
         this.menu = menu;
+        MenuItem menu_ItemInfo = menu.findItem(R.id.menu_chat_action_info);
         MenuItem menuItemLeave = menu.findItem(R.id.menu_chat_action_leave);
         MenuItem menuItemAdd = menu.findItem(R.id.menu_chat_action_add);
         MenuItem menuItemDelete = menu.findItem(R.id.menu_chat_action_delete);
@@ -208,20 +233,12 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == menu_chat_action_info) {
-            ChatInfoActivity.start(this, qbChatDialog);
-        } else if (id == menu_chat_action_add) {
-            SelectUsersActivity.startForResult(this, REQUEST_CODE_SELECT_PEOPLE, qbChatDialog);
-        } else if (id == menu_chat_action_leave) {
-            leaveGroupChat();
-        } else if (id == menu_chat_action_delete) {
-            deleteChat();
-        }
-
-        if (id == R.id.menu_chat_action_info) {
+            Log.d("CHATINFO ", "ChatInfoActivity  onCreate  qbChatDialog " + qbChatDialog);
             ChatInfoActivity.start(this, qbChatDialog);
             return true;
         } else if (id == R.id.menu_chat_action_add) {
@@ -229,6 +246,9 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
             return true;
         } else if (id == R.id.menu_chat_action_leave) {
             leaveGroupChat();
+            return true;
+        } else if (id == R.id.menu_chat_action_add) {
+            joinGroupChat();
             return true;
         } else if (id == R.id.menu_chat_action_delete) {
             deleteChat();
@@ -253,27 +273,34 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     }
 
     private void sendDialogId() {
+        Log.d("DELETEGROUP ", "Deletedialog    sendDialogId " + qbChatDialog);
         Intent result = new Intent();
         result.putExtra(EXTRA_DIALOG_ID, qbChatDialog.getDialogId());
         setResult(RESULT_OK, result);
     }
 
     private void leaveGroupChat() {
+
+
         progressBar.setVisibility(View.VISIBLE);
 //        ProgressDialogFragment.show(getSupportFragmentManager());
         ChatHelper.getInstance().exitFromDialog(qbChatDialog, new QBEntityCallback<QBChatDialog>() {
             @Override
             public void onSuccess(QBChatDialog qbDialog, Bundle bundle) {
-//                ProgressDialogFragment.hide(getSupportFragmentManager());
+
                 progressBar.setVisibility(View.GONE);
                 QbDialogHolder.getInstance().deleteDialog(qbDialog);
+                Intent intent = new Intent(Constant.NOTIFY_MULTIPLE);
+                intent.putExtra(RESULT_CODE, -2);
+                intent.putExtra(REQUEST_CODE, 160);
+                sendBroadcast(intent);
                 finish();
             }
 
             @Override
             public void onError(QBResponseException e) {
                 progressBar.setVisibility(View.GONE);
-//                ProgressDialogFragment.hide(getSupportFragmentManager());
+
                 showErrorSnackbar(R.string.error_leave_chat, e, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -289,20 +316,22 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            Log.d("CHATFRAGMENT", "   ChatActivity   onActivityResult  RESULT_OK");
-            if (requestCode == REQUEST_CODE_SELECT_PEOPLE) {
 
-                Log.d("CHATFRAGMENT", "   ChatActivity   onActivityResult  REQUEST_CODE_SELECT_PEOPLE");
+            if (requestCode == REQUEST_CODE_SELECT_PEOPLE) {
                 ArrayList<QBUser> selectedUsers = (ArrayList<QBUser>) data.getSerializableExtra(
                         SelectUsersActivity.EXTRA_QB_USERS);
                 updateDialog(selectedUsers);
             }
+        } else {
+            Log.d("DELETEGROUP", "   ChatActivity   onActivityResult  RESULT_OK ELSE ");
         }
     }
 
     @Override
     public void onImagePicked(int requestCode, File file) {
         switch (requestCode) {
+
+
             case REQUEST_CODE_ATTACHMENT:
                 attachmentPreviewAdapter.add(file);
                 break;
@@ -311,6 +340,7 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
 
     @Override
     public void onImagePickError(int requestCode, Exception e) {
+
         showErrorSnackbar(0, e, null);
     }
 
@@ -325,7 +355,7 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     }
 
     public void onSendChatClick(View view) {
-        Log.d("CHATFRAGMENT", "   ChatActivity   onSendChatClick ");
+
         if (Common.checkAvailability(ChatActivity.this)) {
 //            SnackBarhide();
             int totalAttachmentsCount = attachmentPreviewAdapter.getCount();
@@ -355,6 +385,8 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     }
 
     public void showMessage(QBChatMessage message) {
+
+
         if (chatAdapter != null) {
             chatAdapter.add(message);
             scrollMessageListDown();
@@ -367,11 +399,14 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     }
 
     private void initViews() {
+        initializeMediaRecord();
         messageStatusModelArrayList = new ArrayList<>();
-        Log.d("CHATFRAGMENT", "   ChatActivity   initViews ");
+        mTittle = _findViewById(R.id.text_title);
+        mSubTitle = _findViewById(R.id.text_sub_title);
         messagesListView = _findViewById(R.id.list_chat_messages);
         messageEditText = _findViewById(R.id.edit_chat_message);
         progressBar = _findViewById(R.id.progress_chat);
+        recordImage = (ImageView) findViewById(R.id.button_voice_record);
         attachmentPreviewContainerLayout = _findViewById(R.id.layout_attachment_preview_container);
 
         attachmentPreviewAdapter = new AttachmentPreviewAdapter(this,
@@ -396,7 +431,26 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
         previewAdapterView.setAdapter(attachmentPreviewAdapter);
 
         messageEditText.addTextChangedListener(watcher);
+        recordImage.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
 
+                int action = event.getAction();
+                switch (action) {
+
+                    case MotionEvent.ACTION_DOWN:
+//                        startAudioRecording();
+                        Common.displayToast(Constant.TOST_PROGRESS);
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+//                        stopAudioRecording();
+
+                        break;
+                }
+                return false;
+            }
+        });
 
     }
 
@@ -404,30 +458,32 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     TextWatcher watcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            Log.d("WATCHER", "   beforeTextChanged  Text   " + s.toString());
+
         }
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            Log.d("WATCHER", "   onTextChanged    Text " + s.toString());
+
             sendTypingStatusToServer(true);
         }
 
         @Override
         public void afterTextChanged(Editable s) {
-            Log.d("WATCHER", "   afterTextChanged  Text   " + s.toString());
+
             sendTypingStatusToServer(false);
         }
     };
 
     private void sendChatMessage(String text, QBAttachment attachment) {
-        Log.d("MULTIUPDATE", "   ChatActivity    sendChatMessage ");
-        Log.d("CHATFRAGMENT", "   ChatActivity   sendChatMessage  text   " + text);
+
+
         QBChatMessage chatMessage = new QBChatMessage();
         if (attachment != null) {
+
             chatMessage.addAttachment(attachment);
         } else {
-            Log.d("MULTIUPDATE", "   ChatActivity    sendChatMessage ELSE " + text);
+
+
             chatMessage.setBody(text);
         }
         chatMessage.setProperty(PROPERTY_SAVE_TO_HISTORY, "1");
@@ -435,8 +491,6 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
         chatMessage.setMarkable(true);
 
         if (!QBDialogType.PRIVATE.equals(qbChatDialog.getType()) && !qbChatDialog.isJoined()) {
-
-            Log.d("CHATFRAGMENT", "   ChatActivity   sendChatMessage QBDialogType.PRIVATE  " + text);
             Toaster.shortToast("You're still joining a group chat, please wait a bit");
             return;
         }
@@ -445,8 +499,6 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
             qbChatDialog.sendMessage(chatMessage);
 
             if (QBDialogType.PRIVATE.equals(qbChatDialog.getType())) {
-
-                Log.d("CHATFRAGMENT", "   ChatActivity   showMessage  IF    PRIVATE ");
                 showMessage(chatMessage);
 
             }
@@ -463,17 +515,14 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     }
 
     private void initChat() {
-        Log.d("MULTIUPDATE", " chatActivity initChat   ");
+
         switch (qbChatDialog.getType()) {
             case GROUP:
             case PUBLIC_GROUP:
-
-                Log.d("MULTIUPDATE", "   ChatActivity    PUBLIC_GROUP  initChat");
                 joinGroupChat();
                 break;
 
             case PRIVATE:
-                Log.d("MULTIUPDATE", "   ChatActivity     PRIVATE  initChat ");
                 loadDialogUsers();
                 break;
 
@@ -487,16 +536,11 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     private void joinGroupChat() {
 
         try {
-            Log.d("MULTIUPDATE", "   ChatActivity    joinGroupChat");
-            Log.d("CHATFRAGMENT", "   ChatActivity     joinGroupChat  ");
 
             progressBar.setVisibility(View.VISIBLE);
             ChatHelper.getInstance().join(qbChatDialog, new QBEntityCallback<Void>() {
                 @Override
                 public void onSuccess(Void result, Bundle b) {
-
-                    Log.d("MULTIUPDATE", "   ChatActivity    joinGroupChat onSuccess ");
-                    Log.d("CHATFRAGMENT", "   ChatActivity     joinGroupChat  onSuccess  ");
                     if (snackbar != null) {
                         snackbar.dismiss();
                     }
@@ -505,9 +549,6 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
 
                 @Override
                 public void onError(QBResponseException e) {
-
-                    Log.d("MULTIUPDATE", "   ChatActivity    joinGroupChat onError ");
-                    Log.d("CHATFRAGMENT", "   ChatActivity     joinGroupChat  onError  ");
                     progressBar.setVisibility(View.GONE);
                     snackbar = showErrorSnackbar(R.string.connection_error, e, null);
                 }
@@ -535,21 +576,17 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
 
     private void updateDialog(final ArrayList<QBUser> selectedUsers) {
 
-        Log.d("CHATFRAGMENT", "   ChatActivity     updateDialog ");
         try {
             ChatHelper.getInstance().updateDialogUsers(qbChatDialog, selectedUsers,
                     new QBEntityCallback<QBChatDialog>() {
                         @Override
                         public void onSuccess(QBChatDialog dialog, Bundle args) {
-                            Log.d("CHATFRAGMENT", "   ChatActivity     updateDialog  onSuccess ");
                             qbChatDialog = dialog;
                             loadDialogUsers();
                         }
 
                         @Override
                         public void onError(QBResponseException e) {
-
-                            Log.d("CHATFRAGMENT", "   ChatActivity     updateDialog  onError ");
                             showErrorSnackbar(R.string.chat_info_add_people_error, e,
                                     new View.OnClickListener() {
                                         @Override
@@ -569,15 +606,11 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     private void loadDialogUsers() {
 
         try {
-            Log.d("MULTIUPDATE", "   ChatActivity    loadDialogUsers ");
 
-            Log.d("CHATFRAGMENT", "   ChatActivity     loadDialogUsers  ");
             ChatHelper.getInstance().getUsersFromDialog(qbChatDialog, new QBEntityCallback<ArrayList<QBUser>>() {
                 @Override
                 public void onSuccess(ArrayList<QBUser> users, Bundle bundle) {
-                    Log.d("MULTIUPDATE", "   ChatActivity    loadDialogUsers  onSuccess ");
 
-                    Log.d("CHATFRAGMENT", "   ChatActivity     loadDialogUsers  onSuccess  ");
                     setChatNameToActionBar();
                     loadChatHistory();
                 }
@@ -585,7 +618,6 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
                 @Override
                 public void onError(QBResponseException e) {
 
-                    Log.d("CHATFRAGMENT", "   ChatActivity    loadDialogUsers   onError  ");
                     showErrorSnackbar(R.string.chat_load_users_error, e,
                             new View.OnClickListener() {
                                 @Override
@@ -603,32 +635,18 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
 
     private void setChatNameToActionBar() {
 
-        Log.d("MULTIUPDATE", "   ChatActivity    setChatNameToActionBar 1 ");
         String chatName = QbDialogUtils.getDialogName(qbChatDialog);
-        actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setTitle(chatName);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeButtonEnabled(true);
-
-
-        }
+        mTittle.setText(chatName);
     }
 
 
     private void loadChatHistory() {
         try {
 
-            Log.d("MULTIUPDATE", "   ChatActivity    loadChatHistory ");
-            Log.d("CHATFRAGMENT", "   ChatActivity     loadChatHistory  ");
             ChatHelper.getInstance().loadChatHistory(qbChatDialog, skipPagination, new QBEntityCallback<ArrayList<QBChatMessage>>() {
                 @Override
                 public void onSuccess(ArrayList<QBChatMessage> messages, Bundle args) {
 
-                    Log.d("MULTIUPDATE", "   ChatActivity    loadChatHistory onSuccess  ");
-                    Log.d("CHATFRAGMENT", "   ChatActivity     loadChatHistory  onSuccess ");
-                    // The newest messages should be in the end of list,
-                    // so we need to reverse list to show messages in the right order
                     Collections.reverse(messages);
                     if (chatAdapter == null) {
                         chatAdapter = new ChatAdapter(ChatActivity.this, qbChatDialog, messages);
@@ -686,7 +704,6 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
                 @Override
                 public void onError(QBResponseException e) {
 
-                    Log.d("CHATFRAGMENT", "   ChatActivity     loadChatHistory  onError ");
                     progressBar.setVisibility(View.GONE);
                     skipPagination -= ChatHelper.CHAT_HISTORY_ITEMS_PER_PAGE;
                     snackbar = showErrorSnackbar(R.string.connection_error, e, null);
@@ -704,18 +721,24 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     }
 
     private void deleteChat() {
-        Log.d("CHATFRAGMENT", "   ChatActivity     deleteChat  ");
+
+
         ChatHelper.getInstance().deleteDialog(qbChatDialog, new QBEntityCallback<Void>() {
             @Override
             public void onSuccess(Void aVoid, Bundle bundle) {
-                Log.d("CHATFRAGMENT", "   ChatActivity     deleteChat   onSuccess ");
+
                 setResult(RESULT_OK);
+                QbDialogHolder.getInstance().deleteDialog(qbChatDialog);
+                Intent intent = new Intent(Constant.NOTIFY_MULTIPLE);
+                intent.putExtra(RESULT_CODE, -2);
+                intent.putExtra(REQUEST_CODE, 160);
+                sendBroadcast(intent);
                 finish();
             }
 
             @Override
             public void onError(QBResponseException e) {
-                Log.d("CHATFRAGMENT", "   ChatActivity     deleteChat   onError ");
+
                 showErrorSnackbar(R.string.dialogs_deletion_error, e,
                         new View.OnClickListener() {
                             @Override
@@ -730,8 +753,7 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     private void initChatConnectionListener() {
 
         try {
-            Log.d("MULTIUPDATE", " chatActivity initChatConnectionListener   ");
-            Log.d("CHATFRAGMENT", "   ChatActivity   initChatConnectionListener ");
+
             chatConnectionListener = new VerboseQbChatConnectionListener(getSnackbarAnchorView()) {
                 @Override
                 public void reconnectionSuccessful() {
@@ -780,21 +802,19 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     public class ChatMessageListener extends QbChatDialogMessageListenerImp {
         @Override
         public void processMessage(String s, QBChatMessage qbChatMessage, Integer integer) {
-            Log.d("MULTIUPDATE", "   ChatActivity    QbChatDialogMessageListenerImp qbChatMessage  " + qbChatMessage);
-            Log.d("CHATFRAGMENT", "   ChatActivity     ChatMessageListener   processMessage  qbChatMessage " + qbChatMessage);
             showMessage(qbChatMessage);
         }
     }
 
     private void sendPushMessage(final String outMessage) {
 
-        Log.d("CHATFRAGMENT", "sendPushMessage  outMessage " + outMessage);
+
         QBEvent qbEvent = new QBEvent();
         qbEvent.setNotificationType(QBNotificationType.PUSH);
         qbEvent.setEnvironment(QBEnvironment.DEVELOPMENT);
         qbEvent.setPushType(QBPushType.GCM);
         qbEvent.setMessage(outMessage);
-        Log.d("CHATFRAGMENT", " sendPushMessage getRecipientId123   " + qbChatDialog.getRecipientId());
+
         StringifyArrayList<Integer> toIds = new StringifyArrayList<>();
         toIds.add(qbChatDialog.getRecipientId());  // to Id
         qbEvent.setUserIds(toIds);
@@ -803,13 +823,11 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
             @Override
             public void onSuccess(QBEvent qbEvent, Bundle bundle) {
                 progressBar.setVisibility(View.INVISIBLE);
-                Log.d("CHATFRAGMENT", " sendPushMessage  onSuccess  qbEvent123 " + qbEvent.getMessage());
+
             }
 
             @Override
             public void onError(QBResponseException e) {
-//                sendPushMessage(outMessage);
-                Log.d("CHATFRAGMENT", "  sendPushMessage onError123   " + e.getMessage());
                 progressBar.setVisibility(View.INVISIBLE);
 //
             }
@@ -822,11 +840,11 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
             List<Integer> opId = new ArrayList<>();
             opId.add(qbChatDialog.getRecipientId());
             if (startTyping) {
-//                Log.d("WATCHER", "startTyping : " + startTyping);
+//
                 qbChatDialog.setOccupantsIds(opId);
                 qbChatDialog.sendIsTypingNotification();
             } else {
-//                Log.d("WATCHER", "startTyping : " + startTyping);
+//
                 qbChatDialog.sendStopTypingNotification();
             }
         } catch (XMPPException | SmackException.NotConnectedException e) {
@@ -839,25 +857,24 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
     QBChatDialogTypingListener typingListener = new QBChatDialogTypingListener() {
         @Override
         public void processUserIsTyping(String dialogId, Integer senderId) {
-//            Log.d("WATCHER", "processUserIsTyping : " + dialogId);
-            actionBar.setSubtitle(Constant.EXTRA_IS_TYPING);
+//
+            mSubTitle.setText(Constant.EXTRA_IS_TYPING);
 
         }
 
         @Override
         public void processUserStopTyping(String dialogId, Integer senderId) {
-            actionBar.setSubtitle(Constant.EXTRA_STOP_TYPING);
+//            actionBar.setSubtitle(Constant.EXTRA_STOP_TYPING);
+            mSubTitle.setText(Constant.EXTRA_STOP_TYPING);
         }
     };
-    // Status Report after message reach to server
+
 
     QBChatDialogMessageSentListener messageSentListener = new QBChatDialogMessageSentListener() {
         @Override
         public void processMessageSent(String dialogId, QBChatMessage qbChatMessage) {
             try {
-//            Log.d("WATCHER123", "   serve status   getRecipientId   qbChatDialog : " + qbChatDialog.getRecipientId());
-//            Log.d("WATCHER123", "   serve status   getRecipientId   Message ID  : " + qbChatMessage.getId());
-//            Toaster.longToast("Message  sent  to server ");
+//
                 messageStatusModelArrayList.clear();
                 messageStatusModel = new MessageStatusModel();
                 messageStatusModel.setUserId("0");
@@ -878,12 +895,18 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
 
         @Override
         public void processMessageFailed(String dialogId, QBChatMessage qbChatMessage) {
-            Log.d("CHATFRAGMENT", "   QBChatDialogMessageSentListener   processMessageFailed");
 
-//            Toaster.longToast("Message  sent  to server failure ");
 
         }
 
+    };
+
+    QBChatDialogParticipantListener participantListener = new QBChatDialogParticipantListener() {
+        @Override
+        public void processPresence(String s, QBPresence qbPresence) {
+
+
+        }
     };
 
     //  deliver status report from use2 to User1  &
@@ -892,8 +915,6 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
         public void processMessageDelivered(String messageId, String dialogId, Integer userId) {
 
             try {
-                Log.d("WATCHER123", "   deliver  status   getRecipientId   userId : " + userId);
-                Log.d("WATCHER123", "   deliver  status   getRecipientId   Message ID  : " + messageId);
                 messageStatusModelArrayList.clear();
                 messageStatusModel = new MessageStatusModel();
                 messageStatusModel.setUserId("0");
@@ -919,8 +940,7 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
         @Override
         public void processMessageRead(String messageId, String dialogId, Integer userId) {
 
-            Log.d("WATCHER123", "   read  status   getRecipientId   userId : " + userId);
-            Log.d("WATCHER123", "   read  status   getRecipientId   Message ID  : " + messageId);
+
             try {
                 messageStatusModelArrayList.clear();
                 messageStatusModel = new MessageStatusModel();
@@ -944,8 +964,6 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
 
     public void groupCall(final boolean callType) {
 
-
-        Log.d("CAHTCALLLL", "   CAHTCALLLL groupCall   start " + callType);
         LayoutInflater li = LayoutInflater.from(ChatActivity.this);
         LayoutInflater inflater = getLayoutInflater();
         android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(ChatActivity.this);
@@ -970,14 +988,14 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
             oppOnentList.add(id);
             qbUsers = QbUsersHolder.getInstance().getUsersByIds(oppOnentList);
             if (qbUsers == null) {
-                throw new RuntimeException("User from dialog is not in memory. This should never happen, or we are screwed");
+                throw new RuntimeException(Constant.CHAT_EXCEPTION);
 
             }
 //                qbUsers.add(qbUsers.get(id));
             qbUsers.remove(currentUser);
-            Log.d("CHATFRAGMENT", "groupCall()==>  user NAME " + qbUsers);
+
         }
-        Log.d("CHATFRAGMENT", "groupCall()==>  qbUsers.size() " + qbUsers.size());
+
         TextView[] opponentsName = new TextView[qbUsers.size()];
         for (int l = 0; l < opponentsName.length; l++) {
             opponentsName[l] = new TextView(this);
@@ -1012,4 +1030,77 @@ public class ChatActivity extends BaseActivity implements OnImagePickedListener,
         alertDialog.show();
 
     }
+
+    // Voice Reocrd
+
+    private void initializeMediaRecord() {
+        Random r = new Random();
+        int i1 = r.nextInt(80 - 65) + 65;
+        int userId = Common.getCurrentUser().getId();
+
+        mediaRecorder = new MediaRecorder();
+        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        mediaRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
+        mediaRecorder.setOutputFile(getAudioFilePath(userId + "_" + String.valueOf(i1)));
+    }
+
+    private void startAudioRecording() {
+        try {
+            if (mediaRecorder == null) {
+                initializeMediaRecord();
+            }
+
+            mediaRecorder.prepare();
+            mediaRecorder.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//
+    }
+
+    private void stopAudioRecording() {
+
+        try {
+            if (mediaRecorder != null) {
+
+                mediaRecorder.stop();
+                mediaRecorder.release();
+                mediaRecorder = null;
+                avFileUpload();
+            }
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
+
+    }
+
+
+    public void avFileUpload() throws IOException {
+        InputStream is = getApplicationContext().getAssets().open("sample.mp3");
+
+        File file = FileHelper.getFileInputStream(is, "sample.mp3", "myfile");
+
+        Boolean isPublic = false;
+
+        QBContent.uploadFileTask(file, isPublic, null).performAsync(new QBEntityCallback<QBFile>() {
+            @Override
+            public void onSuccess(QBFile qbFile, Bundle bundle) {
+//
+                QBUser currentUser = ChatHelper.getCurrentUser();
+                int uploadedFileID = qbFile.getId();
+                QBUser user = new QBUser();
+                user.setId(currentUser.getId());
+                user.setFileId(uploadedFileID);
+
+            }
+
+            @Override
+            public void onError(QBResponseException e) {
+
+            }
+        });
+    }
+
 }

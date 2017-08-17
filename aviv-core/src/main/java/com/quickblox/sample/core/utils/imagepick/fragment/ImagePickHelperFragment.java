@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.quickblox.sample.core.utils.ImageUtils;
 import com.quickblox.sample.core.utils.imagepick.GetFilepathFromUriTask;
@@ -34,7 +35,6 @@ public class ImagePickHelperFragment extends Fragment {
     public static ImagePickHelperFragment start(FragmentActivity activity, int requestCode) {
         Bundle args = new Bundle();
         args.putInt(ARG_REQUEST_CODE, requestCode);
-
         return start(activity.getSupportFragmentManager(), args);
     }
 
@@ -88,9 +88,7 @@ public class ImagePickHelperFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (isResultFromImagePick(requestCode, resultCode, data)) {
             if (requestCode == ImageUtils.CAMERA_REQUEST_CODE && (data == null || data.getData() == null)) {
-                // Hacky way to get EXTRA_OUTPUT param to work.
-                // When setting EXTRA_OUTPUT param in the camera intent there is a chance that data will return as null
-                // So we just pass temporary camera file as a data, because RESULT_OK means that photo was written in the file.
+
                 data = new Intent();
                 data.setData(Uri.fromFile(ImageUtils.getLastUsedCameraFile()));
             }

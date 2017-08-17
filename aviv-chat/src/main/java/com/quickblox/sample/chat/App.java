@@ -47,10 +47,12 @@ public class App extends com.quickblox.sample.groupchatwebrtc.App {
     }
 
     private void createTable() {
-        Log.d("ChatApplication ", "createTable MessageStatusTable");
+
         dbChatAdapter = DBChatAdapter.getInstance(context);
         dbChatAdapter.open();
         messageStatusTableDAO = new MessageStatusTable(dbChatAdapter.getDataBase(), context);
 
     }
+
+
 }

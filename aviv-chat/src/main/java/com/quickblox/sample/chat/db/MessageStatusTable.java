@@ -92,7 +92,7 @@ public class MessageStatusTable {
                 }
                 flag = db.insert(TABLE_MESSAGE_STATUS, null, initialValues);
 
-                Log.d(" messageStatusUpdate  ", "insert sent to server : " + flag);
+
 
             } else {
 
@@ -102,8 +102,6 @@ public class MessageStatusTable {
                                 messageStatusModels.get(0).getRecipientId(),
                                 messageStatusModels.get(0).getMessageId()
                         });
-
-                Log.d(" messageStatusUpdate  ", "update sent to server : " + flag);
 
             }
 
@@ -134,7 +132,7 @@ public class MessageStatusTable {
         int status = 0;
         Cursor cursor = null;
         try {
-            Log.w("TICK_STATUS", "getSurveyStatus messageID" + messageID);
+
             cursor = db.query(TABLE_MESSAGE_STATUS, new String[]{
                             IS_UPDATE_SERVER},
                     MESSAGE_ID + "=?",
@@ -147,7 +145,7 @@ public class MessageStatusTable {
                     cursor.close();
                 return status;
             }
-            Log.w("TICK_STATUS", "getSurveyStatus cursor.getCount() " + cursor.getCount());
+
             cursor.moveToFirst();
             for (int counter = 0; counter < cursor.getCount(); counter++) {
                 status = cursor.getInt(cursor.getColumnIndex(IS_UPDATE_SERVER));
@@ -166,7 +164,7 @@ public class MessageStatusTable {
         int status = 0;
         Cursor cursor = null;
         try {
-            Log.w("TICK_STATUS", "getDeliveryStatus messageID" + messageID);
+
             cursor = db.query(TABLE_MESSAGE_STATUS, new String[]{
                             IS_DELIVERED},
                     MESSAGE_ID + "=?",
@@ -179,7 +177,7 @@ public class MessageStatusTable {
                     cursor.close();
                 return status;
             }
-            Log.w("TICK_STATUS", "getDeliveryStatus cursor.getCount() " + cursor.getCount());
+
             cursor.moveToFirst();
             for (int counter = 0; counter < cursor.getCount(); counter++) {
                 status = cursor.getInt(cursor.getColumnIndex(IS_DELIVERED));
@@ -198,7 +196,7 @@ public class MessageStatusTable {
         int status = 0;
         Cursor cursor = null;
         try {
-            Log.w("TICK_STATUS", "getReadStatus messageID" + messageID);
+
             cursor = db.query(TABLE_MESSAGE_STATUS, new String[]{
                             IS_READ},
                     MESSAGE_ID + "=?",
@@ -211,7 +209,7 @@ public class MessageStatusTable {
                     cursor.close();
                 return status;
             }
-            Log.w("TICK_STATUS", "getReadStatus cursor.getCount() " + cursor.getCount());
+
             cursor.moveToFirst();
             for (int counter = 0; counter < cursor.getCount(); counter++) {
                 status = cursor.getInt(cursor.getColumnIndex(IS_READ));
@@ -229,7 +227,7 @@ public class MessageStatusTable {
     public long saveAllUsers(ArrayList<QBUser> qbUserArrayList) {
         long flag = 0;
         Cursor mCursor = null;
-        Log.d("SAVE_USER", "  saveAllUsers()");
+
         try {
             for (int i = 0; i < qbUserArrayList.size(); i++) {
                 QBUser qbUsers = qbUserArrayList.get(i);
@@ -247,14 +245,13 @@ public class MessageStatusTable {
                     }
 
                     flag = db.insert(TABLE_MESSAGE_STATUS, null, initialValues);
-                    Log.d("SAVE_USER", "  saveAllUsers  flag INSERT  " + flag);
+
 
                 } else {
 
                     flag = db.update(TABLE_MESSAGE_STATUS, initialValues,
                             QB_USER_ID + "=?",
                             new String[]{String.valueOf(qbUsers.getId())});
-                    Log.d("SAVE_USER", "  saveAllUsers  flag UPDATE  " + flag);
                 }
             }
             mCursor.close();
@@ -262,7 +259,7 @@ public class MessageStatusTable {
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            Log.d("SAVE_USER", "saveAllUsers" + e.getMessage());
+
         }
         return flag;
     }
@@ -287,7 +284,7 @@ public class MessageStatusTable {
 
 
     public ArrayList<QBUser> getAllQBUsers(ArrayList<QBUser> qbUsersList) {
-        Log.d("GET_USERS ", "getAllQBUsers ====================> userId  ");
+
         ArrayList<QBUser> qbUserArrayList = new ArrayList<>();
         for (int i = 0; i < qbUsersList.size(); i++) {
             Cursor mCursor = db.query(TABLE_MESSAGE_STATUS, new String[]
@@ -324,7 +321,7 @@ public class MessageStatusTable {
 
             mCursor.close();
         }
-        Log.d("GET_USERS ", "getAllQBUsers  size  " + qbUserArrayList.size());
+
         return qbUserArrayList;
     }
 

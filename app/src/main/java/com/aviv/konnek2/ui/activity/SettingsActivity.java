@@ -1,6 +1,7 @@
 package com.aviv.konnek2.ui.activity;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import com.aviv.konnek2.R;
 import com.aviv.konnek2.adapters.RVSettingsAdapter;
 import com.aviv.konnek2.adapters.SettingsListAdapter;
 import com.aviv.konnek2.utils.Common;
+import com.aviv.konnek2.utils.Constant;
 import com.quickblox.sample.core.utils.Toaster;
 
 import java.util.ArrayList;
@@ -33,31 +35,14 @@ public class SettingsActivity extends AppCompatActivity {
     private static final String TAG = SettingsActivity.class.getSimpleName();
     Toolbar toolbar;
     public String itemName[];
-//    public int imgId[];
+    public TypedArray settingsImage ;
 
     private CircleImageView circleImageView;
-    int REQUEST_CAMERA = 0, SELECT_FILE = 1;
     ImageView setings_imageView;
     public SettingsListAdapter settingsListAdapter;
-    private EditText et_old_password, et_new_password;
-    private String old_password, new_password;
-    private TextView tv_message, txt_passWordChange, text_passWordCancel;
-    private android.app.AlertDialog alertDialog;
     private ProgressBar progress;
     CoordinatorLayout parent;
     ArrayList<String> nameList;
-    ArrayList<Integer> imageList;
-
-    public int[] imgId = {
-
-            R.drawable.ic_chat_notification,
-            R.drawable.ic_chat_blue,
-            R.drawable.ic_share_blue,
-            R.drawable.ic_password_blue,
-            R.drawable.ic_settings_help
-
-    };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +56,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void initviews() {
-        imageList = new ArrayList<Integer>();
-        imageList.add(R.drawable.ic_chat_notification);
-        imageList.add(R.drawable.ic_chat_blue);
-        imageList.add(R.drawable.ic_share_blue);
-        imageList.add(R.drawable.ic_password_blue);
-        imageList.add(R.drawable.ic_settings_help);
+
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.settings_recycler_view);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -85,12 +65,12 @@ public class SettingsActivity extends AppCompatActivity {
         circleImageView = (CircleImageView) findViewById(R.id.settings_profileImage);
         setings_imageView = (ImageView) findViewById(R.id.img_content_listview);
         parent = (CoordinatorLayout) findViewById(R.id.activity_settingsParent);
-        itemName = getResources().getStringArray(R.array.setingsActivity);
+        itemName = getResources().getStringArray(R.array.setings_tittle);
+        settingsImage = getResources().obtainTypedArray(R.array.setings_image);
         nameList = new ArrayList<String>(Arrays.asList(itemName));
-        RecyclerView.Adapter settingsListAdapter = new RVSettingsAdapter(nameList, imageList);
+        RecyclerView.Adapter settingsListAdapter = new RVSettingsAdapter(nameList, settingsImage);
         recyclerView.setAdapter(settingsListAdapter);
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-
 
             GestureDetector gestureDetector = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
 
@@ -117,7 +97,6 @@ public class SettingsActivity extends AppCompatActivity {
                     if (position == 1) {
                         Toast.makeText(getApplicationContext(), nameList.get(position), Toast.LENGTH_SHORT).show();
                     }
-
                 }
 
             }
@@ -142,36 +121,29 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
-
     public void listItemPosition(int position) {
 
-
         switch (position) {
-
             case 0:
                 break;
             case 1:
-//                Intent goTOpreferneceActivity = new Intent(getApplicationContext(), preferencesActivity.class);
-//                startActivity(goTOpreferneceActivity);
-                Common.displayToast("Change Password in Progress ");
+//
+                Common.displayToast(Constant.TOAST_MESSAGE);
                 break;
 
             case 2:
-                // Inviate Friend
-//                shareTextUrl();
-                Common.displayToast("Change Password in Progress ");
+                Common.displayToast(Constant.TOAST_MESSAGE);
 
                 break;
             case 3:
 
-                Common.displayToast("Change Password in Progress ");
+                Common.displayToast(Constant.TOAST_MESSAGE);
 
                 break;
 
             case 4:
-//                Intent goToHelpActivity = new Intent(getApplicationContext(), HelpActivity.class);
-//                startActivity(goToHelpActivity);
-                Common.displayToast("Change Password in Progress ");
+//
+                Common.displayToast(Constant.TOAST_MESSAGE);
                 break;
             default:
                 break;

@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.quickblox.sample.core.utils.Toaster;
 import com.quickblox.sample.groupchatwebrtc.R;
+import com.quickblox.sample.groupchatwebrtc.utils.Constant;
 import com.quickblox.sample.groupchatwebrtc.utils.PermissionsChecker;
 
 public class PermissionsActivity extends AppCompatActivity {
@@ -37,7 +38,7 @@ public class PermissionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getIntent() == null || !getIntent().hasExtra(EXTRA_PERMISSIONS)) {
-            throw new RuntimeException("This Activity needs to be launched using the static startActivityForResult() method.");
+            throw new RuntimeException(Constant.ACTIVITY_EXCEPTION);
         }
         setContentView(R.layout.activity_permissions);
 

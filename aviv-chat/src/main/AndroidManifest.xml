@@ -13,77 +13,63 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
-
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
         <activity
             android:name=".ui.activity.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
-
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
         </activity>
 
         <activity
             android:name=".ui.activity.LoginActivity"
             android:label="@string/login_title"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".ui.activity.SelectUsersActivity"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".ui.activity.DialogsActivity"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".ui.activity.ChatActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Base1"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
-
+            />
         <activity
             android:name=".ui.activity.ChatInfoActivity"
             android:label="@string/chat_info"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".ui.activity.AttachmentImageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Dark"/>
 
-        <service
-            android:name=".gcm.MyFirebaseMessagingService">
+        <service android:name=".gcm.MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
-
-
         <service android:name=".gcm.FirebaseIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@mipmap/ic_launcher" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+            android:resource="@mipmap/ic_launcher"/>
+        <!--
+             Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/colorPrimary" />
+            android:resource="@color/colorPrimary"/>
 
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
@@ -97,21 +83,6 @@
             </intent-filter>
         </receiver>
 
-        <service
-            android:name=".gcm.GcmPushListenerService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
-            </intent-filter>
-        </service>
-
-        <service
-            android:name="com.quickblox.messages.services.gcm.QBGcmPushInstanceIDService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID"/>
-            </intent-filter>
-        </service>
 
         <meta-data
             android:name="com.quickblox.messages.TYPE"
@@ -122,13 +93,11 @@
         <meta-data
             android:name="com.quickblox.messages.QB_ENVIRONMENT"
             android:value="DEVELOPMENT"/>
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>
 
-        <!--<meta-data-->
-            <!--android:name="io.fabric.ApiKey"-->
-            <!--android:value="7aea78439bec41a9005c7488bb6751c5e33fe270"/>-->
+
     </application>
+
 </manifest>

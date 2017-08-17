@@ -8,6 +8,12 @@
     <string name="msg_not_registered">Not Registered ? Register Now !</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sms_verification">SMS Verification </string>
+    <string name="sms_verification_code">please provide the verification code for further steps</string>
+    <string name="resend">Resend</string>
+    <string name="text_next">Next</string>
+    <string name="find_difficulties">Find difficulties to use these method  ?</string>
 
     <string-array name="countryName">
         <item>India </item>
@@ -25,19 +31,6 @@
         <item>65</item>
     </integer-array>
 
-    <string-array name="title_grid">
-        <item>Contacts</item>
-        <item>History</item>
-        <item>Connect</item>
-        <item>Support</item>
-        <item>Refer a friend</item>
-        <item>Settings</item>
-        <item>Sarai</item>
-        <item>Charity</item>
-        <item>m-Store</item>
-        <item>Hangouts</item>
-        <item>User Profile</item>
-    </string-array>
 
     <string-array name="charity_description">
         <item>Mother Teresa Charitable Trust (MTCT) ‘s history starts with the story of compassion. The mammoth crowd that followed the adieu procession of the legend Mother Teresa, Dr.G.K.Dhas, a kind hearted social activist took up the challenge of being and working for the poor...</item>

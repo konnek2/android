@@ -61,26 +61,4 @@ private  Context context;
     }
 
 
-//    public   static void SnackBarShow(Context con) {
-//
-//        activity = (Activity) con.getApplicationContext();
-//        SnackbarManager.show(
-//                Snackbar.with(con) // context
-//                        .text("No InterNet Connection...") // text to display
-//                        .actionLabel("Close")
-//                        .duration(Snackbar.SnackbarDuration.LENGTH_INDEFINITE)//
-//                        .color(Color.BLACK) // change the background color// action button label
-//                        .actionListener(new ActionClickListener() {
-//                            @Override
-//                            public void onActionClicked(Snackbar snackbar) {
-//                                Log.d(TAG, "Undoing something");
-//
-//                            }
-//                        }) // action button's ActionClickListener
-//                , activity);
-//    }
-//
-//    public static void SnackBarHide() {
-//        SnackbarManager.dismiss();
-//    }
 }

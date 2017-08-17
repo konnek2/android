@@ -20,12 +20,12 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\layout\\notification_template_lines_media.xml"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\layout\\notification_template_lines_media.xml"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
@@ -48,12 +48,12 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\layout\\abc_action_bar_title_item.xml"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",

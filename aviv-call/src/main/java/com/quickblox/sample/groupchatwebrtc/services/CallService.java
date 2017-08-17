@@ -56,12 +56,11 @@ public class CallService extends Service {
 
         createChatService();
 
-        Log.d(TAG, "Service onCreate()");
+
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG, "Service started");
 
         parseIntentExtras(intent);
 
@@ -105,13 +104,11 @@ public class CallService extends Service {
         chatService.login(qbUser, new QBEntityCallback<QBUser>() {
             @Override
             public void onSuccess(QBUser qbUser, Bundle bundle) {
-                Log.d(TAG, "login onSuccess");
                 startActionsOnSuccessLogin();
             }
 
             @Override
             public void onError(QBResponseException e) {
-                Log.d(TAG, "login onError " + e.getMessage());
                 sendResultToActivity(false, e.getMessage() != null
                         ? e.getMessage()
                         : "Login error");
@@ -158,7 +155,7 @@ public class CallService extends Service {
 
     private void sendResultToActivity(boolean isSuccess, String errorMessage) {
         if (pendingIntent != null) {
-            Log.d(TAG, "sendResultToActivity()");
+
             try {
                 Intent intent = new Intent();
                 intent.putExtra(Consts.EXTRA_LOGIN_RESULT, isSuccess);
@@ -198,7 +195,7 @@ public class CallService extends Service {
 
                 @Override
                 public void onError(QBResponseException e) {
-                    Log.d(TAG, "logout onError " + e.getMessage());
+
                     chatService.destroy();
                 }
             });
@@ -208,20 +205,17 @@ public class CallService extends Service {
 
     @Override
     public void onDestroy() {
-        Log.d(TAG, "Service onDestroy()");
         super.onDestroy();
     }
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        Log.d(TAG, "Service onBind)");
         return null;
     }
 
     @Override
     public void onTaskRemoved(Intent rootIntent) {
-        Log.d(TAG, "Service onTaskRemoved()");
         super.onTaskRemoved(rootIntent);
         destroyRtcClientAndChat();
     }

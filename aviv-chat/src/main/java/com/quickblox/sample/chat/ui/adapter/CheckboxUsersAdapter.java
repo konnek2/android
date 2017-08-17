@@ -68,25 +68,6 @@ public class CheckboxUsersAdapter extends UsersAdapter {
             }
         });
 
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (!isAvailableForSelection(user)) {
-//                    return;
-//                }
-//
-//                holder.userCheckBox.setChecked(!holder.userCheckBox.isChecked());
-//                if (holder.userCheckBox.isChecked()) {
-//                    selectedUsers.add(user);
-//                    Log.d("CHATFRAGMENT", "  CheckboxUsersAdapter ==== " + user);
-//                    Log.d("CHATFRAGMENT", "  CheckboxUsersAdapter Checked " + holder.userCheckBox.isChecked());
-//                } else {
-//                    selectedUsers.remove(user);
-//                    Log.d("CHATFRAGMENT", "  CheckboxUsersAdapter UNChecked " + holder.userCheckBox.isChecked());
-//                }
-//            }
-//        });
-
         if (checkBoxFlag) {
             holder.userCheckBox.setVisibility(View.VISIBLE);
             holder.layout_userList.setOnClickListener(null);
@@ -97,13 +78,8 @@ public class CheckboxUsersAdapter extends UsersAdapter {
                     if (holder.userCheckBox.isChecked()) {
                         selectedUsers.add(user);
 
-                        Log.d("CHATFRAGMENT", "  CheckboxUsersAdapter  Size   ==== " + selectedUsers.size());
-                        Log.d("CHATFRAGMENT", "  CheckboxUsersAdapter  getId  ==== " + user.getId());
-
-                        Log.d("CHATFRAGMENT", "  CheckboxUsersAdapter Checked " + holder.userCheckBox.isChecked());
                     } else {
                         selectedUsers.remove(user);
-                        Log.d("CHATFRAGMENT", "  CheckboxUsersAdapter UNChecked " + holder.userCheckBox.isChecked());
                     }
 
                 }
@@ -118,7 +94,6 @@ public class CheckboxUsersAdapter extends UsersAdapter {
     }
 
     public List<QBUser> getSelectedUsers() {
-        Log.d("MULTIUPDATE", "  CheckBox Adapter  getSelectedUsers " + selectedUsers.size());
         return selectedUsers;
     }
 
@@ -131,11 +106,9 @@ public class CheckboxUsersAdapter extends UsersAdapter {
 
         long currentTime = System.currentTimeMillis();
         long userLastRequestAtTime = user.getLastRequestAt().getTime();
-
-        // if user didn't do anything last 5 minutes (5*60*1000 milliseconds)
         if ((currentTime - userLastRequestAtTime) > 5 * 60 * 1000) {
             holder.userStatus.setImageResource(R.drawable.signal_read);
-            Log.d("CHATFRAGMENT", "  CheckboxUsersAdapter User  OFFLINE  " + user.getFullName());
+
         }
 
     }

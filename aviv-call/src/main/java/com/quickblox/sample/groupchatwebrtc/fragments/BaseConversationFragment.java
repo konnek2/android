@@ -17,6 +17,7 @@ import android.widget.ToggleButton;
 import com.quickblox.chat.QBChatService;
 import com.quickblox.sample.groupchatwebrtc.R;
 import com.quickblox.sample.groupchatwebrtc.activities.CallActivity;
+import com.quickblox.sample.groupchatwebrtc.activities.CallClientActivity;
 import com.quickblox.sample.groupchatwebrtc.db.QbUsersDbManager;
 import com.quickblox.sample.groupchatwebrtc.utils.CollectionsUtils;
 import com.quickblox.sample.groupchatwebrtc.utils.Consts;
@@ -89,7 +90,7 @@ public abstract class BaseConversationFragment extends BaseToolBarFragment imple
         sessionManager = WebRtcSessionManager.getInstance(getActivity());
         currentSession = sessionManager.getCurrentSession();
         if (currentSession == null) {
-            Log.d(TAG, "currentSession = null onCreateView");
+
             return view;
         }
         initFields();
@@ -133,15 +134,14 @@ public abstract class BaseConversationFragment extends BaseToolBarFragment imple
 
         qbConferenceType = currentSession.getConferenceType();
 
-        Log.d(TAG, "opponents: " + opponents.toString());
-        Log.d(TAG, "currentSession " + currentSession.toString());
+
     }
 
     @Override
     public void onStart() {
         super.onStart();
         if (currentSession == null) {
-            Log.d(TAG, "currentSession = null onStart");
+
             return;
 
         }
@@ -186,12 +186,13 @@ public abstract class BaseConversationFragment extends BaseToolBarFragment imple
         handUpVideoCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    actionButtonsEnabled(false);
-                    handUpVideoCall.setEnabled(false);
-                    handUpVideoCall.setActivated(false);
 
-                    conversationFragmentCallbackListener.onHangUpCurrentSession();
-                    Log.d(TAG, "Call is stopped");
+                actionButtonsEnabled(false);
+                handUpVideoCall.setEnabled(false);
+                handUpVideoCall.setActivated(false);
+
+                conversationFragmentCallbackListener.onHangUpCurrentSession();
+
             }
         });
     }
@@ -234,7 +235,7 @@ public abstract class BaseConversationFragment extends BaseToolBarFragment imple
     @Override
     public void onCallStopped() {
         if (currentSession == null) {
-            Log.d(TAG, "currentSession = null onCallStopped");
+
             return;
         }
         stopTimer();
@@ -247,15 +248,15 @@ public abstract class BaseConversationFragment extends BaseToolBarFragment imple
     }
 
     private void initOpponentsList() {
-        Log.v("UPDATE_USERS", "super initOpponentsList()");
+
         ArrayList<QBUser> usersFromDb = dbManager.getUsersByIds(currentSession.getOpponents());
 
-        Log.d("BASECON","usersFromDb  ===> IF OUT "+usersFromDb.size());
+
         if (usersFromDb.size() >= 2) {
-            Log.d("BASECON","usersFromDb ===> IF "+usersFromDb.size());
+
             ringingTextView.setText(getResources().getString(R.string.outgoing_audio_confrence));
         } else {
-            Log.d("BASECON","usersFromDb  ===> ELSE"+usersFromDb.size());
+
             ringingTextView.setText(getResources().getString(R.string.outgoing_audio));
 
         }

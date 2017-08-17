@@ -15,6 +15,7 @@ import com.quickblox.chat.QBChatService;
 import com.quickblox.chat.QBPingManager;
 import com.quickblox.core.QBEntityCallback;
 import com.quickblox.core.exception.QBResponseException;
+import com.quickblox.sample.groupchatwebrtc.utils.Constant;
 
 import org.jivesoftware.smackx.ping.PingFailedListener;
 
@@ -26,15 +27,14 @@ public class ChatPingAlarmManager {
     private static final long PING_INTERVAL = TimeUnit.SECONDS.toMillis(60);
 
     private static final String TAG = ChatPingAlarmManager.class.getSimpleName();
-    private static final String PING_ALARM_ACTION = "com.quickblox.chat.ping.ACTION";
+    private static final String PING_ALARM_ACTION = Constant.PING_ALARM_ACTION;
 
     private static final BroadcastReceiver ALARM_BROADCAST_RECEIVER = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.v(TAG, "Ping Alarm broadcast received");
 
             if (enabled) {
-                Log.d(TAG, "Calling pingServer for connection ");
+
                 final QBPingManager pingManager = QBChatService.getInstance().getPingManager();
                 if (pingManager != null) {
                     pingManager.pingServer(new QBEntityCallback<Void>() {
@@ -52,7 +52,7 @@ public class ChatPingAlarmManager {
                 }
 
             } else {
-                Log.d(TAG, "NOT calling pingServerIfNecessary (disabled) on connection ");
+
             }
         }
     };
@@ -83,14 +83,7 @@ public class ChatPingAlarmManager {
         return instance;
     }
 
-    /**
-     * Register a pending intent with the AlarmManager to be broadcasted every
-     * half hour and register the alarm broadcast receiver to receive this
-     * intent. The receiver will check all known questions if a ping is
-     * Necessary when invoked by the alarm intent.
-     *
-     * @param context
-     */
+
     public static void onCreate(Context context) {
         sContext = context;
         context.registerReceiver(ALARM_BROADCAST_RECEIVER, new IntentFilter(PING_ALARM_ACTION));
@@ -101,9 +94,7 @@ public class ChatPingAlarmManager {
                 PING_INTERVAL, sPendingIntent);
     }
 
-    /**
-     * Unregister the alarm broadcast receiver and cancel the alarm.
-     */
+
     public static void onDestroy() {
         if (sContext != null) {
             sContext.unregisterReceiver(ALARM_BROADCAST_RECEIVER);

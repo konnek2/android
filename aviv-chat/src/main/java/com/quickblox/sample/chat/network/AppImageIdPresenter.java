@@ -30,19 +30,16 @@ public class AppImageIdPresenter implements ImageIdPresenter {
     public void validateImageId( final String qbUserId) {
 
 
-        Log.d("AppImageIdDOWN ", "validateImageId  qbUserId " + qbUserId);
+
         ApiInterface service = ChatApiClient.getClient().create(ApiInterface.class);
         Call<ChatSignInResponse> call = service.imageIdDownload(Constant.TAG_IMAGE_ID_DOWNLOAD, qbUserId);
         call.enqueue(new Callback<ChatSignInResponse>() {
             @Override
             public void onResponse(Call<ChatSignInResponse> call, Response<ChatSignInResponse> response) {
-                Log.d(" AppImageIdDOWN ", " AppImageId  ====> onResponse" + response.body().getResponseCode());
+
                 if (response.body().getResponseCode() != null) {
-                    Log.d(" AppImageIdDOWN ", " AppImageId   onResponse != null getImageId ====> " + response.body().getImageId());
-                    Log.d(" AppImageIdDOWN ", " AppImageId   onResponse != null getQbUserId ====> " + response.body().getQbUserId());
 
                     String imageId=response.body().getImageId();
-                    Log.d("IMAGEID_CHECK", "ImageId : " +imageId);
 
                     if (imageId!= null) {
                         imageIdDownloadView.imageIdCallBack(qbUserId,imageId);

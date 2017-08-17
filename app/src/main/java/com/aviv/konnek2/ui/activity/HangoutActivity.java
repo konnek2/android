@@ -6,19 +6,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import com.aviv.konnek2.R;
+import com.aviv.konnek2.utils.Constant;
 
 public class HangoutActivity extends AppCompatActivity {
 
     Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hangout);
         toolbar = (Toolbar) findViewById(R.id.toolbar_hangouts);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setSubtitle("Home > Hangouts");
+        getSupportActionBar().setSubtitle(Constant.HOME + Constant.GREATER_THAN + Constant.HANGOUTS);
         toolbar.setNavigationIcon(R.drawable.ic_app_back);
         toolbar.setSubtitleTextColor(getResources().getColor(R.color.white));
     }

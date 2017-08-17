@@ -41,6 +41,7 @@ public class ImageSourcePickDialogFragment extends DialogFragment {
                     case POSITION_CAMERA:
                         onImageSourcePickedListener.onImageSourcePicked(ImageSource.CAMERA);
                         break;
+
                 }
             }
         });

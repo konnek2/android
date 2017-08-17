@@ -127,10 +127,10 @@ public class LoginActivity extends BaseActivity {
         startLoginService(qbUser);
     }
 
-    private void startOpponentsActivity() {
-        OpponentsActivity.start(LoginActivity.this, false);
-        finish();
-    }
+//    private void startOpponentsActivity() {
+//        OpponentsActivity.start(LoginActivity.this, false);
+//        finish();
+//    }
 
     private void saveUserData(QBUser qbUser) {
         SharedPrefsHelper sharedPrefsHelper = SharedPrefsHelper.getInstance();
@@ -186,7 +186,7 @@ public class LoginActivity extends BaseActivity {
                 if (deleteCurrentUser) {
                     removeAllUserData(result);
                 } else {
-                    startOpponentsActivity();
+//                    startOpponentsActivity();
                 }
             }
 

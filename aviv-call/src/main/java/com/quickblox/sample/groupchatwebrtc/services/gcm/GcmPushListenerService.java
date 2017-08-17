@@ -18,12 +18,10 @@ public class GcmPushListenerService extends GcmListenerService {
     @Override
     public void onMessageReceived(String from, Bundle data) {
         String message = data.getString(GcmConsts.EXTRA_GCM_MESSAGE);
-        Log.v(TAG, "From: " + from);
-        Log.v(TAG, "Message: " + message);
 
         SharedPrefsHelper sharedPrefsHelper = SharedPrefsHelper.getInstance();
         if (sharedPrefsHelper.hasQbUser()) {
-            Log.d(TAG, "App have logined user");
+
             QBUser qbUser = sharedPrefsHelper.getQbUser();
             startLoginService(qbUser);
         }

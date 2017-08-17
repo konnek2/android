@@ -18,5 +18,9 @@
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\screen_share_fragment.xml",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\debug\\res\\menu\\screen_share_fragment.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\menu_tab.xml",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\debug\\res\\menu\\menu_tab.xml"
     }
 ]

@@ -4,16 +4,16 @@
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-xhdpi-v4\\ic_call_grey.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_chat_messgae_send.png",
-        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\drawable-xhdpi\\ic_chat_messgae_send.png"
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_action_remove.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\drawable-xhdpi\\ic_action_remove.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-xhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_action_remove.png",
-        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\drawable-xhdpi\\ic_action_remove.png"
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_chat_messgae_send.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\drawable-xhdpi\\ic_chat_messgae_send.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_call_low_priority.png",
@@ -146,6 +146,10 @@
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\progressbar_indeterminate_holo5.png",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\c55252533fbbc4883e04175d113e2edad278d5d8\\output\\res\\drawable-xhdpi-v4\\progressbar_indeterminate_holo5.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_call_back.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-xhdpi-v4\\ic_call_back.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png",
@@ -408,6 +412,10 @@
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-xhdpi-v4\\ic_call_video_camera_off.png"
     },
     {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_chat_back.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\drawable-xhdpi\\ic_chat_back.png"
+    },
+    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
     },
@@ -434,6 +442,10 @@
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-xhdpi-v4\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_chat_voice_record.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\drawable-xhdpi\\ic_chat_voice_record.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\progressbar_indeterminate_holo2.png",

@@ -1,6 +1,7 @@
 package com.aviv.konnek2.ui.activity;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +14,7 @@ import android.widget.GridView;
 
 import com.aviv.konnek2.R;
 import com.aviv.konnek2.adapters.MstoreAdapter;
+import com.aviv.konnek2.utils.Constant;
 import com.quickblox.sample.core.utils.Toaster;
 
 public class MobileStoreActivity extends AppCompatActivity {
@@ -20,23 +22,8 @@ public class MobileStoreActivity extends AppCompatActivity {
     GridView gridView;
     MstoreAdapter mstoreAdapter;
     Toolbar toolbar;
-    String[] mStoreName = {
-            "Travel",
-            "Money",
-            "Retail",
-            "Grocery",
-            "Pharmacy",
-            "Movies",
-    };
-
-    int[] mStoreImage = {
-            R.drawable.ic_app_grid_travel,
-            R.drawable.ic_app_grid_topup,
-            R.drawable.ic_app_grid_shopping,
-            R.drawable.ic_app_grid_grocery,
-            R.drawable.ic_app_grid_pharmecy,
-            R.drawable.ic_app_grid_movies,
-    };
+    String[] mStoreName;
+    TypedArray mStoreImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +31,15 @@ public class MobileStoreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mobile_store);
         toolbar = (Toolbar) findViewById(R.id.toolbar_mstore);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setSubtitle("Home > m-Store");
+        getSupportActionBar().setSubtitle(Constant.HOME + Constant.GREATER_THAN + Constant.M_STORE);
         toolbar.setNavigationIcon(R.drawable.ic_app_back);
         toolbar.setSubtitleTextColor(getResources().getColor(R.color.white));
         gridView = (GridView) findViewById(R.id.mobile_store);
+
+        mStoreImage = getResources().obtainTypedArray(R.array.mstore_image); // String  Values  from resource  files
+        mStoreName = getResources().getStringArray(R.array.mstore);          //  Image  Values  from resource  files
         mstoreAdapter = new MstoreAdapter(MobileStoreActivity.this, mStoreName, mStoreImage);
+
         gridView.setAdapter(mstoreAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -66,16 +57,16 @@ public class MobileStoreActivity extends AppCompatActivity {
                         break;
 
                     case 2:
-                        Toaster.longToast("In progress");
+                        Toaster.longToast(Constant.TOAST_MESSAGE);
                         break;
 
                     case 3:
-                        Toaster.longToast("In progress");
+                        Toaster.longToast(Constant.TOAST_MESSAGE);
                         break;
 
 
                     case 4:
-                        Toaster.longToast("In progress");
+                        Toaster.longToast(Constant.TOAST_MESSAGE);
                         break;
 
                     case 5:

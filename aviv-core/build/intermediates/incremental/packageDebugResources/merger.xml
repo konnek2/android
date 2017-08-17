@@ -57,7 +57,14 @@
         <item name="android:gravity">center</item>
         <item name="android:padding">@dimen/padding_common</item>
         <item name="typeface">roboto_light</item>
-    </style></file><file path="D:\studioworkspace\Konnek2\aviv-core\src\main\res\values\themes.xml" qualifiers=""><style name="AppTheme" parent="AppTheme.Base"/><style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+    </style></file><file path="D:\studioworkspace\Konnek2\aviv-core\src\main\res\values\themes.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style><style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/><style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/><style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorControlActivated">@color/color_accent</item>
         <item name="colorControlHighlight">@color/color_accent</item>
         <item name="colorControlNormal">@color/color_accent</item>

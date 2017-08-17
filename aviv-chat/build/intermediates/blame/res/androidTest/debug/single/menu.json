@@ -16,6 +16,10 @@
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\menu\\activity_login.xml"
     },
     {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\menu_tab.xml",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\menu\\menu_tab.xml"
+    },
+    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\activity_opponents.xml",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\menu\\activity_opponents.xml"
     },

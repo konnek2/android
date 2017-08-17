@@ -52,12 +52,12 @@
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-xhdpi\\ic_camera_front.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-xhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_volume_off.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-xhdpi\\ic_volume_off.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-xhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\notification_bg_low_normal.9.png",
@@ -354,6 +354,10 @@
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\design_ic_visibility.png",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\e4675d66fdb1531f6e64bdad9070fe37c3346c04\\output\\res\\drawable-xhdpi-v4\\design_ic_visibility.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_call_back.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-xhdpi\\ic_call_back.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png",

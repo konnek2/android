@@ -1,11 +1,11 @@
 [
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_dialog_material_background.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable\\abc_dialog_material_background.xml"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_dialog_material_background.xml",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable\\abc_dialog_material_background.xml"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\common_google_signin_btn_icon_light.xml",
@@ -44,12 +44,12 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable\\abc_seekbar_thumb_material.xml"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\common_google_signin_btn_icon_disabled.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\405180c34d875aee2d751d4ddeef63c46de3c830\\output\\res\\drawable\\common_google_signin_btn_icon_disabled.xml"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_ratingbar_material.xml",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable\\abc_ratingbar_material.xml"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\common_google_signin_btn_icon_disabled.xml",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\405180c34d875aee2d751d4ddeef63c46de3c830\\output\\res\\drawable\\common_google_signin_btn_icon_disabled.xml"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_tab_indicator_material.xml",

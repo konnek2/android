@@ -1,6 +1,7 @@
 package com.aviv.konnek2.adapters;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +19,9 @@ public class MoneyAdapter extends BaseAdapter {
 
     private Context mContext;
     private final String[] moneylName;
-    private final int[] moneyImage;
+    private final TypedArray moneyImage;
 
-    public MoneyAdapter(Context c, String[] moneylName, int[] moneyImage) {
+    public MoneyAdapter(Context c, String[] moneylName, TypedArray moneyImage) {
         mContext = c;
         this.moneylName = moneylName;
         this.moneyImage = moneyImage;
@@ -53,7 +54,7 @@ public class MoneyAdapter extends BaseAdapter {
             TextView textView = (TextView) grid.findViewById(R.id.grid_moneytext);
             ImageView imageView = (ImageView) grid.findViewById(R.id.grid_moneyimage);
             textView.setText(moneylName[position]);
-            imageView.setImageResource(moneyImage[position]);
+            imageView.setImageResource(moneyImage.getResourceId(position, 0));
         } else {
             grid = (View) convertView;
         }

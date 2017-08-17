@@ -1943,11 +1943,18 @@
         <item name="android:textColor">@color/text_color_light_grey</item>
         <item name="android:textSize">@dimen/splash_version_text_size</item>
         <item name="typeface">roboto_light</item>
-    </style><color name="background_app_color">#ffffff</color><string name="splash_app_version">v %s</string><string name="dlg_ok">OK</string><style name="SplashLogoStyle" parent="WrapContent">
+    </style><color name="background_app_color">#ffffff</color><string name="splash_app_version">v %s</string><string name="dlg_ok">OK</string><style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/><style name="SplashLogoStyle" parent="WrapContent">
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:src">@drawable/qb_logo</item>
-    </style><string name="error_parsing_configs">Parsing sample\'s configs error</string><string name="dlg_error">Error</string><dimen name="padding_common1">3dp</dimen><color name="text_color_medium_grey">#b1b1b1</color><style name="AppTheme" parent="AppTheme.Base"/><style name="BorderlessImageButtonStyle" parent="WrapContent">
+    </style><string name="error_parsing_configs">Parsing sample\'s configs error</string><string name="dlg_error">Error</string><dimen name="padding_common1">3dp</dimen><color name="text_color_medium_grey">#b1b1b1</color><style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style><style name="BorderlessImageButtonStyle" parent="WrapContent">
         <item name="android:background">@null</item>
         <item name="android:padding">@dimen/padding_common</item>
         <item name="android:scaleType">centerInside</item>
@@ -1988,7 +1995,7 @@
         <item name="android:gravity">center</item>
         <item name="android:padding">@dimen/padding_common</item>
         <item name="typeface">roboto_light</item>
-    </style><color name="colorPrimaryDark">#303F9F</color><string name="dlg_choose_image_from">Select photo from…</string><string name="dlg_cancel">Cancel</string><color name="text_color_primary">#212121</color><color name="color_primary_dark">#182681</color><dimen name="fab_margin_bottom">16dp</dimen><color name="text_color_black">#000000</color><string name="dlg_retry">Retry</string><style name="WeightWidth">
+    </style><color name="colorPrimaryDark">#303F9F</color><string name="dlg_choose_image_from">Select photo from…</string><string name="dlg_cancel">Cancel</string><style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/><color name="text_color_primary">#212121</color><color name="color_primary_dark">#182681</color><dimen name="fab_margin_bottom">16dp</dimen><color name="text_color_black">#000000</color><string name="dlg_retry">Retry</string><style name="WeightWidth">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
     </style><color name="text_color_medium_dark_grey">#747474</color></file><file path="D:\studioworkspace\Konnek2\aviv-core\build\intermediates\bundles\debug\res\values-v21\values-v21.xml" qualifiers="v21"><style name="AppTheme" parent="AppTheme.Base">

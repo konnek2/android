@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <application
         android:name=".Konnnek2"
@@ -29,9 +30,9 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="db2959a557eb01cbc56cbd1d01ce2e6943238699"/>
+        <!--<meta-data-->
+        <!--android:name="io.fabric.ApiKey"-->
+        <!--android:value="db2959a557eb01cbc56cbd1d01ce2e6943238699"/>-->
 
         <activity
             android:name=".ui.activity.SignInActivity"
@@ -74,19 +75,12 @@
             android:screenOrientation="portrait">
         </activity>
 
-        <!-- <receiver -->
-        <!-- android:name=".utils.IncomingSms" -->
-        <!-- android:exported="true"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.provider.Telephony.SMS_RECEIVED"/> -->
-        <!-- </intent-filter> -->
-        <!-- </receiver> -->
 
         <service android:name=".data.services.SignInQbService"/>
 
         <receiver android:name=".utils.AlarmReceiver"/>
 
-        <service android:name="com.quickblox.sample.chat.gcm.MyFirebaseMessagingService">
+        <service android:name=".data.network.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
@@ -109,10 +103,7 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@mipmap/ic_launcher"/>
-        <!--
-             Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more.
-        -->
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorPrimary"/>
@@ -124,6 +115,10 @@
             android:parentActivityName=".ui.activity.HomeActivity"
             android:screenOrientation="portrait">
         </activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d3339e87387bfab7722609aa2e286edf39d1784f"/>
     </application>
 
 </manifest>

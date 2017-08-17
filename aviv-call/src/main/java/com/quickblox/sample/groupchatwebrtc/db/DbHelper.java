@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.quickblox.sample.groupchatwebrtc.utils.Constant;
 import com.quickblox.sample.groupchatwebrtc.utils.Consts;
 
 /**
@@ -14,7 +15,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private String TAG = DbHelper.class.getSimpleName();
 
-    private static final String DB_NAME = "groupchatwebrtcDB";
+    private static final String DB_NAME = Constant.DB_NAME;
 
     public static final String DB_TABLE_NAME = "users";
     public static final String DB_COLUMN_ID = "ID";
@@ -32,7 +33,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.d(TAG, "--- onCreate database ---");
+
         db.execSQL("create table " + DB_TABLE_NAME + " ("
                 + DB_COLUMN_ID + " integer primary key autoincrement,"
                 + DB_COLUMN_USER_ID + " integer,"

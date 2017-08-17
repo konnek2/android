@@ -56,15 +56,6 @@ public class UsersTable {
 
     public boolean insertuserDetails(UserModel userModel) {
 
-        Log.d("UserTable ", "getFirst_name                 " + userModel.getName());
-        Log.d("UserTable ", "getUserid                 " + userModel.getUserId());
-        Log.d("UserTable ", "getMobile_number  " + userModel.getMobileNumber());
-        Log.d("UserTable ", "getEmail  " + userModel.getEmail());
-        Log.d("UserTable ", "getCountry  " + userModel.getCountry());
-        Log.d("UserTable ", "getMobile_number  " + userModel.getCity());
-        Log.d("UserTable ", "getCity  " + userModel.getGender());
-        Log.d("UserTable ", "getDateOfBirth  " + userModel.getDateOfBirth());
-
         long flag1 = 0;
         boolean isUpdated = false;
         try {
@@ -80,14 +71,13 @@ public class UsersTable {
                     mCursor1.close();
                 }
                 flag1 = db.insert(TABLE_REG_USERS, null, initialValues1);
-                Log.d("UserTable ", "insert==" + flag1);
+
                 isUpdated = true;
 
             } else {
                 flag1 = db.update(TABLE_REG_USERS, initialValues1, MOBILE_NUMBER + "=? " + " AND " +
                         USER_ID + "=?", new String[]{String.valueOf(userModel.getMobileNumber()), userModel.getUserId()});
 
-                Log.d("UserTable ", "update==" + flag1);
             }
 
             mCursor1.close();
@@ -114,7 +104,7 @@ public class UsersTable {
             initialValues.put(ZIPCODE, userModel.getZipCode());
             initialValues.put(CREATED_AT, userModel.getCreatedAt());
             initialValues.put(UPDATED_AT, userModel.getUpdatedAt());
-            Log.d("UserTable ", "initialValues==" + initialValues.size());
+
 
             // Date  to  String
         } catch (Exception e) {
@@ -125,8 +115,7 @@ public class UsersTable {
 
 
     public UserModel getUserDetails(String mobileNumber, String userId) {
-        Log.d("PROFILE123", "User Table   userId " + userId);
-        Log.d("PROFILE123", "User Table   mobileNumber " + mobileNumber);
+
         UserModel userModel = null;
         try {
             Cursor mCursor = db.query(TABLE_REG_USERS, new String[]{
@@ -156,15 +145,6 @@ public class UsersTable {
             userModel = new UserModel();
             for (int counter = 0; counter < mCursor.getCount(); counter++) {
 
-                Log.d("PROFILE", "User Table getUserDetails  1 " + mCursor.getString(mCursor.getColumnIndex(USER_ID)));
-                Log.d("PROFILE", "User Table getUserDetails  2 " + mCursor.getString(mCursor.getColumnIndex(FIRST_NAME)));
-                Log.d("PROFILE", "User Table getUserDetails  4 " + mCursor.getString(mCursor.getColumnIndex(MOBILE_NUMBER)));
-                Log.d("PROFILE", "User Table getUserDetails  5 " + mCursor.getString(mCursor.getColumnIndex(DATA_OF_BIRTH)));
-                Log.d("PROFILE", "User Table getUserDetails  6 " + mCursor.getString(mCursor.getColumnIndex(EMAIL)));
-                Log.d("PROFILE", "User Table getUserDetails  7 " + mCursor.getString(mCursor.getColumnIndex(GENDER)));
-                Log.d("PROFILE", "User Table getUserDetails  8 " + mCursor.getString(mCursor.getColumnIndex(CITY)));
-                Log.d("PROFILE", "User Table getUserDetails  9" + mCursor.getString(mCursor.getColumnIndex(COUNTRY)));
-                Log.d("PROFILE", "User Table getUserDetails  10 " + mCursor.getString(mCursor.getColumnIndex(ZIPCODE)));
 
                 userModel.setUserId(mCursor.getString(mCursor.getColumnIndex(USER_ID)));
                 userModel.setName(mCursor.getString(mCursor.getColumnIndex(FIRST_NAME)));

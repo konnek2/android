@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.util.Log;
 
+import com.quickblox.sample.groupchatwebrtc.utils.Constant;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -27,12 +29,12 @@ public class CallTableManager {
     public void databaseDB(Context context) {
         try {
 
-            Log.d("CallTableManager", "databaseDB inside");
+
             File sd = Environment.getExternalStorageDirectory();
             File data = Environment.getDataDirectory();
             if (sd.canWrite()) {
-                String currentDBPath = "//data//" + "com.aviv.konnek2" + "//databases//" + "konnek2";
-                String backupDBPath = "konnek2call" + ".backup";
+                String currentDBPath = Constant.CALL_DB_CURRENT_PATH;
+                String backupDBPath = Constant.CALL_DB_BACKUP_PATH;
                 File currentDB = new File(data, currentDBPath);
                 File backupDB = new File(sd, backupDBPath);
                 FileChannel src = new FileInputStream(currentDB).getChannel();
@@ -40,11 +42,11 @@ public class CallTableManager {
                 dst.transferFrom(src, 0, src.size());
                 src.close();
                 dst.close();
-                Log.d("CallTableManager", "databaseDB inside if");
+
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.d("CallTableManager", "databaseDB inside Exception" + e);
+
         }
     }
 }

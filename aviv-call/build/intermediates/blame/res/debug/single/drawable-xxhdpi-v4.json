@@ -24,12 +24,12 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\e4675d66fdb1531f6e64bdad9070fe37c3346c04\\output\\res\\drawable-xxhdpi-v4\\design_ic_visibility.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-xxhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_refresh.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-xxhdpi\\ic_refresh.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-xxhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_call_micro_phone_on.png",
@@ -242,6 +242,10 @@
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_camera_rear.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-xxhdpi\\ic_camera_rear.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_call_back.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\src\\main\\res\\drawable-xxhdpi\\ic_call_back.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_call_grey.png",

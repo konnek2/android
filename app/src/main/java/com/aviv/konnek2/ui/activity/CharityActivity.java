@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aviv.konnek2.R;
+import com.aviv.konnek2.utils.Constant;
 import com.quickblox.sample.core.utils.Toaster;
 
 public class CharityActivity extends AppCompatActivity {
@@ -39,7 +40,7 @@ public class CharityActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar_charity);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setSubtitle("Home > User Profile");
+        getSupportActionBar().setSubtitle(Constant.HOME+Constant.GREATER_THAN+Constant.CHARITY);
         toolbar.setNavigationIcon(R.drawable.ic_app_back);
         toolbar.setSubtitleTextColor(getResources().getColor(R.color.white));
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.charity_auto_txt_view);
@@ -62,8 +63,7 @@ public class CharityActivity extends AppCompatActivity {
                 charityImageView.setImageResource(charityImage[position]);
                 charityTextview.setText(charityDescription[position]);
                 Toaster.longToast(charityName[position]);
-                Log.d("CHARTY", " autoCompleteTextView charityImage : : :   " + charityImage[position]);
-                Log.d("CHARTY", " autoCompleteTextView charityDescription : : ; " + charityDescription[position]);
+
             }
 
             @Override

@@ -1,7 +1,7 @@
 
 package com.quickblox.sample.chat.ui.fragment;
 
-import android.app.Activity;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -27,10 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
-import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 import com.quickblox.chat.QBChatService;
 import com.quickblox.chat.QBIncomingMessagesManager;
 import com.quickblox.chat.QBSystemMessagesManager;
@@ -124,6 +121,8 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
 
     /*New Implemendation*/
     private ArrayList<QBChatDialog> qbChatDialogs;
+    long currentTime;
+    long userLastRequestAtTime;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, DialogsActivity.class);
@@ -134,6 +133,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         googlePlayServicesHelper = new GooglePlayServicesHelper();
         pushBroadcastReceiver = new PushBroadcastReceiver();
         allDialogsMessagesListener = new AllDialogsMessageListener();
@@ -143,7 +143,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
 
         registerQbChatListeners();
         if (QbDialogHolder.getInstance().getDialogs().size() > 0) {
-            Log.d("ChatFragment", "getDialogs().size() > 0 IF ");
+
             loadDialogsFromQb(true, true);
         } else {
             loadDialogsFromQb(false, true);
@@ -153,6 +153,8 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         View view = inflater.inflate(R.layout.activity_dialogs, container, false);
         setHasOptionsMenu(true);
         initUi(view);
@@ -179,6 +181,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
         super.onDestroy();
         unregisterQbChatListeners();
         getActivity().unregisterReceiver(MultipleUpdate);
+        getActivity().unregisterReceiver(profileImageBroadCast);
     }
 
     @Override
@@ -190,9 +193,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-//        if (isProcessingResultInProgress) {
-//            return super.onOptionsItemSelected(item);
-//        }
+//
         int i = item.getItemId();
         if (i == R.id.menu_dialogs_action_logout) {
             userLogout();
@@ -209,9 +210,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
             getActivity().invalidateOptionsMenu();
             return true;
         } else if (i == R.id.menu_group_chat1) {
-//            Toaster.shortToast("In Progress");
-//            Intent intent = new Intent(com.quickblox.sample.chat.utils.StringUtils.NOTIFY_ONE_TO_ONE);
-//            getActivity().send""Broadcast(intent);
+
             SelectUsersActivity.startForResult(getActivity(), REQUEST_SELECT_PEOPLE);
             getActivity().invalidateOptionsMenu();
             return true;
@@ -224,7 +223,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d("ChatFragment", "onActivityResult ");
+
         if (resultCode == RESULT_OK) {
             isProcessingResultInProgress = true;
             if (requestCode == REQUEST_SELECT_PEOPLE) {
@@ -232,26 +231,25 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
                         .getSerializableExtra(EXTRA_QB_USERS);
 
                 if (isPrivateDialogExist(selectedUsers)) {
-                    Log.d("ChatFragment", "onActivityResult isPrivateDialogExist ");
+
                     selectedUsers.remove(ChatHelper.getCurrentUser());
                     QBChatDialog existingPrivateDialog = QbDialogHolder.getInstance().getPrivateDialogWithUser(selectedUsers.get(0));
                     isProcessingResultInProgress = false;
                     ChatActivity.startForResult(getActivity(), REQUEST_DIALOG_ID_FOR_UPDATE, existingPrivateDialog);
                 } else {
-                    Log.d("ChatFragment", "onActivityResult isPrivateDialogExist ELSE ");
+
 //                    ProgressDialogFragment.show(getFragmentManager(), R.string.create_chat);
                     progressBar.setVisibility(View.VISIBLE);
                     createDialog(selectedUsers);
                 }
             } else if (requestCode == REQUEST_DIALOG_ID_FOR_UPDATE) {
 
-                Log.d("ChatFragment", "REQUEST_DIALOG_ID_FOR_UPDATE else if ");
                 if (data != null) {
-                    Log.d("ChatFragment", "REQUEST_DIALOG_ID_FOR_UPDATE else if data != null ");
+
                     String dialogId = data.getStringExtra(EXTRA_DIALOG_ID);
                     loadUpdatedDialog(dialogId);
                 } else {
-                    Log.d("ChatFragment", "REQUEST_DIALOG_ID_FOR_UPDATE  ELSE ");
+
                     isProcessingResultInProgress = false;
                     updateDialogsList();
                 }
@@ -264,7 +262,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
     private boolean isPrivateDialogExist(ArrayList<QBUser> allSelectedUsers) {
         ArrayList<QBUser> selectedUsers = new ArrayList<>();
         try {
-            Log.d("ChatFragment", "isPrivateDialogExist ");
+
             selectedUsers.addAll(allSelectedUsers);
             selectedUsers.remove(ChatHelper.getCurrentUser());
         } catch (Exception e) {
@@ -277,14 +275,12 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
     loadUpdatedDialog(String dialogId) {
 
         try {
-            Log.d("ChatFragment", "    loadUpdatedDialog  ");
-            Log.d("ChatFragment", "loadUpdatedDialog dialogId " + dialogId);
+
 
             ChatHelper.getInstance().getDialogById(dialogId, new QbEntityCallbackImpl<QBChatDialog>() {
                 @Override
                 public void onSuccess(QBChatDialog result, Bundle bundle) {
 
-                    Log.d("ChatFragment", "    loadUpdatedDialog  onSuccess  " + result);
                     isProcessingResultInProgress = false;
                     QbDialogHolder.getInstance().addDialog(result);
 
@@ -293,7 +289,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
 
                 @Override
                 public void onError(QBResponseException e) {
-                    Log.d("ChatFragment", "loadUpdatedDialog  onError");
+
                     isProcessingResultInProgress = false;
                 }
             });
@@ -305,16 +301,16 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
     }
 
     public void adapterNotify() {
-        Log.d("MULTIUPDATE", "adapterNotify 1 ");
+
+
         dialogsAdapter = new DialogsAdapter(getActivity(), new ArrayList<>(QbDialogHolder.getInstance().getDialogs().values()));
         dialogsListView.setAdapter(dialogsAdapter);
         dialogsAdapter.notifyDataSetChanged();
-        Log.d("MULTIUPDATE", "adapterNotify 2 ");
+
     }
 
     public ActionMode startSupportActionMode(ActionMode.Callback callback) {
 
-        Log.d("ChatFragment", "ActionMode ");
         currentActionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(callback);
         return currentActionMode;
     }
@@ -330,15 +326,12 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
     }
 
     private void updateDialogsList() {
-        Log.d("ChatFragment", "  updateDialogsList  ");
         requestBuilder.setSkip(skipRecords = 0);
-        Log.d("MULTIUPDATE", "updateDialogsList  IF ");
         loadDialogsFromQb(true, true);
     }
 
     private void initUi(View view) {
 
-        Log.d("ChatFragment", "initUi  ");
         appImageIdPresenter = new AppImageIdPresenter(this);
         qbUsersList = new ArrayList<>();
         getActivity().registerReceiver(MultipleUpdate, new IntentFilter(Constant.NOTIFY_MULTIPLE));
@@ -360,7 +353,6 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                Log.d("ChatFragment", "OnItemClick  list 1 " + parent.getItemAtPosition(position));
                 QBChatDialog selectedDialog = (QBChatDialog) parent.getItemAtPosition(position);
                 if (currentActionMode == null) {
                     Log.d("ChatFragment", " currentActionMode  != null IF OnItemClick  list 2 " + parent.getItemAtPosition(position));
@@ -374,7 +366,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Log.d("ChatFragment", "LongClick  list 2 " + parent.getItemAtPosition(position));
+
                 QBChatDialog selectedDialog = (QBChatDialog) parent.getItemAtPosition(position);
                 startSupportActionMode(new DeleteActionModeCallback());
                 dialogsAdapter.selectItem(selectedDialog);
@@ -422,8 +414,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
                     new QBEntityCallback<QBChatDialog>() {
                         @Override
                         public void onSuccess(QBChatDialog dialog, Bundle args) {
-                            Log.d("ChatFragment", "createDialog  onSuccess  dialog" + dialog.getRoomJid());
-                            Log.d("ChatFragment", "createDialog  onSuccess  dialog" + dialog.getDialogId());
+
                             isProcessingResultInProgress = false;
                             dialogsManager.sendSystemMessageAboutCreatingDialog(systemMessagesManager, dialog);
                             ChatActivity.startForResult(getActivity(), REQUEST_DIALOG_ID_FOR_UPDATE, dialog);
@@ -433,7 +424,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
 
                         @Override
                         public void onError(QBResponseException e) {
-                            Log.d("ChatFragment", "  createDialog onError");
+
                             isProcessingResultInProgress = false;
 //                            ProgressDialogFragment.hide(getFragmentManager());
                             progressBar.setVisibility(View.GONE);
@@ -449,7 +440,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
 
     private void loadDialogsFromQb(final boolean silentUpdate, final boolean clearDialogHolder) {
         try {
-            Log.d("ChatFragment", "loadDialogsFromQb " + silentUpdate + "====> " + clearDialogHolder);
+
             isProcessingResultInProgress = true;
             if (!silentUpdate) {
                 progressBar.setVisibility(View.VISIBLE);
@@ -457,11 +448,11 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
             ChatHelper.getInstance().getDialogs(requestBuilder, new QBEntityCallback<ArrayList<QBChatDialog>>() {
                 @Override
                 public void onSuccess(ArrayList<QBChatDialog> dialogs, Bundle bundle) {
-                    Log.d("ChatFragment", "  loadDialogsFromQb  onSuccess");
+
                     isProcessingResultInProgress = false;
                     progressBar.setVisibility(View.GONE);
                     if (clearDialogHolder) {
-                        Log.d("ChatFragment", "  loadDialogsFromQb  clearDialogHolder IF ");
+
                         QbDialogHolder.getInstance().clear();
                     }
                     QbDialogHolder.getInstance().addDialogs(dialogs);
@@ -470,7 +461,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
 
                 @Override
                 public void onError(QBResponseException e) {
-                    Log.d("ChatFragment", "  loadDialogsFromQb  onError");
+
                     isProcessingResultInProgress = false;
                     progressBar.setVisibility(View.GONE);
                 }
@@ -482,9 +473,8 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
     }
 
     private void updateDialogsAdapter() {
-        Log.d("ChatFragment", "updateDialogsAdapter   ");
+
         if (dialogsAdapter != null) {
-            Log.d("ChatFragment", "updateDialogsAdapter dialogsAdapter !=null IF   ");
             dialogsAdapter.updateList(new ArrayList<>(QbDialogHolder.getInstance().getDialogs().values()));
         } else {
             Common.displayToast("Error while Update Adapter");
@@ -520,7 +510,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
 
     @Override
     public void imageIdCallBack(String userId, String imageId) {
-        Log.d("IMAGEDOWN", "imageIdCallBack : " + imageId);
+
         if (!FolderCreator.isCheckFileExit(userId))
             userImageDonload(userId, imageId);
 
@@ -528,7 +518,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
 
     private class DeleteActionModeCallback implements ActionMode.Callback {
         public DeleteActionModeCallback() {
-            fab.hide();
+//            fab.hide();
         }
 
         @Override
@@ -559,17 +549,17 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
         public void onDestroyActionMode(ActionMode mode) {
             currentActionMode = null;
             dialogsAdapter.clearSelection();
-            fab.show();
+//            fab.show();
         }
 
         private void deleteSelectedDialogs() {
-            Log.d("ChatFragment", "  deleteSelectedDialogs");
+
             final Collection<QBChatDialog> selectedDialogs = dialogsAdapter.getSelectedItems();
             try {
                 ChatHelper.getInstance().deleteDialogs(selectedDialogs, new QBEntityCallback<ArrayList<String>>() {
                     @Override
                     public void onSuccess(ArrayList<String> dialogsIds, Bundle bundle) {
-                        Log.d("ChatFragment", "  deleteSelectedDialogs  onSuccess ");
+
                         QbDialogHolder.getInstance().deleteDialogs(dialogsIds);
                         updateDialogsAdapter();
                     }
@@ -577,7 +567,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
                     @Override
                     public void onError(QBResponseException e) {
                         deleteSelectedDialogs();
-                        Log.d("ChatFragment", "  deleteSelectedDialogs  onError ");
+
                         Toaster.longToast(R.string.dialogs_deletion_error);
                     }
                 });
@@ -590,13 +580,9 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
     private class PushBroadcastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.d("ChatFragment", "  PushBroadcastReceiver   EXTRA_GCM_MESSAGE " + intent.getStringExtra("message"));
-            // Get extra data included in the Intent
-//            String message = intent.getStringExtra(GcmConsts.EXTRA_GCM_MESSAGE);
+
             String message = intent.getStringExtra("message");
-            Log.v(TAG, "Received broadcast " + intent.getAction() + " with data: " + message);
             requestBuilder.setSkip(skipRecords = 0);
-            Log.d("ChatFragment", "  PushBroadcastReceiver   message " + message);
             loadDialogsFromQb(true, true);
         }
     }
@@ -606,7 +592,6 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
         public void processMessage(final QBChatMessage qbChatMessage) {
             dialogsManager.onSystemMessageReceived(qbChatMessage);
             adapterNotify();
-            Log.d("ChatFragment", "SystemMessagesListener 1234 ");
             try {
             } catch (Exception e) {
                 e.getMessage();
@@ -628,12 +613,12 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
     }
 
     private void loadUsersFromQb() {
-        Log.d("ChatFragment", "  loadUsersFromQb");
+
         List<String> tags = new ArrayList<>();
         dialogsListView.setVisibility(View.GONE);
         try {
 
-            Log.d("ChatFragment", "  loadUsersFromQb  .getUsersTag() " + App.getSampleConfigs().getUsersTag());
+
             tags.add(App.getSampleConfigs().getUsersTag());
             progressBar.setVisibility(View.VISIBLE);
             QBUsers.getUsersByTags(tags, null).performAsync(new QBEntityCallback<ArrayList<QBUser>>() {
@@ -641,13 +626,15 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
                 public void onSuccess(ArrayList<QBUser> result, Bundle params) {
 
                     try {
+
                         QBUser currentUser = ChatHelper.getCurrentUser();
                         result.remove(currentUser);
                         qbUsersList.clear();
                         qbUsersList = result;
                         App.messageStatusTableDAO.saveAllUsers(qbUsersList);
-                        App.tableManagerDAO.databaseDB(App.getInstance());
+//                        App.tableManagerDAO.databaseDB(App.getInstance());
                         loadQbUsers(qbUsersList);
+
                         progressBar.setVisibility(View.GONE);
                     } catch (Exception e) {
                         e.getMessage();
@@ -656,7 +643,6 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
 
                 @Override
                 public void onError(QBResponseException e) {
-                    Log.d("ChatFragment", "  loadUsersFromQb onError" + e.getMessage());
                     loadUsersFromQb();
                     progressBar.setVisibility(View.GONE);
                 }
@@ -667,36 +653,22 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
     }
 
     public void loadQbUsers(ArrayList<QBUser> qbUsersList) {
+
         progressBar.setVisibility(View.VISIBLE);
         qbChatDialogs = new ArrayList<QBChatDialog>();
         qbChatDialogs.clear();
         qbUsers = App.messageStatusTableDAO.getAllQBUsers(qbUsersList);
-        Log.d("QB_USER_SIZE", " SIZE FROM SQLITE (): " + qbUsers.size());
         if (qbUsers.size() != 0 && qbUsers != null) {
             for (int j = 0; j < qbUsers.size(); j++) {
                 ArrayList<QBUser> qbUserslist = new ArrayList<>();
                 qbUserslist.add(qbUsers.get(j));
                 oneToOneCreatedDialogs(qbUserslist);
                 getProfileImageId(qbUsers.get(j).getId());
+
             }
         }
-        Log.d("QB_USER_SIZE", " SIZE FROM SQLITE (): " + qbUsers.size());
-        dialogsAdapter = new DialogsAdapter(getActivity(), qbChatDialogs);
-        dialogsListView.setAdapter(dialogsAdapter);
-        progressBar.setVisibility(View.GONE);
-        dialogsListView.setVisibility(View.VISIBLE);
 
-    }
-
-    private void passResultToCallerActivity() {
-
-        Log.d("ChatFragment", "  passResultToCallerActivity");
-        Intent result = new Intent();
-        ArrayList<QBUser> selectedUsers = new ArrayList<>(usersAdapter.getSelectedUsers());
-        result.putExtra(EXTRA_QB_USERS, selectedUsers);
-        getActivity().setResult(RESULT_OK, result);
-
-//        getActivity().finish();
+//
     }
 
     BroadcastReceiver profileImageBroadCast = new BroadcastReceiver() {
@@ -709,56 +681,42 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
     BroadcastReceiver MultipleUpdate = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.d("MULTIUPDATE", "BroadcastReceiver   ");
-            Log.d("MULTIUPDATE", "BroadcastReceiver onReceive RESULT_CODE   " + intent.getSerializableExtra(RESULT_CODE));
-            Log.d("MULTIUPDATE", "BroadcastReceiver onReceive   REQUEST_CODE  " + intent.getSerializableExtra(REQUEST_CODE));
-            Log.d("MULTIUPDATE", "BroadcastReceiver onReceive   EXTRA_DIALOG_ID  " + intent.getSerializableExtra(EXTRA_DIALOG_ID));
             try {
+
+
                 int resultCode = (int) intent.getSerializableExtra(RESULT_CODE);
                 int requestCode = (int) intent.getSerializableExtra(REQUEST_CODE);
                 String qbChatDialogID = (String) intent.getSerializableExtra(EXTRA_DIALOG_ID);
 
-                Log.d("MULTIUPDATE", "BroadcastReceiver resultCode : : :   " + resultCode + "  requestCode  : : : " + requestCode + "qbChatDialogID : :  :" + qbChatDialogID);
-
                 if (resultCode == RESULT_OK) {
-                    Log.d("MULTIUPDATE", "BroadcastReceiver RESULT_OK  IF  " + RESULT_OK);
                     isProcessingResultInProgress = true;
                     if (requestCode == REQUEST_SELECT_PEOPLE) {
-                        Log.d("MULTIUPDATE", "BroadcastReceiver REQUEST_SELECT_PEOPLE  " + REQUEST_SELECT_PEOPLE);
+
                         ArrayList<QBUser> selectedUsers = (ArrayList<QBUser>) intent
                                 .getSerializableExtra(EXTRA_QB_USERS);
-                        Log.d("MULTIUPDATE", "BroadcastReceiver selectedUsers    " + selectedUsers.size());
-                        Log.d("MULTIUPDATE", "BroadcastReceiver selectedUsers getFileId   " + selectedUsers.get(0).getFileId());
-                        Log.d("SURESH123", "BroadcastReceiver selectedUsers getFileId   " + selectedUsers.get(0).getFileId());
-                        Log.d("SURESH123", "BroadcastReceiver selectedUsers getId   " + selectedUsers.get(0).getId());
 
                         if (isPrivateDialogExist(selectedUsers)) {
-                            Log.d("MULTIUPDATE", "BroadcastReceiver selectedUsers IF   " + selectedUsers.size());
+
                             selectedUsers.remove(ChatHelper.getCurrentUser());
                             QBChatDialog existingPrivateDialog = QbDialogHolder.getInstance().getPrivateDialogWithUser(selectedUsers.get(0));
                             isProcessingResultInProgress = false;
                             ChatActivity.startForResult(getActivity(), REQUEST_DIALOG_ID_FOR_UPDATE, existingPrivateDialog);
                         } else {
-                            Log.d("MULTIUPDATE", "BroadcastReceiver selectedUsers ELSE 007   " + selectedUsers.size());
 //                    ProgressDialogFragment.show(getFragmentManager(), R.string.create_chat);
                             progressBar.setVisibility(View.VISIBLE);
                             createDialogs(selectedUsers);
                         }
                     } else if (requestCode == REQUEST_DIALOG_ID_FOR_UPDATE) {
-                        Log.d("MULTIUPDATE", "BroadcastReceiver REQUEST_DIALOG_ID_FOR_UPDATE  " + REQUEST_DIALOG_ID_FOR_UPDATE);
                         if (intent != null) {
-                            Log.d("MULTIUPDATE", "BroadcastReceiver intent !=null  ");
                             String dialogId = intent.getStringExtra(EXTRA_DIALOG_ID);
-                            Log.d("MULTIUPDATE", "BroadcastReceiver intent !=null  dialogId  " + dialogId);
                             loadUpdatedDialog(dialogId);
                         } else {
-                            Log.d("MULTIUPDATE", "BroadcastReceiver REQUEST_DIALOG_ID_FOR_UPDATE ELSE  ");
                             isProcessingResultInProgress = false;
                             updateDialogsList();
                         }
                     }
                 } else {
-                    Log.d("MULTIUPDATE", "updateDialogsList  RESULT_OK  ELSE");
+
                     updateDialogsAdapter();
                 }
             } catch (Exception ex) {
@@ -770,38 +728,25 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
 
     public void createDialogs(final ArrayList<QBUser> selectedUsers) {
 
-        Log.d("SURESH123", "createDialogs  selectedUsers " + selectedUsers);
-        Log.d("SURESH123", "createDialogs  selectedUsers getId ===>" + selectedUsers.get(0).getId());
-        Log.d("SURESH123", "createDialogs  selectedUsers getFileId ===>" + selectedUsers.get(0).getFileId());
         ChatHelper.getInstance().createDialogWithSelectedUsers(selectedUsers,
                 new QBEntityCallback<QBChatDialog>() {
                     @Override
                     public void onSuccess(QBChatDialog dialog, Bundle args) {
-                        Log.d("MULTIUPDATE", "createDialogs  onSuccess " + dialog);
-                        Log.d("ChatFragment", "createDialogs  onSuccess " + dialog);
-                        Log.d("MULTIUPDATE", "createDialogs  onSuccess  dialog getRoomJid " + dialog.getRoomJid());
-                        Log.d("MULTIUPDATE", "createDialogs  systemMessagesManager  " + systemMessagesManager);
+
                         if (selectedUsers.size() > 0) {
-                            Log.d("MULTIUPDATE", "createDialogs  IF >0 ");
-                            Log.d("ChatFragment", "createDialogs  IF >0 ");
+
                             isProcessingResultInProgress = false;
                             dialogsManager.sendSystemMessageAboutCreatingDialog(systemMessagesManager, dialog);
                             ChatActivity.startForResult(getActivity(), REQUEST_DIALOG_ID_FOR_UPDATE, dialog);
-//                                ProgressDialogFragment.hide(getFragmentManager());
                             progressBar.setVisibility(View.GONE);
-//                                    usersAdapter.clearSelectedUsers();
                         } else {
-                            Log.d("MULTIUPDATE", "createDialogs  ELSE");
                             Toaster.shortToast("Select at least one User Many");
                         }
                     }
 
                     @Override
                     public void onError(QBResponseException e) {
-                        Log.d("CHATFRAGMENT", " oneToManyUpdate createDialog  onError  ");
-                        Log.d("ChatFragment", " oneToManyUpdate createDialog  onError  ");
                         isProcessingResultInProgress = false;
-//                                ProgressDialogFragment.hide(getFragmentManager());
                         progressBar.setVisibility(View.GONE);
                     }
                 }
@@ -810,37 +755,29 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
 
 
     public void oneToOneCreatedDialogs(final ArrayList<QBUser> selectedUsers) {
-        Log.d("ONE_TO_ONE", "oneToOneCreatedDialogs  selectedUsers SIZE " + selectedUsers.size());
-        Log.d("ONE_TO_ONE", "oneToOneCreatedDialogs  selectedUsers SIZE " + selectedUsers.get(0).getFullName());
+
         ChatHelper.getInstance().createDialogWithSelectedUsers(selectedUsers,
                 new QBEntityCallback<QBChatDialog>() {
                     @Override
                     public void onSuccess(QBChatDialog dialog, Bundle args) {
-//                        Log.d("ChatFragment", "oneToOneCreatedDialogs  onSuccess " + dialog);
-                        Log.d("ONE_TO_ONE", "oneToOneCreatedDialogs  onSuccess  dialog getRoomJid " + dialog.getRoomJid());
-                        Log.d("ONE_TO_ONE", "oneToOneCreatedDialogs  systemMessagesManager  " + systemMessagesManager);
+
                         if (selectedUsers.size() > 0) {
-                            Log.d("ONE_TO_ONE", "oneToOneCreatedDialogs  IF >0 ");
                             isProcessingResultInProgress = false;
                             dialogsManager.sendSystemMessageAboutCreatingDialog(systemMessagesManager, dialog);
-//                            ArrayList<QBChatDialog> qbChatDialogs = new ArrayList<QBChatDialog>();
                             qbChatDialogs.add(dialog);
-//                            dialogsAdapter = new DialogsAdapter(getActivity(), qbChatDialogs);
-////                            loadUpdatedDialog(dialog.getDialogId());
-//                            dialogsListView.setAdapter(dialogsAdapter);
-//                            progressBar.setVisibility(View.GONE);
-//                                    usersAdapter.clearSelectedUsers();
+                            dialogsAdapter = new DialogsAdapter(getActivity(), qbChatDialogs);
+                            dialogsListView.setAdapter(dialogsAdapter);
+                            progressBar.setVisibility(View.GONE);
+                            dialogsListView.setVisibility(View.VISIBLE);
+//
                         } else {
-                            Log.d("ONE_TO_ONE", "oneToOneCreatedDialogs  ELSE");
                             Toaster.shortToast("Select at least one User Many");
                         }
                     }
 
                     @Override
                     public void onError(QBResponseException e) {
-                        Log.d("ONE_TO_ONE", " oneToOneCreatedDialogs Error getMessage " + e.getMessage());
                         isProcessingResultInProgress = false;
-//                                ProgressDialogFragment.hide(getFragmentManager());
                         progressBar.setVisibility(View.GONE);
                     }
                 }
@@ -849,11 +786,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
 
 
     public void getProfileImageId(int userId) {
-
-//        if (!FolderCreator.isCheckFileExit(String.valueOf(userId))) {
-
         String UserId = String.valueOf(userId);
-        Log.d("profileImageDownload", "userId : " + UserId);
         if (UserId != null) {
 
             appImageIdPresenter.validateImageId(String.valueOf(userId));
@@ -864,7 +797,6 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
     }
 
     public void userImageDonload(final String userId, String imageId) {
-        Log.d("IMAGEDOWN", "down======imageId  >>>>>>" + imageId);
 
         final int fileId = Integer.parseInt(imageId);
         Bundle params = new Bundle();
@@ -872,7 +804,6 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
         QBContent.downloadFileById(fileId, params, new QBProgressCallback() {
             @Override
             public void onProgressUpdate(int progress) {
-                Log.i("IMAGEDOWN", "onProgressUpdate " + progress);
 
             }
         }).performAsync(new QBEntityCallback<InputStream>() {
@@ -880,16 +811,11 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
             public void onSuccess(final InputStream inputStream, Bundle params) {
 
                 long length = params.getLong(Consts.CONTENT_LENGTH_TAG);
-                Log.i(TAG, "content.length: " + length);
-                Log.d("IMAGEDOWN", "down  onSuccess  length =====" + length);
-
                 downloadFile(getActivity(), userId, inputStream, getActivity());
             }
 
             @Override
             public void onError(QBResponseException errors) {
-
-                Log.d("IMAGEDOWN", "down  onError  length getMessage  =====" + errors.getMessage());
 
             }
         });
@@ -902,7 +828,7 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
         Thread thread = new Thread() {
             @Override
             public void run() {
-                Log.d("IMAGEDOWN", "down  downloadFile  length =====");
+
                 try {
                     String filePath = FolderCreator.getProfileImagePath() + "/" + userId + ".png";
                     File file = new File(filePath);
@@ -912,11 +838,9 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
                     int len;
                     while ((len = inputStream.read(buffer)) != -1) {
                         stream.write(buffer, 0, len);
-                        Log.d("IMAGEDOWN", "down  downloadFile  while");
+
                     }
                     if (stream != null) {
-                        Lo.g("download done");
-                        Log.d("IMAGEDOWN", "down download done");
                         stream.close();
                         Intent intent = new Intent(Constant.NOTIFY_PROFILE_IMAGE);
                         context.sendBroadcast(intent);
@@ -929,7 +853,11 @@ public class ChatFragment extends Fragment implements DialogsManager.ManagingDia
         thread.start();
     }
 
-//
+
+    public static void chatTrigger() {
+        ChatFragment ctactFragment = new ChatFragment();
+
+    }
 
 
 }

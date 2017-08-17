@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.aviv.konnek2.R;
+import com.aviv.konnek2.utils.Constant;
 
 public class ReferFriendActivity extends AppCompatActivity {
 
@@ -19,12 +20,12 @@ public class ReferFriendActivity extends AppCompatActivity {
     private void referFriend() {
 
         String info = "";
-        info += "Hi I am using Konnek2 app please join with me";
-        info += "\n App Link:" + "https://play.google.com/store/apps";
+        info += Constant.REFER_FRIEND_MESSGAE;
+        info += Constant.PLAY_STORE_LINK;
         Intent intent = new Intent(android.content.Intent.ACTION_SEND);
-        intent.setType("text/plain");
+        intent.setType(Constant.REFER_FRIEND_ACTION_TYPE);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Konnek2");
+        intent.putExtra(Intent.EXTRA_SUBJECT, Constant.APP_NAME);
         intent.putExtra(Intent.EXTRA_TEXT, info);
         startActivity(Intent.createChooser(intent, ""));
     }

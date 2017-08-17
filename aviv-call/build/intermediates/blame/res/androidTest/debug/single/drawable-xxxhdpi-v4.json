@@ -4,12 +4,12 @@
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\debug\\res\\drawable-xxxhdpi-v4\\ic_camera_front.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-xxxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\ic_camera_rear.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\debug\\res\\drawable-xxxhdpi-v4\\ic_camera_rear.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
+        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-xxxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
@@ -20,12 +20,12 @@
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\debug\\res\\drawable-xxxhdpi-v4\\ic_call_grey.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\ic_accept_call.png",
-        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\debug\\res\\drawable-xxxhdpi-v4\\ic_accept_call.png"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\ic_person.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\debug\\res\\drawable-xxxhdpi-v4\\ic_person.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\ic_accept_call.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\debug\\res\\drawable-xxxhdpi-v4\\ic_accept_call.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\ic_person_big.png",

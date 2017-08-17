@@ -11,12 +11,15 @@
     <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!--<item name="android:windowActionBar">false</item>-->
         <!-- Customize your theme here. -->
-
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
-
         <item name="android:windowBackground">@color/background_app_color</item>
+
     </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <!-- for Call & chat TabBar-->
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
 
     <style name="AppTheme.BlueAccent">
         <item name="colorAccent">@color/color_blue_accent</item>

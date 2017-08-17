@@ -306,6 +306,9 @@
     <color name="primary_text_default_material_light">#de000000</color>
     <color name="primary_text_disabled_material_dark">#4Dffffff</color>
     <color name="primary_text_disabled_material_light">#39000000</color>
+    <color name="priority_high">#E50500</color>
+    <color name="priority_low">#0BE510</color>
+    <color name="priority_medium">#FFCC00</color>
     <color name="random_color_1">#ff9500</color>
     <color name="random_color_10">#bdbdbd</color>
     <color name="random_color_2">#007aff</color>
@@ -1214,7 +1217,15 @@
         <item name="android:windowEnterAnimation">@anim/design_bottom_sheet_slide_in</item>
         <item name="android:windowExitAnimation">@anim/design_bottom_sheet_slide_out</item>
     </style>
-    <style name="AppTheme" parent="AppTheme.Base"/>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorControlActivated">@color/color_accent</item>
         <item name="colorControlHighlight">@color/color_accent</item>
@@ -1237,6 +1248,7 @@
         <item name="colorPrimaryDark">@color/black</item>
         <item name="actionBarTheme">@style/DarkActionBarTheme</item>
     </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>
         <item name="listLayout">@layout/abc_select_dialog_material</item>
@@ -2270,11 +2282,10 @@
     <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!--<item name="android:windowActionBar">false</item>-->
         <!-- Customize your theme here. -->
-
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
-
         <item name="android:windowBackground">@color/background_app_color</item>
+
     </style>
     <style name="BorderlessImageButtonStyle" parent="WrapContent">
         <item name="android:background">@null</item>

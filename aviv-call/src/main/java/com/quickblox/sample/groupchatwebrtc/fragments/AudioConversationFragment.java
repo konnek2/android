@@ -121,7 +121,7 @@ public class AudioConversationFragment extends BaseConversationFragment implemen
 
     public void ShowIndicator() {
 
-        Log.d(TAG, "ShowIndicator");
+
         mDeviceBandwidthSampler.startSampling();
         if (!isStarted) {
 
@@ -148,7 +148,7 @@ public class AudioConversationFragment extends BaseConversationFragment implemen
 
     private void applyIndicator(double downloadKBitsPerSecond) {
         try {
-            Log.d( TAG, "applyIndicator");
+
             if (IsVedioCall_l) {
                 KbSpeedDisplay.setText("Kbps  :" + String.valueOf(Math.round(downloadKBitsPerSecond)));
 //                Log.d("BaseLogedUserActivity ", "applyIndicator()  " + downloadKBitsPerSecond);

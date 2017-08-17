@@ -1,11 +1,12 @@
 package com.quickblox.sample.groupchatwebrtc.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
-import com.quickblox.sample.groupchatwebrtc.activities.CallActivity;
+//import com.quickblox.sample.groupchatwebrtc.activities.OpponentsActivity;
 import com.quickblox.sample.groupchatwebrtc.activities.CallClientActivity;
-import com.quickblox.sample.groupchatwebrtc.activities.OpponentsActivity;
 import com.quickblox.videochat.webrtc.QBRTCSession;
 import com.quickblox.videochat.webrtc.callbacks.QBRTCClientSessionCallbacksImpl;
 
@@ -24,8 +25,8 @@ public class WebRtcSessionManager extends QBRTCClientSessionCallbacksImpl {
         this.context = context;
     }
 
-    public static WebRtcSessionManager getInstance(Context context){
-        if (instance == null){
+    public static WebRtcSessionManager getInstance(Context context) {
+        if (instance == null) {
             instance = new WebRtcSessionManager(context);
         }
 
@@ -44,11 +45,15 @@ public class WebRtcSessionManager extends QBRTCClientSessionCallbacksImpl {
     public void onReceiveNewSession(QBRTCSession session) {
         Log.d(TAG, "onReceiveNewSession to WebRtcSessionManager");
 
-        if (currentSession == null){
+        if (currentSession == null) {
             setCurrentSession(session);
-            Log.d("CALL2020","WebRtcSessionManager  start methodTop");
-            OpponentsActivity.start(context, true);
-//            CallClientActivity.start(context, true);
+
+            Intent intent = new Intent(context, CallClientActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            intent.putExtra(Consts.EXTRA_IS_STARTED_FOR_CALL, true);
+            context.startActivity(intent);
+//            TabViewActivity.start(context, true);
+            attachFragment();
         }
     }
 
@@ -56,8 +61,13 @@ public class WebRtcSessionManager extends QBRTCClientSessionCallbacksImpl {
     public void onSessionClosed(QBRTCSession session) {
         Log.d(TAG, "onSessionClosed WebRtcSessionManager");
 
-        if (session.equals(getCurrentSession())){
+        if (session.equals(getCurrentSession())) {
             setCurrentSession(null);
         }
+    }
+
+
+    public void attachFragment() {
+
     }
 }

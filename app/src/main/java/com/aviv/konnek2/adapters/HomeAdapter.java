@@ -1,6 +1,7 @@
 package com.aviv.konnek2.adapters;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,9 +21,9 @@ public class HomeAdapter extends BaseAdapter {
     private Context mContext;
     private final String[] title;
     private final String[] subtitle;
-    private final int[] Imageid;
+    private final TypedArray Imageid;
 
-    public HomeAdapter(Context c, String[] title, String[] subtitle, int[] Imageid) {
+    public HomeAdapter(Context c, String[] title, String[] subtitle, TypedArray Imageid) {
         mContext = c;
         this.Imageid = Imageid;
         this.title = title;
@@ -66,15 +67,12 @@ public class HomeAdapter extends BaseAdapter {
 
             }
             if (position == 6) {
-                Log.d("GRID", "position  IFFF:::  subtitle[6] " + subtitle[6]);
+
                 textView2.setVisibility(View.INVISIBLE);
                 textView2.setVisibility(View.VISIBLE);
                 textView2.setText(subtitle[6]);
             }
-
-//            textView2.setText(subtitle[5]);
-//            textView2.setText(subtitle[6]);
-            imageView.setImageResource(Imageid[position]);
+            imageView.setImageResource(Imageid.getResourceId(position,0));
         } else {
             grid = (View) convertView;
         }

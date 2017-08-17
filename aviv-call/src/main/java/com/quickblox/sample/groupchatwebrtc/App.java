@@ -16,6 +16,7 @@ public class App extends CoreApp {
     public static CallLogTable callLogTableDAO;
     public static CallTableManager callTableManagerDAO;
     private static App instance;
+
     private QBResRequestExecutor qbResRequestExecutor;
 
     public static App getInstance() {
@@ -44,7 +45,7 @@ public class App extends CoreApp {
 
 
     private void createTable() {
-        Log.d("T1Application", "createTable");
+
         dbAdapter = DBAdapter.getInstance(context);
         dbAdapter.open();
         callLogTableDAO = new CallLogTable(dbAdapter.getDataBase(), context);

@@ -9,11 +9,12 @@ import android.view.View;
 import android.widget.SeekBar;
 
 import com.quickblox.sample.groupchatwebrtc.R;
+import com.quickblox.sample.groupchatwebrtc.utils.Constant;
 
 public class SeekBarPreference extends Preference implements SeekBar.OnSeekBarChangeListener {
 
-    private static final String ANDROID_NS ="http://schemas.android.com/apk/res/android";
-    private static final String SEEKBAR_NS ="http://schemas.android.com/apk/res-auto";
+    private static final String ANDROID_NS = Constant.ANDROID_NS;
+    private static final String SEEKBAR_NS = Constant.SEEKBAR_NS;
 
 
     private Context context;
@@ -47,9 +48,7 @@ public class SeekBarPreference extends Preference implements SeekBar.OnSeekBarCh
         int stepSizeValueResourceId = attrs.getAttributeResourceValue(SEEKBAR_NS, "stepSize", R.integer.pref_default_int_value);
         seekBarStepSize = context.getResources().getInteger(stepSizeValueResourceId);
 
-        Log.v("Attribute", "max = " + maxSeekBarValue);
-        Log.v("Attribute", "min = " + minSeekBarValue);
-        Log.v("Attribute", "step = " + seekBarStepSize);
+
     }
 
     @Override

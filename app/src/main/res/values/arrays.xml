@@ -1,13 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
-    <string-array name="setingsActivity">
-
+    <!-- Settings   Heading & resource Ids -->
+    <string-array name="setings_tittle">
         <item>Notifications</item>
         <item>Chat Settings</item>
         <item>Invite Friend</item>
         <item>Change Password</item>
         <item>Help and About Us</item>
     </string-array>
+    <integer-array name="setings_image">
+        <item>@drawable/ic_chat_notification</item>
+        <item>@drawable/ic_chat_blue</item>
+        <item>@drawable/ic_share_blue</item>
+        <item>@drawable/ic_password_blue</item>
+        <item>@drawable/ic_settings_help</item>
+    </integer-array>
+
+    <!-- M Store Heading & resource Ids -->
+    <string-array name="mstore">
+        <item>Travel</item>
+        <item>Money</item>
+        <item>Retail</item>
+        <item>Grocery</item>
+        <item>Pharmacy</item>
+        <item>Movies</item>
+    </string-array>
+
+    <integer-array name="mstore_image">
+        <item>@drawable/ic_app_grid_travel</item>
+        <item>@drawable/ic_app_grid_topup</item>
+        <item>@drawable/ic_app_grid_shopping</item>
+        <item>@drawable/ic_app_grid_grocery</item>
+        <item>@drawable/ic_app_grid_pharmecy</item>
+        <item>@drawable/ic_app_grid_movies</item>
+    </integer-array>
+
+
+    <!-- Money  Heading & resource Ids -->
+    <string-array name="money_name">
+        <item>Money Transfer</item>
+        <item>Top Up</item>
+        <item>DTH Recharge</item>
+        <item>Loans</item>
+
+    </string-array>
+
+    <integer-array name="money_image">
+
+        <item>@drawable/ic_app_grid_money_transfer</item>
+        <item>@drawable/ic_app_grid_topup</item>
+        <item>@drawable/ic_app_grid_dth</item>
+        <item>@drawable/ic_app_grid_loan</item>
+    </integer-array>
+
+    <!-- Home  Heading & resource Ids -->
+
+    <string-array name="home_title">
+        <item>Contacts</item>
+        <item>History</item>
+        <item>Connect</item>
+        <item>Support</item>
+        <item>Refer a friend</item>
+        <item>Settings</item>
+        <item>Sarai</item>
+        <item>Charity</item>
+        <item>m-Store</item>
+        <item>Hangouts</item>
+        <item>User Profile</item>
+    </string-array>
+
+    <integer-array name="home_image">
+
+        <item>@drawable/ic_app_grid_contact</item>
+        <item>@drawable/ic_app_grid_history</item>
+        <item>@drawable/ic_app_grid_chat</item>
+        <item>@drawable/ic_app_grid_support</item>
+        <item>@drawable/ic_app_grid_add_friend</item>
+        <item>@drawable/ic_app_grid_settings</item>
+        <item>@drawable/ic_app_grid_sarai</item>
+        <item>@drawable/ic_app_grid_affilates</item>
+        <item>@drawable/ic_app_grid_mstore</item>
+        <item>@drawable/ic_app_grid_friend</item>
+        <item>@drawable/ic_app_grid_profile</item>
+    </integer-array>
+
+
+    <!-- Travel  Heading & resource Ids -->
+    <string-array name="Travel_name">
+        <item>Flight</item>
+        <item>Cab</item>
+        <item>Hotel</item>
+        <item>Holliday</item>
+
+    </string-array>
+
+    <integer-array name="Travel_image">
+
+        <item>@drawable/ic_app_grid_flight</item>
+        <item>@drawable/ic_app_grid_cab</item>
+        <item>@drawable/ic_app_grid_hotel</item>
+        <item>@drawable/ic_app_grid_holiday</item>
+    </integer-array>
+
 </resources>

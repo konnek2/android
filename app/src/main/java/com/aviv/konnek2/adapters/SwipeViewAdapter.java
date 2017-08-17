@@ -3,7 +3,9 @@ package com.aviv.konnek2.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
 
+import com.aviv.konnek2.utils.Constant;
 import com.quickblox.sample.chat.ui.fragment.ChatFragment;
 import com.quickblox.sample.groupchatwebrtc.fragments.AVCallFragment;
 import com.quickblox.sample.groupchatwebrtc.fragments.CallHistoryFragment;
@@ -16,14 +18,13 @@ import com.quickblox.sample.groupchatwebrtc.fragments.ContactFragment;
 public class SwipeViewAdapter extends FragmentStatePagerAdapter {
 
     int mNumOfTabs;
-    CharSequence tabViewTitles[] = {"CALL HISTORY ", "CHAT", "CONTACTS"};
+    CharSequence tabViewTitles[] = {Constant.TAB_CALL_HISTORY, Constant.TAB_CHAT, Constant.TAB_CONTACTS};
 
     public SwipeViewAdapter(FragmentManager fm, int NumOfTabs) {
         super(fm);
         this.mNumOfTabs = NumOfTabs;
 
     }
-
 
     @Override
     public Fragment getItem(int position) {
@@ -53,4 +54,5 @@ public class SwipeViewAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         return "" + tabViewTitles[position];
     }
+
 }

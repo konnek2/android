@@ -4,39 +4,35 @@
     <item
         android:id="@+id/menu_chat_action_info"
         android:title="@string/menu_chat_info"
-        android:visible="false"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/menu_chat_action_add"
         android:title="@string/menu_add_users_to_chat"
-        android:visible="false"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/menu_chat_action_leave"
         android:title="@string/menu_leave_chat"
-        android:visible="false"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/menu_chat_action_delete"
         android:title="@string/menu_delete_chat"
-        android:visible="false"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/menu_chat_video_call"
         android:icon="@drawable/ic_chat_video_call"
+        android:title="@string/menu_group_call"
         android:visible="false"
-        android:title="@string/menu_delete_chat"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/menu_chat_audio_call"
         android:icon="@drawable/ic_chat_group_call"
+        android:title="@string/menu_group_call"
         android:visible="false"
-        android:title="@string/menu_delete_chat"
         app:showAsAction="ifRoom"/>
 
 

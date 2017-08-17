@@ -1,5 +1,6 @@
 package com.aviv.konnek2.adapters;
 
+import android.content.res.TypedArray;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +21,10 @@ public class RVSettingsAdapter extends RecyclerView.Adapter<RVSettingsAdapter.Vi
 
 
     private ArrayList<String> itemName;
-    private ArrayList<Integer> itemImage;
+    private TypedArray itemImage;
 
 
-    public RVSettingsAdapter(ArrayList<String> itemName,ArrayList<Integer> itemImage) {
+    public RVSettingsAdapter(ArrayList<String> itemName,TypedArray itemImage) {
         this.itemName = itemName;
         this.itemImage = itemImage;
     }
@@ -38,7 +39,7 @@ public class RVSettingsAdapter extends RecyclerView.Adapter<RVSettingsAdapter.Vi
     public void onBindViewHolder(RVSettingsAdapter.ViewHolder viewHolder, int i) {
 
         viewHolder.txtTitle.setText(itemName.get(i));
-        viewHolder.imageView.setImageResource(itemImage.get(i));
+        viewHolder.imageView.setImageResource(itemImage.getResourceId(i,0));
     }
 
     @Override

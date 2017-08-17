@@ -148,6 +148,10 @@
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-mdpi-v4\\ic_call_micro_phone_on.png"
     },
     {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\ic_call_back.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-mdpi-v4\\ic_call_back.png"
+    },
+    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\ic_volume_off.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-mdpi-v4\\ic_volume_off.png"
     },
@@ -448,6 +452,10 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-mdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
     },
     {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\ic_chat_back.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\drawable-mdpi\\ic_chat_back.png"
+    },
+    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\ic_call_video_camera_on.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-mdpi-v4\\ic_call_video_camera_on.png"
     },
@@ -590,6 +598,10 @@
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-mdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\ic_chat_voice_record.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\drawable-mdpi\\ic_chat_voice_record.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\checkbox_on.png",

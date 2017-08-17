@@ -26,7 +26,7 @@ public class ChatBotActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat_bot);
         toolbar = (Toolbar) findViewById(R.id.toolbar_chatbot);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setSubtitle("Home > Sarai");
+        getSupportActionBar().setSubtitle(Constant.HOME + Constant.GREATER_THAN + Constant.SARAI);
         toolbar.setNavigationIcon(R.drawable.ic_app_back);
         toolbar.setSubtitleTextColor(getResources().getColor(R.color.white));
         webView = (WebView) findViewById(R.id.webview_chatBot);

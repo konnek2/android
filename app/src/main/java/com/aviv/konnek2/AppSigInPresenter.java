@@ -35,9 +35,6 @@ public class AppSigInPresenter implements SignInPresenter {
     @Override
     public void validateLoginCredentials(String userName, String mobileNumber, String countryCode) {
         userModel = new UserModel();
-        Log.d("APPLOIGN123", "validateLoginCredentials " + userName);
-        Log.d("APPLOIGN123", "validateLoginCredentials  " + mobileNumber);
-        Log.d("APPLOIGN123", "validateLoginCredentials  " + countryCode);
 
         SignInApiInterface service = ApiClient.getClient().create(SignInApiInterface.class);
         Call<SignInResponse> call = service.post(Constant.TAG_LOGIN, userName, mobileNumber, countryCode);
@@ -46,15 +43,11 @@ public class AppSigInPresenter implements SignInPresenter {
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
 
                 try {
-                    Log.d("APPLOIGN123", " onResponse validateLoginCredentials Success");
+
                     userModel = new UserModel();
                     if (response.body().getResponseCode().equals(Constant.RESPONSE_CODE) && response.body().getName() != null
                             && response.body().getMobileNumber() != null && response.body().getCountry() != null) {
 
-                        Log.d("APPLOIGN123", "loginProcess  getUserId " + response.body().getUserId());
-                        Log.d("APPLOIGN123", "loginProcess  getName " + response.body().getName());
-                        Log.d("APPLOIGN123", "loginProcess getMobileNumber " + response.body().getMobileNumber());
-                        Log.d("APPLOIGN123", "loginProcess  getCountry " + response.body().getCountry());
                         AppPreference.putUserId(response.body().getUserId());
                         AppPreference.putUserName(response.body().getName());
                         AppPreference.putMobileNumber(response.body().getMobileNumber());
@@ -76,13 +69,9 @@ public class AppSigInPresenter implements SignInPresenter {
                         }
                         Konnnek2.usersTableDAO.insertuserDetails(userModel);
                         Konnnek2.tableBackUpManagerDAO.databaseDB(Konnnek2.getAppContext());
-                        Common.displayToast("SignIn Process Success");
                         signInView.signInResponse(Constant.RESPONSE_CODE);
 
                     } else {
-
-                        Log.d(TAG, "Invalid Param ");
-
                         Common.displayToast("Invalid Param");
                     }
 
@@ -93,23 +82,20 @@ public class AppSigInPresenter implements SignInPresenter {
 
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
-                Log.d("APPLOIGN123", " onResponse validateLoginCredentials onFailure" + t.getMessage());
             }
         });
     }
 
     @Override
-    public void validateOtp(String mobileNumber,String otp) {
+    public void validateOtp(String mobileNumber, String otp) {
 
         SignInApiInterface service = ApiClient.getClient().create(SignInApiInterface.class);
-        Call<SignInResponse> call = service.otpVerifyPost(Constant.TAG_VERIFY_OTP, mobileNumber,otp);
+        Call<SignInResponse> call = service.otpVerifyPost(Constant.TAG_VERIFY_OTP, mobileNumber, otp);
         call.enqueue(new Callback<SignInResponse>() {
             @Override
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
-                Log.d("APPLOIGN123 ", " APPSignInPresenter validateOtp ====> " + response.body().getResponseCode());
-                if(response.body().getResponseCode()!=null)
-                {
-                    Log.d("APPLOIGN123 ", " APPSignInPresenter getResponseCode()!=null ====> " + response.body().getResponseCode());
+
+                if (response.body().getResponseCode() != null) {
                     signInView.verifyOtp(response.body().getResponseCode());
                 }
 
@@ -117,12 +103,9 @@ public class AppSigInPresenter implements SignInPresenter {
 
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
-                Log.d("APPLOIGN123 ", " validateOtp onFailure t.getMessage() " + t.getMessage());
 
             }
         });
-
-
 
 
     }
@@ -135,7 +118,7 @@ public class AppSigInPresenter implements SignInPresenter {
         call.enqueue(new Callback<SignInResponse>() {
             @Override
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
-                Log.d("APPLOIGN123 ", " APPSignInPresenter reSendOtp ====> " + response.body().getResponseCode());
+
                 signInView.reSendOtpResponse(Constant.RESPONSE_CODE);
             }
 

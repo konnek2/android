@@ -1,39 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:background="@drawable/signup_backround"
-    android:fitsSystemWindows="true"
     >
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/signUp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        >
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
 
-        <LinearLayout
-            android:id="@+id/signUp"
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KONNEK2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_20sp"/>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="visible">
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin_30dp"
+            android:background="@color/white"></View>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginBottom="@dimen/margin_20dp"
-                android:src="@mipmap/ic_launcher"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/white"></View>
+                android:id="@+id/imag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/countrylist"
+                android:src="@drawable/ic_app_world"/>
 
 
             <Spinner
@@ -43,80 +55,94 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_25dp"
                 android:layout_marginLeft="@dimen/margin_10dp"
-                android:layout_marginTop="@dimen/margin_20dp"
+                android:layout_marginTop="@dimen/margin_40dp"
+                android:layout_toRightOf="@+id/imag"
                 android:background="@drawable/edittext_bottom_line"
                 >
 
             </Spinner>
+        </RelativeLayout>
 
-            <TableLayout
-                android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageview_mobile"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_10dp"
-                android:orientation="horizontal"
-                android:stretchColumns="0">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/et_mobileNumber1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_10dp"
-                        android:layout_marginTop="@dimen/margin_10dp"
-                        android:theme="@style/TextLabel">
-
-                        <EditText
-                            android:id="@+id/et_mobileNumber"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/edittext_bottom_line"
-                            android:drawableLeft="@drawable/ic_app_phone"
-                            android:drawablePadding="5dp"
-                            android:hint="Mobile Number"
-                            android:imeOptions="actionNext"
-                            android:inputType="number"
-                            android:maxLength="10"
-                            android:textColor="@color/white"
-                            android:textColorHint="@color/white"/>
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <TextView
-                        android:id="@+id/text_view_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_5dp"
-                        android:layout_marginTop="45dp"
-                        android:background="@drawable/edit_text_border"
-                        android:gravity="center"
-                        android:hint="code"
-                        android:imeOptions="actionNext"
-                        android:inputType="number"
-                        android:maxLength="10"
-                        android:padding="@dimen/padding_5dp"
-                        android:textColor="@color/colorPrimary"
-                        android:textColorHint="@color/white"/>
-                </TableRow>
-            </TableLayout>
-
+                android:layout_alignBottom="@+id/et_mobileNumber1"
+                android:src="@drawable/ic_app_mobile"/>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/et_mobileNumber1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_10dp"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_toRightOf="@+id/imageview_mobile"
+                android:theme="@style/TextLabel">
+
+                <EditText
+                    android:id="@+id/et_mobileNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_bottom_line"
+                    android:drawablePadding="5dp"
+                    android:hint="Mobile Number"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/text_view_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/et_mobileNumber1"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="@dimen/margin_5dp"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:background="@drawable/edit_text_border"
+                android:hint="code"
+                android:inputType="number"
+                android:maxLength="10"
+                android:padding="@dimen/padding_5dp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/white"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageview_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/et_userName1"
+                android:background="@drawable/edittext_bottom_line"
+                android:src="@drawable/ic_app_user"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/et_userName1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_10dp"
                 android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_toRightOf="@+id/imageview_user"
                 android:theme="@style/TextLabel">
 
                 <EditText
                     android:id="@+id/et_userName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_10dp"
                     android:background="@drawable/edittext_bottom_line"
-                    android:drawableLeft="@drawable/ic_app_user"
                     android:drawablePadding="5dp"
                     android:hint="Name "
                     android:imeOptions="actionDone"
@@ -126,162 +152,181 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/margin_15dp"
-                android:background="@color/white"></View>
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/button_login"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="@dimen/margin_40dp"
-                android:background="@drawable/button_shape"
-                android:shadowColor="#A8A8A8"
-                android:shadowRadius="5"
-                android:text="Sign Up"
-                android:textColor="@color/white"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/tv_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_30dp"
-                android:text="@string/msg_not_registered"
-                android:textColor="@color/colorAccent"
-                android:visibility="gone"/>
+        </RelativeLayout>
 
 
-            <TextView
-                android:id="@+id/tv_forgotPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_40dp"
-                android:text="@string/msg_forgot_password"
-                android:textColor="@color/colorAccent"
-                android:visibility="gone"/>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/button_login"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/margin_40dp"
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A8A8A8"
+            android:shadowRadius="5"
+            android:text="Sign Up"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_30dp"
+            android:text="@string/msg_not_registered"
+            android:textColor="@color/colorAccent"
+            android:visibility="gone"/>
 
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_40dp"
+            android:text="@string/msg_forgot_password"
+            android:textColor="@color/colorAccent"
+            android:visibility="gone"/>
 
-        <LinearLayout
-            android:id="@+id/otpParent"
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/otpParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/text_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_50dp"
+            android:gravity="center"
+            android:text="@string/sign_up"
+            android:textColor="@color/white"
+            android:textSize="@dimen/margin_40dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/text_head"
+            android:layout_marginTop="@dimen/margin_60dp"
+            android:background="@color/white"></View>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:orientation="vertical"
-            android:padding="@dimen/margin_25dp"
-            android:visibility="gone">
+            android:gravity="center_vertical">
 
-
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/image_otp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edittext_bottom_line"
-                android:gravity="center">
+                android:layout_alignBottom="@+id/text_sms"
+                android:padding="@dimen/margin_5dp"
+                android:src="@drawable/ic_app_otp_verification"/>
 
-                <TextView
-                    android:id="@+id/otp_pass_pat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:drawableLeft="@drawable/ic_app_password"
-                    android:text="  | "
-                    android:textColor="@color/white"/>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/otp_pass_pat"
-                    android:layout_marginBottom="@dimen/margin_10dp"
-                    android:layout_marginTop="@dimen/margin_10dp"
-                    android:layout_toRightOf="@+id/otp_pass_pat"
-                    android:theme="@style/TextLabel">
-
-                    <EditText
-                        android:id="@+id/edit_text_otp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#00000000"
-                        android:hint="Enter OTP"
-                        android:inputType="number"
-                        android:maxLength="6"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"/>
-                </android.support.design.widget.TextInputLayout>
-
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/text_sms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/image_otp"
+                android:text="@string/sms_verification"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size18sp"/>
 
 
             <TextView
-                android:id="@+id/codetxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/OtpEtxtParent"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:lines="1"
-                android:text="@string/msg_verify_mobile_number"
-                android:textColor="@color/white"/>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <TextView
-                    android:id="@+id/text_view_Not_otp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/msg_not_receive_otp"
-                    android:textColor="@color/white"/>
-
-                <TextView
-                    android:id="@+id/text_view_resend_otp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/text_view_Not_otp"
-                    android:background="@color/white"
-                    android:linksClickable="true"
-                    android:padding="2dp"
-                    android:text="@string/msg_resend_otp"
-                    android:textColor="@color/colorPrimary"/>
-
-            </RelativeLayout>
-
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btn_otp"
+                android:id="@+id/text_verification_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_40dp"
-                android:background="@drawable/button_rounded_corner_white"
-                android:text="Verify Number"
-                android:textColor="@color/colorPrimary"
+                android:layout_below="@+id/text_sms"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_toRightOf="@+id/image_otp"
+                android:text="@string/sms_verification_code"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_size_14sp"/>
 
-        </LinearLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_otp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_verification_code"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:layout_toRightOf="@+id/image_otp"
+                android:background="@drawable/edittext_bottom_line"
+                android:theme="@style/TextLabel">
+
+                <EditText
+                    android:id="@+id/edit_text_otp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:hint="Enter OTP"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/text_resend_otp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_input_otp"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:layout_toRightOf="@+id/image_otp"
+                android:text="@string/resend"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size18sp"/>
 
 
-        <ProgressBar
-            android:id="@+id/progress_sign_in"
-            style="@style/Base.Widget.AppCompat.ProgressBar"
+            <TextView
+                android:id="@+id/text_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/text_input_otp"
+                android:layout_marginRight="@dimen/margin_5dp"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:text="@string/text_next"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size18sp"/>
+
+            <View
+                android:id="@+id/view_two"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/text_next"
+                android:layout_marginTop="@dimen/margin_40dp"
+                android:background="@color/white"></View>
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/text_next1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/margin_50dp"
-            android:indeterminate="true"
-            android:visibility="gone"/>
-
+            android:layout_marginBottom="@dimen/margin_15dp"
+            android:gravity="center"
+            android:text="@string/find_difficulties"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size16sp"/>
     </RelativeLayout>
 
-</ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_sign_in"
+        style="@style/Base.Widget.AppCompat.ProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/margin_50dp"
+        android:indeterminate="true"
+        android:visibility="gone"/>
+
+</RelativeLayout>

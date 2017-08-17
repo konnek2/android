@@ -47,9 +47,9 @@ public class RingtonePlayer {
     }
 
     public void play(boolean looping) {
-        Log.i(TAG, "play");
+
         if (mediaPlayer == null) {
-            Log.i(TAG, "mediaPlayer isn't created ");
+
             return;
         }
         mediaPlayer.setLooping(looping);

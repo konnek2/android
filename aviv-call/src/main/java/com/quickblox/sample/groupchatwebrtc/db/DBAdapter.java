@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.quickblox.sample.groupchatwebrtc.utils.Constant;
+
 /**
  * Created by Lenovo on 28-06-2017.
  */
@@ -15,9 +17,9 @@ public class DBAdapter {
 
     private static final String TAG = DBAdapter.class.getSimpleName();
 
-    private static final String DATABASE_NAME = "calllog";
+    private static final String DATABASE_NAME = Constant.DATABASE_CALL_NAME;
     @SuppressLint("SdCardPath")
-    public static final String DB_FULL_PATH = "/data/data/com.aviv.konnek2/databases/" + DATABASE_NAME;
+    public static final String DB_FULL_PATH = Constant.DB_FULL_PATH + DATABASE_NAME;
     private static final int DATABASE_CURRENT_VERSION = 1;
     private static final int DATABASE_PREVIOUS_VERSION = 0;
 
@@ -29,7 +31,7 @@ public class DBAdapter {
 
     public DBAdapter(Context context) {
 
-        Log.d(TAG, "DBAdapter");
+
         this.context = context;
         DBHelper = new DatabaseHelper(context);
     }
@@ -37,7 +39,6 @@ public class DBAdapter {
     public static DBAdapter getInstance(Context context) {
 
 
-        Log.d(TAG, "getInstance");
         if (mDBAdapter == null) {
             mDBAdapter = new DBAdapter(context);
         }
@@ -52,9 +53,9 @@ public class DBAdapter {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            Log.d("CALLDBAdapter","  DatabaseHelper  onCreate");
+
             db.execSQL(CallLogTable.TABLE_CALL_LOG_CREATE);
-            Log.d("CALLDBAdapter","  TABLE_CALL_LOG_CREATE  Table Created");
+
 
         }
 
@@ -64,13 +65,13 @@ public class DBAdapter {
     }
 
     public SQLiteDatabase getDataBase() throws SQLException {
-        Log.d(TAG, "getDataBase");
+
         return db;
     }
 
 
     public DBAdapter open() throws SQLException {
-        Log.d(TAG, "open()");
+
         try {
             db = DBHelper.getWritableDatabase();
         } catch (Exception e) {
@@ -80,7 +81,7 @@ public class DBAdapter {
     }
 
     public void close() {
-        Log.d(TAG, "close() ");
+
         try {
             if (DBHelper != null) {
                 DBHelper.close();

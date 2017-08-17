@@ -20,7 +20,7 @@ public class QbDialogHolder {
     private Map<String, QBChatDialog> dialogsMap;
 
     public static synchronized QbDialogHolder getInstance() {
-        Log.d("ChatFragment", "QbDialogHolder  synchronized");
+
         if (instance == null) {
             instance = new QbDialogHolder();
         }
@@ -28,18 +28,18 @@ public class QbDialogHolder {
     }
 
     private QbDialogHolder() {
-        Log.d("ChatFragment", "QbDialogHolder private  QbDialogHolder");
+
 
         dialogsMap = new TreeMap<>();
     }
 
     public Map<String, QBChatDialog> getDialogs() {
-        Log.d("ChatFragment", "QbDialogHolder   getDialogs");
+
         return getSortedMap(dialogsMap);
     }
 
     public QBChatDialog getChatDialogById(String dialogId){
-        Log.d("ChatFragment", "QbDialogHolder   getChatDialogById");
+
         return dialogsMap.get(dialogId);
     }
 
@@ -49,34 +49,34 @@ public class QbDialogHolder {
 
     public void addDialog(QBChatDialog dialog) {
         if (dialog != null) {
-            Log.d("ChatFragment", "QbDialogHolder  addDialog");
+
             dialogsMap.put(dialog.getDialogId(), dialog);
         }
     }
 
     public void addDialogs(List<QBChatDialog> dialogs) {
-        Log.d("ChatFragment", "QbDialogHolder  List<QBChatDialog>");
+
         for (QBChatDialog dialog : dialogs) {
             addDialog(dialog);
         }
     }
 
     public void deleteDialogs(Collection<QBChatDialog> dialogs) {
-        Log.d("ChatFragment", "QbDialogHolder  deleteDialogs");
+
         for (QBChatDialog dialog : dialogs) {
             deleteDialog(dialog);
         }
     }
 
     public void deleteDialogs(ArrayList<String> dialogsIds) {
-        Log.d("ChatFragment", "QbDialogHolder  ArrayList<String>");
+
         for (String dialogId : dialogsIds) {
             deleteDialog(dialogId);
         }
     }
 
     public void deleteDialog(QBChatDialog chatDialog){
-        Log.d("ChatFragment", "QbDialogHolder  deleteDialog");
+
         dialogsMap.remove(chatDialog.getDialogId());
     }
 
@@ -85,12 +85,12 @@ public class QbDialogHolder {
     }
 
     public boolean hasDialogWithId(String dialogId){
-        Log.d("ChatFragment", "QbDialogHolder  hasDialogWithId");
+
         return dialogsMap.containsKey(dialogId);
     }
 
     public boolean hasPrivateDialogWithUser(QBUser user){
-        Log.d("ChatFragment", "QbDialogHolder  hasPrivateDialogWithUser");
+
         return getPrivateDialogWithUser(user) != null;
     }
 
@@ -112,8 +112,7 @@ public class QbDialogHolder {
     }
 
     public void updateDialog(String dialogId, QBChatMessage qbChatMessage){
-        Log.d("ChatFragment", "QbDialogHolder  updateDialog  "+dialogId);
-        Log.d("ChatFragment", "QbDialogHolder  updateDialog "+qbChatMessage);
+
         QBChatDialog updatedDialog = getChatDialogById(dialogId);
         updatedDialog.setLastMessage(qbChatMessage.getBody());
         updatedDialog.setLastMessageDateSent(qbChatMessage.getDateSent());

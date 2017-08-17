@@ -18,6 +18,7 @@ import com.quickblox.content.model.QBFile;
 import com.quickblox.core.QBEntityCallback;
 import com.quickblox.core.QBProgressCallback;
 import com.quickblox.core.exception.QBResponseException;
+import com.quickblox.core.request.QBPagedRequestBuilder;
 import com.quickblox.sample.chat.R;
 import com.quickblox.sample.chat.interfaces.ImageIdDownloadView;
 import com.quickblox.sample.chat.network.AppImageIdPresenter;
@@ -28,24 +29,29 @@ import com.quickblox.sample.chat.utils.qb.QbUsersHolder;
 import com.quickblox.sample.core.ui.adapter.BaseSelectableListAdapter;
 import com.quickblox.sample.core.utils.ResourceUtils;
 import com.quickblox.sample.core.utils.UiUtils;
+import com.quickblox.users.QBUsers;
 import com.quickblox.users.model.QBUser;
+
+import org.jivesoftware.smack.SmackException;
+import org.jivesoftware.smack.XMPPException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class DialogsAdapter extends BaseSelectableListAdapter<QBChatDialog> {
 
     QBChatDialog dialog;
-    QBUser user;
+    List<QBUser> user;
+    long currentTime;
+    long userLastRequestAtTime;
 
     public DialogsAdapter(Context context, List<QBChatDialog> dialogs) {
         super(context, dialogs);
-
-        Log.d("QB_USER_SIZE", "DialogsAdapter  dialogs.size()  " + dialogs.size());
-
 
     }
 
@@ -70,11 +76,9 @@ public class DialogsAdapter extends BaseSelectableListAdapter<QBChatDialog> {
                 holder = (ViewHolder) convertView.getTag();
             }
             dialog = getItem(position);
-            Log.d("ONE_TO_ONE", ":::" + dialog.getRecipientId() + " NAME :::" + dialog.getName());
-            Log.d("IMAGE_URI 1 ", "DIALOGADAPTER  CHAT IMAGE_URI   ");
+
 
             Uri imageUri = Uri.fromFile(FolderCreator.getImageFileFromSdCard(String.valueOf(dialog.getRecipientId())));
-            Log.d("IMAGE_URI 2 ", "ADPATER onSuccess ====>  CHAT IMAGE_URI   " + imageUri);
             Glide.with(context)
                     .load(imageUri)
                     .placeholder(R.drawable.ic_chat_face)
@@ -90,7 +94,6 @@ public class DialogsAdapter extends BaseSelectableListAdapter<QBChatDialog> {
 //                holder.dialogImageView.setImageResource(R.drawable.n1);
             }
 //            getQbUsers(dialog);
-            Log.d("ChatFragment", "DialogsAdapter 1 getDialogName " + QbDialogUtils.getDialogName(dialog));
 
             holder.nameTextView.setText(QbDialogUtils.getDialogName(dialog));
             holder.nameTextView.setTextColor(ResourceUtils.getColor(R.color.colorPrimary));
@@ -99,10 +102,10 @@ public class DialogsAdapter extends BaseSelectableListAdapter<QBChatDialog> {
 
             int unreadMessagesCount = dialog.getUnreadMessageCount();
             if (unreadMessagesCount == 0) {
-                Log.d("ChatFragment", "unreadMessagesCount == 0 IF ");
+
                 holder.unreadCounterTextView.setVisibility(View.GONE);
             } else {
-                Log.d("ChatFragment", "unreadMessagesCount == 0  ELSE ");
+
                 holder.unreadCounterTextView.setVisibility(View.VISIBLE);
                 holder.unreadCounterTextView.setText(String.valueOf(unreadMessagesCount > 99 ? 99 : unreadMessagesCount));
             }
@@ -113,6 +116,7 @@ public class DialogsAdapter extends BaseSelectableListAdapter<QBChatDialog> {
         } catch (Exception e) {
             e.getMessage();
         }
+        getOpponents(dialog);
         return convertView;
     }
 
@@ -133,22 +137,17 @@ public class DialogsAdapter extends BaseSelectableListAdapter<QBChatDialog> {
         return TextUtils.isEmpty(lastMessage) && lastMessageSenderId != null;
     }
 
-//    public void getQbUsers(QBChatDialog dialog) {
-//
-//        Log.d("ChatFragment", " DialogsAdapter getQbUsers ");
-//        if (dialog.getOccupants().size() < 3) {
-//            Log.d("ChatFragment", " DialogsAdapter getQbUsers  dialog.getOccupants().size() < 3 ");
-//            dialog.getUserId();
-//            List<Integer> users = dialog.getOccupants();
-//            for (Integer id : users) {
-//                user = QbUsersHolder.getInstance().getUserById(id);
-//                Log.d("ChatFragment", " DialogsAdapter getQbUsers  FOR  USER 123" + user);
-//            }
-//        } else {
-//            Log.d("MULTIUPDATE", "   DialogsAdapter   Group  no read or green ");
-////            holder.userStatus.setImageResource(0);
-//        }
-//    }
+    public void getOpponents(QBChatDialog dialog) {
+
+
+        if (dialog.getOccupants().size() < 3) {
+            List<Integer> users = dialog.getOccupants();
+            user = QbUsersHolder.getInstance().getUsersByIds(users);
+
+        } else {
+
+        }
+    }
 
     private String prepareTextLastMessage(QBChatDialog chatDialog) {
         if (isLastMessageAttachment(chatDialog)) {
@@ -159,6 +158,7 @@ public class DialogsAdapter extends BaseSelectableListAdapter<QBChatDialog> {
     }
 
 
+
     private static class ViewHolder {
         ViewGroup rootLayout;
         ImageView dialogImageView;
@@ -167,4 +167,6 @@ public class DialogsAdapter extends BaseSelectableListAdapter<QBChatDialog> {
         TextView unreadCounterTextView;
         ImageView userStatus;
     }
+
+
 }

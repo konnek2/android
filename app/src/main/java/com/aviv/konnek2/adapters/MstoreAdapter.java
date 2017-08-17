@@ -1,6 +1,7 @@
 package com.aviv.konnek2.adapters;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +19,10 @@ public class MstoreAdapter extends BaseAdapter {
 
     private Context mContext;
     private final String[] mstoreName;
-    private final int[] mstoreImage;
+//    private final int[] mstoreImage;
+    private final TypedArray mstoreImage;
 
-    public MstoreAdapter(Context c, String[] mstoreName, int[] mstoreImage) {
+    public MstoreAdapter(Context c, String[] mstoreName, TypedArray mstoreImage) {
         mContext = c;
         this.mstoreName = mstoreName;
         this.mstoreImage = mstoreImage;
@@ -51,7 +53,7 @@ public class MstoreAdapter extends BaseAdapter {
             TextView textView = (TextView) grid.findViewById(R.id.grid_msotretext);
             ImageView imageView = (ImageView) grid.findViewById(R.id.grid_mstoreimage);
             textView.setText(mstoreName[position]);
-            imageView.setImageResource(mstoreImage[position]);
+            imageView.setImageResource(mstoreImage.getResourceId(position,0));
         } else {
             grid = (View) convertView;
         }

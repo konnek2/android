@@ -31,20 +31,10 @@
         <activity
             android:name="com.quickblox.sample.groupchatwebrtc.activities.SplashActivity"
             android:screenOrientation="portrait" >
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name="com.quickblox.sample.groupchatwebrtc.activities.LoginActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.quickblox.sample.groupchatwebrtc.activities.OpponentsActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity android:name="com.quickblox.sample.groupchatwebrtc.activities.PermissionsActivity" />
         <activity
@@ -102,9 +92,6 @@
         <receiver android:name="com.quickblox.sample.groupchatwebrtc.utils.WakeLockReceiver" >
         </receiver>
 
-        <!-- <meta-data -->
-        <!-- android:name="io.fabric.ApiKey" -->
-        <!-- android:value="7aea78439bec41a9005c7488bb6751c5e33fe270" /> -->
         <activity android:name="com.quickblox.sample.groupchatwebrtc.activities.CallClientActivity" >
         </activity>
     </application>

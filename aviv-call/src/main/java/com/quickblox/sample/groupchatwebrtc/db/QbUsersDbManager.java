@@ -112,7 +112,7 @@ public class QbUsersDbManager {
         for (QBUser qbUser : allUsers) {
             saveUser(qbUser);
         }
-        Log.d(TAG, "saveAllUsers");
+
     }
 
     public void saveUser(QBUser qbUser) {

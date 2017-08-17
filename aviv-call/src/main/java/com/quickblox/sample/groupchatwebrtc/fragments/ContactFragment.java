@@ -26,6 +26,7 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.quickblox.chat.QBChatService;
 import com.quickblox.core.QBEntityCallback;
@@ -36,8 +37,9 @@ import com.quickblox.sample.core.utils.Toaster;
 import com.quickblox.sample.groupchatwebrtc.App;
 import com.quickblox.sample.groupchatwebrtc.R;
 import com.quickblox.sample.groupchatwebrtc.activities.CallActivity;
+import com.quickblox.sample.groupchatwebrtc.activities.CallClientActivity;
 import com.quickblox.sample.groupchatwebrtc.activities.LoginActivity;
-import com.quickblox.sample.groupchatwebrtc.activities.OpponentsActivity;
+//import com.quickblox.sample.groupchatwebrtc.activities.OpponentsActivity;
 import com.quickblox.sample.groupchatwebrtc.activities.SettingsActivity;
 import com.quickblox.sample.groupchatwebrtc.adapters.OpponentsAdapter;
 import com.quickblox.sample.groupchatwebrtc.db.QbUsersDbManager;
@@ -50,7 +52,6 @@ import com.quickblox.sample.groupchatwebrtc.utils.Constant;
 import com.quickblox.sample.groupchatwebrtc.utils.Consts;
 import com.quickblox.sample.groupchatwebrtc.utils.DialogUtil;
 import com.quickblox.sample.groupchatwebrtc.utils.PermissionsChecker;
-import com.quickblox.sample.groupchatwebrtc.utils.RingtonePlayer;
 import com.quickblox.sample.groupchatwebrtc.utils.UsersUtils;
 import com.quickblox.sample.groupchatwebrtc.utils.WebRtcSessionManager;
 import com.quickblox.users.model.QBUser;
@@ -96,11 +97,13 @@ public class ContactFragment extends Fragment implements CallLogInterface {
     private String ContactName, ContactTime, ContactDate, ContactCallStatus, callType;
     private ArrayList<Integer> opponentsList;
     MenuItem menuItemVideoCall;
+    ContactFragment contactFragment;
 
 
     public static void start(Context context, boolean isRunForCall) {
         Log.d("CALL2020", "ContactFragment  start methodTop");
-        Intent intent = new Intent(context, OpponentsActivity.class);
+//        Intent intent = new Intent(context, OpponentsActivity.class);
+        Intent intent = new Intent(context, CallClientActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         intent.putExtra(Consts.EXTRA_IS_STARTED_FOR_CALL, isRunForCall);
         context.startActivity(intent);
@@ -540,7 +543,7 @@ public class ContactFragment extends Fragment implements CallLogInterface {
             WebRtcSessionManager.getInstance(getActivity()).setCurrentSession(newQbRtcSession);
 //            PushNotificationSender.sendPushMessage(opponentsList, currentUser.getFullName());
             Log.d("RINGTONEPLAY", " Contact Fragment  startCall  ringPlay");
-            Log.d(TAG, "startCall() 3 ");
+            Log.d("CALLACTIVITY12345", " ContactFragment  startCall  userInfo  " + userInfo);
             newQbRtcSession.startCall(userInfo);
             CallActivity.start(getActivity(), false);
 
@@ -596,4 +599,11 @@ public class ContactFragment extends Fragment implements CallLogInterface {
 
         getActivity().unregisterReceiver(callTrig);
     }
+
+    public static void contactsTrigger() {
+        ContactFragment contactFragment = new ContactFragment();
+
+    }
+
+
 }

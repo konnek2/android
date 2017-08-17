@@ -20,24 +20,28 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-hdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_volume_medium_white_24dp.png",
-        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-hdpi-v4\\ic_volume_medium_white_24dp.png"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\405180c34d875aee2d751d4ddeef63c46de3c830\\output\\res\\drawable-hdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_volume_medium_white_24dp.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-hdpi-v4\\ic_volume_medium_white_24dp.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png"
     },
     {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_chat_notification.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_chat_notification.png"
+    },
+    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_stop_screenshare.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-hdpi-v4\\ic_stop_screenshare.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_chat_notification.png",
-        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_chat_notification.png"
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_chat_back.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_chat_back.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_microphone.png",
@@ -280,8 +284,16 @@
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-hdpi-v4\\ic_arrow_back_w.png"
     },
     {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_chat_voice_record.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_chat_voice_record.png"
+    },
+    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_arrow_back.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_arrow_back.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_chat_background.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_chat_background.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
@@ -626,6 +638,10 @@
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_error.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_error.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_call_back.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-hdpi-v4\\ic_call_back.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_48dp.png",

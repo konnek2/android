@@ -78,6 +78,7 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.0'
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
 }
 
 //apply from: "../artifacts.gradle"

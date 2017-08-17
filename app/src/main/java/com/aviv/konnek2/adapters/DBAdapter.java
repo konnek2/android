@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.aviv.konnek2.data.database.UsersTable;
+import com.aviv.konnek2.utils.Constant;
 
 /**
  * Created by Lenovo on 27-06-2017.
@@ -16,9 +17,9 @@ import com.aviv.konnek2.data.database.UsersTable;
 public class DBAdapter {
 
 
-    private static final String DATABASE_NAME = "konnek2";
+    private static final String DATABASE_NAME = Constant.APP_NAME;
     @SuppressLint("SdCardPath")
-    public static final String DB_FULL_PATH = "/data/data/com.aviv.konnek2/databases/" + DATABASE_NAME;
+    public static final String DB_FULL_PATH = Constant.DB_FULL_PATH + DATABASE_NAME;
     private static final int DATABASE_CURRENT_VERSION = 5;
     private static final int DATABASE_PREVIOUS_VERSION = 1;
 
@@ -28,13 +29,13 @@ public class DBAdapter {
     private static DBAdapter mDBAdapter = null;
 
     public DBAdapter(Context context) {
-        Log.d("DBAdapter", "DBAdapter  ");
+
         this.context = context;
         DBHelper = new DatabaseHelper(context);
     }
 
     public static DBAdapter getInstance(Context context) {
-        Log.d("DBAdapter", "getInstance  ");
+
         if (mDBAdapter == null) {
             mDBAdapter = new DBAdapter(context);
         }
@@ -50,9 +51,8 @@ public class DBAdapter {
         @Override
         public void onCreate(SQLiteDatabase db) {
 
-            Log.d("DBAdapter", "onCreate ");
             db.execSQL(UsersTable.TABLE_REG_USERS_CREATE);
-            Log.d("DBAdapter", "  TABLE_REG_USERS_CREATE Table Created ");
+
         }
 
         @Override
@@ -63,14 +63,13 @@ public class DBAdapter {
 
     public SQLiteDatabase getDataBase() throws SQLException {
 
-        Log.d("DBAdapter", "getDataBase ");
         return db;
     }
 
 
     public DBAdapter open() throws SQLException {
 
-        Log.d("DBAdapter", "open() ");
+
         try {
             db = DBHelper.getWritableDatabase();
         } catch (Exception e) {
@@ -80,7 +79,6 @@ public class DBAdapter {
     }
 
     public void close() {
-        Log.d("DBAdapter", "close() ");
         try {
             if (DBHelper != null) {
                 DBHelper.close();

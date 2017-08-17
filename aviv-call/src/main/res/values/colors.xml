@@ -6,6 +6,10 @@
     <color name="colorPrimary_light">#7e8ce7</color>
     <color name="background_fragment">#212121</color>
 
+    <color name="priority_medium">#FFCC00</color>
+    <color name="priority_low">#0BE510</color>
+    <color name="priority_high">#E50500</color>
+
     <color name="white">#FFFFFF</color>
     <color name="enabled_color">#E50472</color>
     <color name="disabled_color">#84848C</color>

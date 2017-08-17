@@ -12,12 +12,12 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\c55252533fbbc4883e04175d113e2edad278d5d8\\output\\res\\drawable-mdpi-v4\\progress_secondary_holo_light.9.png"
     },
     {
-        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_call_medium_priority.png",
-        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-mdpi-v4\\ic_call_medium_priority.png"
-    },
-    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_call_user_select_tick.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\drawable-mdpi\\ic_call_user_select_tick.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_call_medium_priority.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-mdpi-v4\\ic_call_medium_priority.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\checkbox_on.png",
@@ -164,8 +164,16 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\194a79b2400e6588192be46a3a43388e2ef9aec1\\output\\res\\drawable-mdpi-v4\\abc_list_pressed_holo_light.9.png"
     },
     {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_chat_voice_record.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\drawable-mdpi\\ic_chat_voice_record.png"
+    },
+    {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_call_missedcall.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-mdpi-v4\\ic_call_missedcall.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_call_back.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-mdpi-v4\\ic_call_back.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\incoming_message_bg.9.png",
@@ -370,6 +378,10 @@
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_camera_rear.png",
         "source": "D:\\studioworkspace\\Konnek2\\aviv-call\\build\\intermediates\\bundles\\default\\res\\drawable-mdpi-v4\\ic_camera_rear.png"
+    },
+    {
+        "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_chat_back.png",
+        "source": "D:\\studioworkspace\\Konnek2\\aviv-chat\\src\\main\\res\\drawable-mdpi\\ic_chat_back.png"
     },
     {
         "merged": "D:\\studioworkspace\\Konnek2\\aviv-chat\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_call_downarrow.png",

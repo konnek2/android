@@ -3,6 +3,7 @@ package com.quickblox.sample.core.utils.imagepick;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 
 import com.quickblox.sample.core.utils.imagepick.fragment.ImagePickHelperFragment;
 import com.quickblox.sample.core.utils.imagepick.fragment.ImageSourcePickDialogFragment;
@@ -15,6 +16,7 @@ public class ImagePickHelper {
     }
 
     public void pickAnImage(FragmentActivity activity, int requestCode) {
+
         ImagePickHelperFragment imagePickHelperFragment = ImagePickHelperFragment.start(activity, requestCode);
         showImageSourcePickerDialog(activity.getSupportFragmentManager(), imagePickHelperFragment);
     }

@@ -73,6 +73,7 @@ public class SelectUsersActivity extends BaseActivity {
         setContentView(R.layout.activity_select_users);
         toolbar = (Toolbar) findViewById(R.id.toolbar_select_user);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_chat_back);
         progressBar = _findViewById(R.id.progress_select_users);
         usersListView = _findViewById(R.id.list_select_users);
 
@@ -90,11 +91,9 @@ public class SelectUsersActivity extends BaseActivity {
         getMenuInflater().inflate(R.menu.activity_select_users, menu);
         if (qbUserArrayList.size() == 0 && qbUserArrayList == null) {
 
-            Log.d("ChatFragment007", "  loadUsersFromQb onCreateOptionsMenu  false "+qbUserArrayList.size());
             menu.getItem(0).setVisible(false);
 
         } else {
-            Log.d("ChatFragment007", "  loadUsersFromQb onCreateOptionsMenu  setVisible(true); "+qbUserArrayList.size());
             menu.getItem(0).setVisible(true);
         }
 
@@ -109,15 +108,15 @@ public class SelectUsersActivity extends BaseActivity {
         lastClickTime = SystemClock.uptimeMillis();
 
         int i = item.getItemId();
+        if (i == android.R.id.home) {
+            onBackPressed();
+        }
         if (i == R.id.menu_select_people_action_done) {
 
             Intent intent = new Intent(Constant.NOTIFY_MULTIPLE);
 
-            Log.d("ChatFragment007", "  loadUsersFromQb onOptionsItemSelected qbUserArrayList.size()"+qbUserArrayList.size());
             if (qbUserArrayList != null && usersAdapter.getSelectedUsers().size() > Constant.SELECTED_USER_SIZE) {
-                Log.d("ChatFragment", "  loadUsersFromQb onOptionsItemSelected");
                 selectedUsers = new ArrayList<>(usersAdapter.getSelectedUsers());
-                Log.d("MULTIUPDATE", "  SelectUsersActivity===>>>==  selectedUsers.size() >0 " + selectedUsers.size());
                 intent.putExtra(EXTRA_QB_USERS, selectedUsers);
                 intent.putExtra(RESULT_CODE, -1);
                 intent.putExtra(REQUEST_CODE, 174);
@@ -131,6 +130,7 @@ public class SelectUsersActivity extends BaseActivity {
         } else {
             return super.onOptionsItemSelected(item);
         }
+
     }
 
     @Override
@@ -168,7 +168,6 @@ public class SelectUsersActivity extends BaseActivity {
                     }
                 }
                 qbUserArrayList = result;
-                Log.d("ChatFragment007", "  loadUsersFromQb () qbUserArrayList.size()"+qbUserArrayList.size());
                 usersAdapter = new CheckboxUsersAdapter(SelectUsersActivity.this, result, true);
                 if (dialog != null) {
                     usersAdapter.addSelectedUsers(dialog.getOccupants());
